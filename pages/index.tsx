@@ -1,14 +1,19 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-
+import type { NextPage } from "next";
+import Contacts from "../components/SectionsComponents/Contacts";
+import HomeSection from "../components/SectionsComponents/HomeSection";
+import Profil from "../components/SectionsComponents/Profil";
+import Skills from "../components/SectionsComponents/Skills";
+import Works from "../components/SectionsComponents/Works";
 const Home: NextPage = () => {
   return (
-   <div>
-    <div className="">yo</div>
-   </div>
-  )
-}
+    <div className="space-y-10">
+      <HomeSection />
+      <Profil />
+      <Works />
+      <Skills />
+      <Contacts />
+    </div>
+  );
+};
 
-export default Home
+export default Home;
