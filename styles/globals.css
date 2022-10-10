@@ -9,5 +9,18 @@ html {
 .radius {
   border-radius: 2.5rem 0.3rem 2.5rem 0.3rem;
   /* border: 0.1px solid rgba(0, 0, 0, 0.356); */
-  
+}
+
+.super-border {
+  position: relative;
+}
+.super-border::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 1px;
+  background: black;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

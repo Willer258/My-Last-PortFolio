@@ -11,7 +11,7 @@ interface IButton {
 function Button({ children, icon, className, type, isWhite }: IButton) {
   return (
     <button
-      className={`rounded-sm duration-300  ${className ?? ""} ${
+      className={`rounded-sm duration-300 font-semibold ${className ?? ""} ${
         type == "outlined"
           ? ` border-2${
               isWhite

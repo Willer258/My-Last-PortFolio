@@ -1,5 +1,5 @@
+import { links } from "@/utils/links";
 import React from "react";
-import { links } from "../../../../../utils/link";
 import PagesLinks from "./PagesLinks";
 
 const Navigation = () => {
