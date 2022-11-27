@@ -8,10 +8,7 @@ const Layout = ({ children }: any) => {
     <div>
       <MainHead />
       <SideNav />
-      <div className="ml-16 md:ml-32">
-        {children}
-        <Footer />
-      </div>
+      <div className="ml-16 md:ml-32">{children}</div>
     </div>
   );
 };

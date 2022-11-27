@@ -1,10 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
+import Logo from "@/components/Shared/Logo";
 import React from "react";
 import Navigation from "./SidNavSubComponent/Navigation";
 const SideNav = () => {
   return (
     <div className="fixed top-0 bottom-0  flex left-0">
       <div className="hidden  md:flex items-center justify-center h-full w-16 bg-white ">
-        <span>Logo</span>
+        <span>
+          <Logo />
+        </span>
       </div>
       <div
         className={

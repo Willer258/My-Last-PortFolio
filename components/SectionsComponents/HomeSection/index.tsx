@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import Logo from "@/components/Shared/Logo";
 import React from "react";
 import Button from "../../Shared/Button";
 
@@ -10,9 +11,9 @@ function HomeSection() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        {" "}
-        <Button className="absolute top-5 right-5 uppercase">
-          Recuperer mon CV
+        <Logo className="w-32 h-32" />
+        <Button className="fixed top-5 right-5 uppercase border border-white">
+          Télécharger mon CV
         </Button>
       </a>
 
@@ -31,7 +32,20 @@ function HomeSection() {
             le reste.
           </p>
 
-          <Button type="outlined">Prendre contact</Button>
+          <div className="flex space-x-3">
+            <a href="mailto:wilfriedhouinlindjonon91@gmail.com">
+              <Button type="outlined">Prendre contact</Button>
+            </a>
+            <a
+              href="https://firebasestorage.googleapis.com/v0/b/mon-portfolio-7cb39.appspot.com/o/cv.pdf?alt=media&token=35322b94-a4e4-4416-b035-aa4e836f786f"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="  border ">
+                Télécharger mon CV
+              </Button>
+            </a>
+          </div>
         </div>
       </div>
     </div>

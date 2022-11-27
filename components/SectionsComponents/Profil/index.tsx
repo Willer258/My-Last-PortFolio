@@ -23,7 +23,7 @@ const Profil = () => {
               l'amélioration et la maintenance de sites ou application (web ou
               mobile) de qualité tout en permettant la mécanique (API) destiné à
               ces derniers de fonctionner. J’en suis sûr au vu de tous mes
-              challenges effectuer pendant mes travaux de respecter tous ces
+              challenges éffectué pendant mes travaux de respecter tous ces
               critères sans inconvénient.
             </p>
             <p>
@@ -34,11 +34,12 @@ const Profil = () => {
             </p>
           </div>
 
-          <div className="object-cover hover:shadow-md  duration-200 overflow-hidden w-3/4 lg:w-3/5 xl:w-2/6 relative radius">
+          <div className="object-cover hover:shadow-md  duration-200 overflow-hidden w-3/4 lg:w-3/5 xl:w-2/6  radius">
             <img
               src={ImageProfile.src}
               alt="Houinlindjonon Alain Wilfried"
-              className="w-full h-full"
+              className="w-full h-full 
+              "
             />
             {/* <div className="image-animation w-[120%] bg-black h-[120%] border"></div> */}
           </div>
