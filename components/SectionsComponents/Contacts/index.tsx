@@ -1,9 +1,11 @@
+import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
 import Logo from "@/components/Shared/Logo";
 import FontAwesomeIcon from "@/components/SpecialComponent/FontAwesomeIcon";
 import React from "react";
 
 const Contacts = () => {
   return (
+    <AnimateCursorTarget type={'blackBg'}>
     <div className="h-screen bg-black flex flex-col text-white " id="contact">
       <div className="lg:w-5/6 mx-auto px-2 md:px-5 h-full ">
         {/* <Logo className="h-36 w-36" isWhite /> */}
@@ -54,6 +56,7 @@ const Contacts = () => {
         </div>
       </div>
     </div>
+    </AnimateCursorTarget>
   );
 };
 

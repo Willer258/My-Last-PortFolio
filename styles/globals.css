@@ -1,12 +1,10 @@
-
 @font-face {
   font-family: Poppins;
-  src: url('../assets/fonts/Poppins-Regular.ttf') format("opentype");
+  src: url("../assets/fonts/Poppins-Regular.ttf") format("opentype");
 }
 * {
   font-family: Poppins;
 }
-
 
 @tailwind base;
 @tailwind components;
@@ -14,8 +12,10 @@
 
 html {
   scroll-behavior: smooth;
+  background: white;
 }
 
+/* Style classs */
 .radius {
   border-radius: 2.5rem 0.3rem 2.5rem 0.3rem;
   /* border: 0.1px solid rgba(0, 0, 0, 0.356); */
@@ -23,6 +23,9 @@ html {
 
 .super-border {
   position: relative;
+}
+button{
+  cursor: none;
 }
 .super-border::after {
   content: "";
@@ -33,4 +36,39 @@ html {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+[class^="cursor"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+ 
+  pointer-events: none;
+}
+
+.cursor {
+ 
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #000;
+  z-index: 9999;
+  transition: 0.1s;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+body {
+  cursor: none;
+}
+
+.content:hover ~ .cursor{
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  mix-blend-mode: difference;
 }

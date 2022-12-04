@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import ImageProfile from "@/assets/willpic.jpg";
+import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
 const Profil = () => {
   return (
     <div id="profil" className="lg:h-screen lg:w-5/6 mx-auto px-2 md:px-5">
@@ -12,11 +13,16 @@ const Profil = () => {
       </div>
       <div className="flex flex-col h-full justify-center">
         <div className="flex flex-col font-medium lg:flex-row space-y-5 items-center lg:space-x-10  ">
+         
           <div className="space-y-3 lg:w-3/4 self-center">
+
+          <AnimateCursorTarget type='text'>
             <p>
               Bonjour, Houinlindjonon Alain Wilfried développeur frontend a
               votre service.
             </p>
+            </AnimateCursorTarget>
+            <AnimateCursorTarget type='text'>
             <p>
               M'affirmer développeur et au niveau frontal m'incombe de respecter
               certains critères dont la conception, l'optimisation,
@@ -26,21 +32,27 @@ const Profil = () => {
               challenges éffectué pendant mes travaux de respecter tous ces
               critères sans inconvénient.
             </p>
+            </AnimateCursorTarget>
+            <AnimateCursorTarget type='text'>
             <p>
               Résident du pays de Côte d'Ivoire spécifiquement à Abidjan, Je
               serais en mesure de vous offrir une plateforme agréable, simple et
               optimisée tout en tenant compte de vos exigences, qu’vienne de mon
               pays ou de n'importe où dans le monde.
             </p>
+            </AnimateCursorTarget>
           </div>
+      
 
           <div className="object-cover hover:shadow-md  duration-200 overflow-hidden w-3/4 lg:w-3/5 xl:w-2/6  radius">
-            <img
-              src={ImageProfile.src}
-              alt="Houinlindjonon Alain Wilfried"
-              className="w-full h-full 
+            <AnimateCursorTarget type="image">
+              <img
+                src={ImageProfile.src}
+                alt="Houinlindjonon Alain Wilfried"
+                className="w-full h-full 
               "
-            />
+              />
+            </AnimateCursorTarget>
             {/* <div className="image-animation w-[120%] bg-black h-[120%] border"></div> */}
           </div>
         </div>
