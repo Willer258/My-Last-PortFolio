@@ -45,6 +45,8 @@ function CursorComponent() {
     default: {
       x: cursorPosition.x - 10,
       y: cursorPosition.y - 10,
+      backgroundColor: "white",
+      mixBlendMode: "difference",
     },
 
     button: {
@@ -60,7 +62,7 @@ function CursorComponent() {
       x: cursorPosition.x - 10,
       y: cursorPosition.y - 10,
       backgroundColor: "white",
-      mixBlendMode: "difference",
+      // mixBlendMode: "difference",
     },
     image: {
       x: cursorPosition.x - 10,

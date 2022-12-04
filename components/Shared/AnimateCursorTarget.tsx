@@ -20,7 +20,7 @@ function AnimateCursorTarget({ children, type }: any) {
       onMouseLeave={() => {
         Setcursor("default");
       }}
-      className={type === "text" ? "text-black bg-white" : ""}
+      className={type === "text" ? "text-black bg-white " : ""}
     >
       {children}
     </div>

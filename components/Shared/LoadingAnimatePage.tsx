@@ -27,7 +27,7 @@ function LoadingAnimatePage() {
       },
     },
     exit: {
-      x: "300vw",
+      x: "400vw",
 
       transition: {
         ease: "circIn",
