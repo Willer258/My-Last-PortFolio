@@ -22,8 +22,8 @@ function HomeSection() {
     <div id="home" className="relative h-screen lg:w-3/4 mx-auto px-2 md:px-5">
       <motion.div
         initial={{ width: 0, height: 0 }}
-        animate={{ width: 500, height: 500, transition: { delay: 4.6 } }}
-        className=" absolute mix-blend-difference rounded-full -top-20 bg-white left-0 z-0"
+        animate={{ width: 400, height: 400, transition: { delay: 4.6 } }}
+        className=" absolute mix-blend-difference rotate-45 -top-20 bg-white -left-32 z-0"
       ></motion.div>
       <Logo className="w-32 h-32" />
       <a
@@ -115,8 +115,9 @@ function HomeSection() {
       </div>
 
       <motion.div
-        initial={{ width: 0, height: 0 }}
-        animate={{ width: 800, height: 800, transition: { delay: 4.6 } }}
+        initial={{scale:0}}
+        animate={{ scale:'100%', transition: { delay: 4.6 } }}
+        style={{width:'800px', height:'800px'}}
         className=" absolute bottom-5 mix-blend-difference bg-white rounded-full -right-20"
       ></motion.div>
     </div>

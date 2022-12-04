@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 import CursorComponent from "@/components/Shared/CursorComponent";
 import LoadingAnimatePage from "@/components/Shared/LoadingAnimatePage";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import Contacts from "../components/SectionsComponents/Contacts";
@@ -17,17 +18,26 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="space-y-10">
-      <AnimatePresence exitBeforeEnter>
-        {loading ? <LoadingAnimatePage /> : null}
-      </AnimatePresence>
-      <CursorComponent />
-      <HomeSection />
-      <Profil />
-      <Works />
-      <Skills />
-      <Contacts />
-    </div>
+    <>
+      <div className="h-screen fixed top-0 left-0 right-0 bottom-0 z-50 bg-black flex justify-center items-center text-white lg:hidden">
+        <motion.span animate={{ fontSize: "35px" }} className="text-center">
+          Le mode mobile n'est pas encore pret essaie sur PC <br /> <br />{" "}
+          <br />
+          Désolé
+        </motion.span>
+      </div>
+      <div className="space-y-10 hidden lg:block">
+        <AnimatePresence exitBeforeEnter>
+          {loading ? <LoadingAnimatePage /> : null}
+        </AnimatePresence>
+        <CursorComponent />
+        <HomeSection />
+        <Profil />
+        <Works />
+        <Skills />
+        <Contacts />
+      </div>
+    </>
   );
 };
 
