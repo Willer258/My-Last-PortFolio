@@ -1,10 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
 import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
 import Logo from "@/components/Shared/Logo";
-import React from "react";
+import { texts } from "@/utils/saluttexte";
+import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import Button from "../../Shared/Button";
 
 function HomeSection() {
+  const [stateText, setStateText] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      {
+        stateText == texts.length - 1
+          ? setStateText(0)
+          : setStateText(stateText + 1);
+      }
+    }, 5000);
+  }, [stateText]);
   return (
     <div id="home" className="h-screen lg:w-3/4 mx-auto px-2 md:px-5">
       <Logo className="w-32 h-32" />
@@ -21,7 +34,15 @@ function HomeSection() {
       <div className="flex justify-start h-full w-full items-center">
         <div className="space-y-5 md:space-y-8">
           <AnimateCursorTarget type="text">
-            <h3 className="italic font-light text-lg ">Salut !!! </h3>
+            <motion.div
+              key={texts[stateText]}
+              initial={{ opacity: 0.5, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+            >
+              <motion.span className="italic font-thin text-2xl">
+                {texts[stateText]} !!!
+              </motion.span>
+            </motion.div>
           </AnimateCursorTarget>
 
           <AnimateCursorTarget type="text">
