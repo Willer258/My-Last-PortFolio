@@ -1,1 +1,1 @@
-export const texts = ["Hi", "Salut", "Ohayo"];
+export const texts = ["Hi", "Salut", "Ohayo",'Hola','Hallo','Privet','Namaste','Nio ngoolu',"Salamalek",'Kwabo','Ayoka','Kaabo' ];

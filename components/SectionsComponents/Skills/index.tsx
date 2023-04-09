@@ -11,13 +11,13 @@ const Skills = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-10">
         {skills.map((item, index) => (
-          <SkillCard
-            key={index}
-            image={item.image}
-            title={item.title}
-            description={item.description}
-            icons={item.subSkills.map((item) => item.icons)}
-          />
+         <div key={index}> <SkillCard
+         key={index}
+         image={item.image}
+         title={item.title}
+         description={item.description}
+         icons={item.subSkills.map((item) => item.icons)}
+       /></div>
         ))}
 
         <SkillCard

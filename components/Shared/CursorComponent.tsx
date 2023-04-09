@@ -5,20 +5,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 
 function CursorComponent() {
-  // useEffect(() => {
 
-  //   const cursor: any = document.querySelector(".cursor");
-  //   document.addEventListener("mousemove", (e) => {
-
-  //       var xCord = e.clientX;
-  //       var yCord = e.clientY;
-
-  //       var yPercent = (yCord/window.innerHeight) * 1000;
-  //       console.log(yPercent)
-  //     cursor.style.left = e.pageX  + "px";
-  //     cursor.style.top = yPercent + "px";
-  //   });
-  // });
 
   const [cursorPosition, setCursorPosition] = useState({
     x: 0,
