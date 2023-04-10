@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         </motion.span>
       </div>
       <div className="space-y-10 hidden overflow-hidden lg:block">
-        {false ? (
+        {showText ? (
           <AnimatePresence exitBeforeEnter>
             <motion.div
               initial={{ opacity: 0 }}
