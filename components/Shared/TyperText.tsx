@@ -1,7 +1,8 @@
 import { showProverbs } from "@/utils/atomes";
 import { textes } from "@/utils/proverbes";
-import { motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { useRecoilState } from "recoil";
 
 interface Itext {
@@ -9,14 +10,10 @@ interface Itext {
   className?: string;
   text?: string;
   setTimeOuting?: any;
-  sndText?:Function
+  sndText?: Function;
+  delay?: number;
 }
-export const TypingAnimation = ({
-  text,
-  style,
-  className,
-  sndText,
-}: Itext) => {
+export const TypingAnimation = ({ text, style, className, delay , duration,  onAnimationComplete}: any) => {
   const [displayedText, setDisplayedText] = useState("");
 
   const [texte, setTexte] = useState("");
@@ -32,7 +29,10 @@ export const TypingAnimation = ({
   }
 
   useEffect(() => {
-    genererTexte();
+    setTimeout(() => {
+      genererTexte();
+    }, delay ??0);
+ 
   }, []);
 
   useEffect(() => {
@@ -43,15 +43,14 @@ export const TypingAnimation = ({
         setDisplayedText(texte.slice(0, length + 1));
       } else {
         clearInterval(intervalId);
-       
-        sndText;
+        onAnimationComplete &&  onAnimationComplete();
         if (!text) {
-        setTimeout(() => {
+          setTimeout(() => {
             setShowText(false);
-        }, 2000);
-         }
+          }, 2000);
+        }
       }
-    }, 50);
+    }, duration ?? 50);
 
     return () => clearInterval(intervalId);
   }, [displayedText, setShowText, texte]);
@@ -63,7 +62,12 @@ export const TypingAnimation = ({
   );
 };
 
-export const RetypingTextAnimation = ({ words, text}: any) => {
+export const RetypingTextAnimation = ({
+  words,
+  text,
+  delay,
+  className,
+}: any) => {
   const [currentText, setCurrenText] = useState("");
   const [textAdded, setTextAdded] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -76,14 +80,15 @@ export const RetypingTextAnimation = ({ words, text}: any) => {
       const word = words[current];
 
       // Condition pour savoir s'il faut ajouter ou supprimer un mot
-      if(text){
-        setTextAdded(text.substring(0, textAdded.length + 1));  }
+      if (text) {
+        setTextAdded(text.substring(0, textAdded.length + 1));
+      }
       if (isDeleting) {
         setCurrenText(word.substring(0, currentText.length - 1));
       } else {
         setCurrenText(word.substring(0, currentText.length + 1));
       }
-    
+
       // Condition pour savoir s'il faut passer au mot suivant
       if (!isDeleting && currentText === word) {
         setTimeout(() => {
@@ -101,10 +106,84 @@ export const RetypingTextAnimation = ({ words, text}: any) => {
 
   return (
     <motion.div
-      animate={{ scale: [1, 1.5, 1], opacity: [0, 1] }}
-      transition={{ duration: 1 }}
+      animate={{ opacity: [0, 1] }}
+      transition={{ duration: 1, delay: delay ?? 0 }}
     >
-      <span> {textAdded}  { textAdded==text ? currentText : null}</span>
+      <span className={className}>
+        {" "}
+        {textAdded} {textAdded == text ? currentText : null}
+      </span>
     </motion.div>
+  );
+};
+
+export const BandeTexteAnimation = ({
+  className,
+  text,
+  delay,
+  noLine,
+}: any) => {
+  const variants = {
+    hidden: {
+      x: "-100%",
+    },
+    show: {
+      x: "100%",
+    },
+
+    gomark: {
+      width: "100%",
+    },
+
+    cometext: {
+      opacity: 1,
+    },
+  };
+  const controlsText = useAnimation();
+  const controlsMark = useAnimation();
+  const controlsBack = useAnimation();
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (inView) {
+      controlsBack.start("show");
+      controlsText.start("cometext");
+      controlsMark.start("gomark");
+    }
+  }, [controlsBack, inView]);
+  return (
+    <div className="relative flex  items-center overflow-hidden">
+      <motion.div
+        ref={ref}
+        variants={variants}
+        className="absolute h-full bg-black w-full"
+        initial={{ x: "-100%" }}
+        animate={controlsBack}
+        transition={{ duration:1, delay: delay ?? 0 }}
+        exit={{ width: 0 }}
+      />
+
+      <>
+        {noLine ?? (
+          <motion.div
+            className="absolute h-2 bottom-0.5  bg-black/30 w-full"
+            initial={{ width: 0 }}
+            variants={variants}
+            animate={controlsMark}
+            transition={{ duration: 2, delay: delay ?? 0 }}
+            exit={{ width: 0 }}
+          />
+        )}
+
+        <motion.h2
+          className={className}
+          initial={{ opacity: 0 }}
+          variants={variants}
+          animate={controlsText}
+          transition={{ delay: 0.5 }}
+        >
+          {text}
+        </motion.h2>
+      </>
+    </div>
   );
 };

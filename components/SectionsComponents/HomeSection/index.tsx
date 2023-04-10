@@ -20,23 +20,6 @@ function HomeSection() {
     }, 5000);
   }, [stateText]);
 
-  useEffect(() => {  
-    const heroSection:any = document.getElementById("hero-section");
-  const elementToHide:any = document.getElementById("element-to-hide");
-  elementToHide.style.display = "none";
-  
-  function hideElementOnScroll() {
-    if (window.scrollY > heroSection.offsetHeight) {
-      elementToHide.style.display = "block";
-    } else {
-      elementToHide.style.display = "none";
-    }
-
-  }
-window.addEventListener("scroll", hideElementOnScroll);
-  })
-
-
 
   return (
     <div id="home" className="relative h-screen lg:w-3/4 mx-auto px-2 md:px-5">
@@ -48,16 +31,7 @@ window.addEventListener("scroll", hideElementOnScroll);
       ></motion.div>
 
       <Logo className="w-32 h-32" />
-      <a
-        href="https://firebasestorage.googleapis.com/v0/b/mon-portfolio-7cb39.appspot.com/o/CV%20de%20Alain%20Wilfried%20Houinlindjonon%20(1).pdf?alt=media&token=fdc8635f-c742-4d73-abab-bf475f76641d"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button id="element-to-hide" className="fixed top-5 right-5 uppercase border border-white">
-          Télécharger mon CV
-        </Button>
-      </a>
-
+     
       <div className="flex justify-start h-full w-full items-center">
         <div className="space-y-5 md:space-y-8">
           <AnimateCursorTarget type="text">
@@ -83,20 +57,17 @@ window.addEventListener("scroll", hideElementOnScroll);
           </AnimateCursorTarget>
 
           <AnimateCursorTarget type="text">
-            <motion.h2
-              initial={{ y: "50vh" }}
-              animate={{ y: 0 }}
-              className=" text-3xl md:text-5xl font-bold "
-            >
-              <div className="flex space-x-2">
+            <h2 className=" text-3xl md:text-4xl font-bold ">
+              
                 {/* <TypingAnimation setTimeOuting={()=>setStateText(true)} text=" Designer, Concepteur" /> */}
 
-                <RetypingTextAnimation
+                <RetypingTextAnimation className={'leading-relaxed'}
+                
                   words={[" de site web", " d'application web et mobile."]}
-                  text="Designer, Concepteur"
+                  text="Designer UI-UX/Concepteur"
                 />
-              </div>
-            </motion.h2>
+             
+            </h2>
           </AnimateCursorTarget>
 
           <AnimateCursorTarget type="text">

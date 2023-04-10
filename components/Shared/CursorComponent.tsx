@@ -55,6 +55,7 @@ function CursorComponent() {
       x: cursorPosition.x - 10,
       y: cursorPosition.y - 10,
       backgroundColor: "transparent",
+      mixBlendMode: "difference",
       border: "solid 2px",
       height: 100,
       width: 100,

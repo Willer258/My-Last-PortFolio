@@ -9,7 +9,7 @@ const Navigation = () => {
       {links.map((item, index) => (
         <motion.div
         initial={{ scale: 0 }}
-        animate={{ scale: 1 ,  transition: { delay: index * 0.2}}}
+        animate={{ scale: 1 ,  transition: { delay: index * 0.3}}}
           key={index}
         >
           <PagesLinks
@@ -18,7 +18,7 @@ const Navigation = () => {
             icon={item.icon}
             label={item.label}
             link={item.link}
-          />
+          />  
         </motion.div>
       ))}
     </div>
