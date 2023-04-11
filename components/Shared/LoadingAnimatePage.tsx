@@ -11,17 +11,18 @@ function LoadingAnimatePage() {
   
   const variants = {
     init: {
-      x: -0,
+    opacity:0,
       transition: {
         ease: "circIn",
-        duration: 1.7,
+        duration: .3,
         type: "spring",
         bounce: 0.1,
         // stiffness: 100,
       },
     },
     appear: {
-      x: 0,
+      opacity:1,
+      width:'100%',
       transition: {
         ease: "circIn",
         duration: 1.7,

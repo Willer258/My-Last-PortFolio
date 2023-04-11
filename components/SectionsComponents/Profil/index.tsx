@@ -124,20 +124,22 @@ const Profil = () => {
         </div>
 
         <div className="object-contain hover:shadow-md absolute hover:scale-95 duration-1000  grayscale shadow-xl  hover:grayscale-0 -right-80 w-8/12 rounded-xl -bottom-14 overflow-hidden  ">
-          <AnimatePresence>
-            <AnimateCursorTarget type="image">
-              <AnimateBox>
-                <motion.img
-               
-                  src={
-                    image.src }
-                  alt="Houinlindjonon Alain Wilfried"
-                  className="w-full h-full 
-              "
-                />
-              </AnimateBox>
-            </AnimateCursorTarget>
-          </AnimatePresence>
+        {
+          show &&  <AnimateCursorTarget type="image">
+          <AnimateBox>
+            <motion.img
+           
+              src={
+                image.src }
+              alt="Houinlindjonon Alain Wilfried"
+              className="w-full h-full 
+          "
+            />
+          </AnimateBox>
+        </AnimateCursorTarget>
+        }
+           
+         
         </div>
       </div>
     </div>

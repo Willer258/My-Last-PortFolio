@@ -5,7 +5,7 @@ import {
   motion,
   useAnimation,
 } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 function AnimateBox({ children, delay }: any) {
@@ -34,17 +34,19 @@ function AnimateBox({ children, delay }: any) {
         className="absolute h-full bg-black w-full"
         variants={variants}
         initial={'hidden'}
-        transition={{ duration: 1, delay: delay ?? 1 }}
+        transition={{ duration: 1, delay: delay ?? 0 }}
         animate={controls}
-        viewport={{ once: true, amount: 0.8 }}
+      
       />
-      <motion.div
-        initial={{ opacity: 0, background: "black", zIndex: -10000 }}
-        whileInView={{ opacity: 1, zIndex: -10000 }}
-        transition={{ duration: 0, delay: delay ?? 1.5 }}
+        <motion.div
+        initial={{ opacity: 0, zIndex: -10000 }}
+        animate={{ opacity: 1, zIndex: -10000  ,transition:{delay:.5}}}
+      
       >
         {children}
       </motion.div>
+      
+    
     </div>
   );
 }
