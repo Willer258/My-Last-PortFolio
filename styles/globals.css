@@ -25,7 +25,7 @@ html {
   position: relative;
 }
 button {
-  cursor: none;
+ 
 }
 .super-border::after {
   content: "";
@@ -62,7 +62,7 @@ button {
 }
 
 body {
-  cursor: none;
+ 
 }
 
 .content:hover ~ .cursor {

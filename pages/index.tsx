@@ -29,13 +29,16 @@ const Home: NextPage = () => {
          
       
         ) : (
-          <div className="space-y-20">
+          <div className="">
             <CursorComponent />
             <div id="hero-section">
               <HomeSection />
             </div>
 
-            <Profil />
+<div className="overflow-hidden">
+<Profil />
+</div>
+         
             <Works />
             <Skills />
             <Contacts />

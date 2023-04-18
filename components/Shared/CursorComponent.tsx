@@ -30,8 +30,8 @@ function CursorComponent() {
 
   const variants :any = {
     default: {
-      x: cursorPosition.x - 10,
-      y: cursorPosition.y - 10,
+      x: cursorPosition.x -10,
+      y: cursorPosition.y -5,
       backgroundColor: "white",
       mixBlendMode: "difference",
     },

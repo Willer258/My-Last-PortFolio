@@ -1,19 +1,19 @@
 import { showProverbs } from "@/utils/atomes";
 import { textes } from "@/utils/proverbes";
 import { motion, useAnimation } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useRecoilState } from "recoil";
 
-interface Itext {
-  style?: any;
-  className?: string;
-  text?: string;
-  setTimeOuting?: any;
-  sndText?: Function;
-  delay?: number;
-}
-export const TypingAnimation = ({ text, style, className, delay , duration,  onAnimationComplete}: any) => {
+export const TypingAnimation = ({
+  text,
+  style,
+  className,
+  delay,
+  duration,
+  isList,
+  onAnimationComplete,
+}: any) => {
   const [displayedText, setDisplayedText] = useState("");
 
   const [texte, setTexte] = useState("");
@@ -31,8 +31,7 @@ export const TypingAnimation = ({ text, style, className, delay , duration,  onA
   useEffect(() => {
     setTimeout(() => {
       genererTexte();
-    }, delay ??0);
- 
+    }, delay ?? 0);
   }, []);
 
   useEffect(() => {
@@ -43,7 +42,7 @@ export const TypingAnimation = ({ text, style, className, delay , duration,  onA
         setDisplayedText(texte.slice(0, length + 1));
       } else {
         clearInterval(intervalId);
-        onAnimationComplete &&  onAnimationComplete();
+        onAnimationComplete && onAnimationComplete();
         if (!text) {
           setTimeout(() => {
             setShowText(false);
@@ -55,11 +54,19 @@ export const TypingAnimation = ({ text, style, className, delay , duration,  onA
     return () => clearInterval(intervalId);
   }, [displayedText, setShowText, texte]);
 
-  return (
-    <span className={className} style={style}>
-      {displayedText}
-    </span>
-  );
+  if (isList) {
+    return (
+      <li className={className} style={style}>
+        {displayedText}
+      </li>
+    );
+  } else {
+    return (
+      <span className={className} style={style}>
+       {displayedText}
+      </span>
+    );
+  }
 };
 
 export const RetypingTextAnimation = ({
@@ -110,7 +117,6 @@ export const RetypingTextAnimation = ({
       transition={{ duration: 1, delay: delay ?? 0 }}
     >
       <span className={className}>
-        {" "}
         {textAdded} {textAdded == text ? currentText : null}
       </span>
     </motion.div>
@@ -158,7 +164,7 @@ export const BandeTexteAnimation = ({
         className="absolute h-full bg-black w-full"
         initial={{ x: "-100%" }}
         animate={controlsBack}
-        transition={{ duration:1, delay: delay ?? 0 }}
+        transition={{ duration: 1, delay: delay ?? 0 }}
         exit={{ width: 0 }}
       />
 

@@ -1,4 +1,4 @@
-import image from '@/assets/profile.jpg'
+import image from '@/assets/profile.jpg';
 import AnimateBox from "@/components/Shared/AnimateBox";
 import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
 import {
@@ -6,8 +6,7 @@ import {
   TypingAnimation,
 } from "@/components/Shared/TyperText";
 import {
-  AnimatePresence,
-  motion,
+  motion
 } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -57,7 +56,7 @@ const Profil = () => {
   return (
     <div
       id="profil"
-      className="lg:h-screen lg:w-5/6 mx-auto my-20 flex px-2 md:px-5 relative"
+      className="lg:h-screen lg:w-5/6 mx-auto my-20 flex px-2 md:px-5 relative "
     >
       <div className="flex items-center font-medium w-full h-full lg:flex-row space-y-5 text-xl lg:space-x-10  ">
         <div className="space-y-3 pr-20 self-center flex flex-col w-1/2 h-full justify-center ">
@@ -81,7 +80,7 @@ const Profil = () => {
 
               {childAnimationComplete && (
                 <p>
-                  <TypingAnimation duration={30}
+                  <TypingAnimation duration={20}
                     onAnimationComplete={() => handleChildAnimationComplete(2)}
                     className="text-base"
                     text=" En tant que développeur frontend, je m'engage à respecter des
@@ -96,7 +95,7 @@ const Profil = () => {
               )}
               {childAnimationComplete1 && (
                 <p>
-                  <TypingAnimation duration={30}
+                  <TypingAnimation duration={10}
                     onAnimationComplete={() => handleChildAnimationComplete(3)}
                     className="text-base"
                     text="  En tant que designer UI/UX, j'ai commencé à travailler sur des
@@ -110,7 +109,7 @@ const Profil = () => {
 
               {childAnimationComplete2 && (
                 <p>
-                  <TypingAnimation duration={30}
+                  <TypingAnimation duration={10}
                     className="text-base"
                     text=" Je suis résident de la Côte d'Ivoire, plus précisément d'Abidjan, et
           je suis en mesure de vous offrir une plateforme agréable, simple et
