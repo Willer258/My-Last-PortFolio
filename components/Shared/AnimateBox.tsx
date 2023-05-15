@@ -22,7 +22,6 @@ function AnimateBox({ children, delay }: any) {
   useEffect(() => {
     if (inView) {
       controls.start("show");
-      
     }
   }, [controls, inView]);
 

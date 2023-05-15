@@ -35,6 +35,6 @@ export const works = [
     entreprise: "Tiers",
     date: "En permanence",
     description: "Dans le cadre de mon travail, je suis amené à concevoir des sites et des applications en fonction des besoins spécifiques de nos clients ou projets. Cette responsabilité me permet de mettre en pratique mes compétences et de développer des solutions sur mesure pour répondre aux exigences de chaque situation.",
-    tasks: ["Conception d'une plateforme web pour une eglise"],
+    tasks: ["Conception d'une plateforme web pour la gestion d'une eglise"],
   },
 ];

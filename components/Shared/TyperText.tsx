@@ -128,6 +128,7 @@ export const BandeTexteAnimation = ({
   text,
   delay,
   noLine,
+  whiteBar
 }: any) => {
   const variants = {
     hidden: {
@@ -161,7 +162,7 @@ export const BandeTexteAnimation = ({
       <motion.div
         ref={ref}
         variants={variants}
-        className="absolute h-full bg-black w-full"
+        className={`absolute h-full ${whiteBar ? 'bg-white' : 'bg-black'}  w-full`}
         initial={{ x: "-100%" }}
         animate={controlsBack}
         transition={{ duration: 1, delay: delay ?? 0 }}
@@ -171,7 +172,7 @@ export const BandeTexteAnimation = ({
       <>
         {noLine ?? (
           <motion.div
-            className="absolute h-2 bottom-0.5  bg-black/30 w-full"
+            className={`absolute h-2 bottom-0.5 ${whiteBar ? 'bg-white/30' : 'bg-black/30'} w-full`}
             initial={{ width: 0 }}
             variants={variants}
             animate={controlsMark}
