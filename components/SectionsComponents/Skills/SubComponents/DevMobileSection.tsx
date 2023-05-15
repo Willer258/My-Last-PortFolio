@@ -6,9 +6,9 @@ import {
 import { motion } from "framer-motion";
 import React from "react";
 
-import DART from "@/assets/images/icons/DevMobile/language/dart.svg";
+import DART from "@/assets/images/icons/devMobile/language/dart.svg";
 
-import FLUTTER from "@/assets/images/icons/DevMobile/framework/flutter.svg";
+import FLUTTER from "@/assets/images/icons/devMobile/framework/flutter.svg";
 function DevMobileSection() {
   const languages = [
     {

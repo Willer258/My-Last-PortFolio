@@ -3,10 +3,10 @@ import { BandeTexteAnimation, TypingAnimation } from '@/components/Shared/TyperT
 import { motion } from 'framer-motion';
 import React from 'react'
 
-import FIGMA from "@/assets/images/icons/design/figma.svg";
+import FIGMA from "@/assets/images/icons/Design/figma.svg";
+import CANVA from "@/assets/images/icons/Design/canva.svg";
 
 
-import CANVA from "@/assets/images/icons/design/canva.svg";
 function DesignUIUX() {
     const tools = [
       {

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import FontAwesomeIcon from "@/components/SpecialComponent/FontAwesomeIcon";
+
 import React from "react";
 import HTML5 from "@/assets/images/icons/devWeb/lang/html5.png";
 import CSS3 from "@/assets/images/icons/devWeb/lang/css-3.png";
@@ -9,14 +9,7 @@ import REACTJS from "@/assets/images/icons/devWeb/framework/atom.png";
 import NEXTJS from "@/assets/images/icons/devWeb/framework/nextjs.svg";
 import VUEJS from "@/assets/images/icons/devWeb/framework/vuejs.svg";
 
-import JEST from "@/assets/images/icons/devWeb/tools/jest.svg";
-import CY from "@/assets/images/icons/devWeb/tools/cypress.svg";
-import RTL from "@/assets/images/icons/devWeb/tools/rtl.svg";
-import TAILWIND from "@/assets/images/icons/devWeb/tools/tailwind.svg";
-import ANTD from "@/assets/images/icons/devWeb/tools/antd.svg";
-import BOOTSTRAP from "@/assets/images/icons/devWeb/tools/bootstrap.svg";
-import FRAMER from "@/assets/images/icons/devWeb/tools/framer-motion.svg";
-import REDUX from "@/assets/images/icons/devWeb/tools/redux.svg";
+
 import {
   BandeTexteAnimation,
   TypingAnimation,
