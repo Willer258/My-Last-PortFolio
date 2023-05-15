@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { BandeTexteAnimation, TypingAnimation } from '@/components/Shared/TyperText';
 import { motion } from 'framer-motion';
 import React from 'react'

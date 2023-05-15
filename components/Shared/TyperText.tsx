@@ -109,7 +109,7 @@ export const RetypingTextAnimation = ({
     }, 50);
 
     return () => clearTimeout(timer);
-  }, [currentText, isDeleting, index, words]);
+  }, [currentText, isDeleting, index, words, text, textAdded.length, count]);
 
   return (
     <motion.div
@@ -156,7 +156,7 @@ export const BandeTexteAnimation = ({
       controlsText.start("cometext");
       controlsMark.start("gomark");
     }
-  }, [controlsBack, inView]);
+  }, [controlsBack, controlsMark, controlsText, inView]);
   return (
     <div className="relative flex  items-center overflow-hidden">
       <motion.div
