@@ -186,7 +186,7 @@ export const BandeTexteAnimation = ({
           initial={{ opacity: 0 }}
           variants={variants}
           animate={controlsText}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: delay + 0.5 ?? 0.5 }}
         >
           {text}
         </motion.h2>
