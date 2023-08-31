@@ -94,27 +94,27 @@ const Work = ({
   return (
     <div
    
-      className={`${
-        index % 2 != 0 && " flex-row-reverse  "
+      className={`flex-col lg:flex-row space-y-10 lg:space-y-0  ${
+        index % 2 != 0 && " lg:flex-row-reverse  "
       } flex grid-cols-2  items-center w-full `}
     >
       
-      <motion.div variants={variants} initial={'hidden'} animate={controlsBack} className={`flex justify-center items-center h-[40rem] w-[40rem] rounded-full text-white bg-black`}>
+      <motion.div variants={variants} initial={'hidden'} animate={controlsBack} className={`flex justify-center items-center lg:p-10 md:w-[60vh] md:h-[60vh]   lg:w-[70vh] lg:h-[70vh] rounded md:rounded-full text-white bg-black`}>
     
-      <motion.div  className="flex flex-col space-y-10 items-center text-center px-10">
+      <motion.div  className="flex flex-col space-y-10 md:items-center md:text-center md:px-10">
         <p className="text-3xl font-bold">{entreprise}</p>
         <p className="leading-7"  ref={ref}>{description}</p>
       </motion.div>
       </motion.div>
 
       {
-        activate && <div className={` ${index%2 ==0 ? 'ml-20' : 'mr-20'} w-1/2 flex flex-col items-start  space-y-3`}>
+        activate && <div className={` ${index%2 ==0 ? 'lg:ml-20' : 'lg:mr-20'} lg:w-2/5 flex-none flex flex-col md:items-center lg:items-start  space-y-3`}>
         <p className="text-3xl font-semibold"> <BandeTexteAnimation noLine text={fonction} /></p>
         <p className="text-3xl font-light"> <BandeTexteAnimation noLine text={date} delay={0.5}  /></p>
         <div >
-          <span className="text-2xl font-semibold"><BandeTexteAnimation noLine text={'Activités :'} delay={1} /></span>
+          <span className="text-2xl font-semibold self-start"><BandeTexteAnimation noLine text={'Activités :'} delay={1} /></span>
         </div>
-        <div className="grid grid-cols-2 gap-x-5 gap-y-2 ">
+        <div className="grid md:grid-cols-2 gap-x-5 gap-y-2 ">
         {tasks.map((task, index) => (
     <p key={index}>
       {index < childAnimationComplete ? (

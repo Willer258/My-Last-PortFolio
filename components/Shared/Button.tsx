@@ -15,7 +15,7 @@ function Button({ children, icon, className, type, isWhite,id }: IButton) {
     <AnimateCursorTarget type={'button'}>
       <button
       id={id}
-        className={`content rounded-xl duration-300 font-semibold ${
+        className={`w-full content rounded-xl duration-300 font-semibold ${
           className ?? ""
         } ${
           type == "outlined"

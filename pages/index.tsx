@@ -16,15 +16,15 @@ const Home: NextPage = () => {
 
   return (
     <AnimatePresence exitBeforeEnter>
-      <div className="h-screen fixed top-0 left-0 right-0 bottom-0 z-50 bg-black flex justify-center items-center text-white lg:hidden">
+      {/* <div className="h-screen fixed top-0 left-0 right-0 bottom-0 z-50 bg-black flex justify-center items-center text-white lg:hidden">
         <motion.span animate={{ fontSize: "35px" }} className="text-center">
           <TypingAnimation text=" Le mode mobile n'est pas encore pret essaie sur PC Désolé" />
         </motion.span>
-      </div>
-      <div className="space-y-10 hidden overflow-hidden lg:block">
+      </div> */}
+      <div className="space-y-10  overflow-hidden block">
         {showText ? (
        
-         
+        
               <LoadingAnimatePage />
          
       

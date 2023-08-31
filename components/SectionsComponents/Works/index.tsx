@@ -8,11 +8,11 @@ const Works = () => {
   return (
     <div
       id="works"
-      className="lg:min-h-screen mt-56 lg:w-5/6 mx-auto px-2 md:px-5"
+      className="lg:min-h-screen mt-56 2xl:w-5/6 mx-auto px-2 md:px-5"
     >
       <div className="flex mb-40">
       <BandeTexteAnimation
-        className="text-4xl font-bold"
+        className="text-2xl md:text-4xl font-bold"
         text="MON PARCOUR PRO"
       />
       </div>

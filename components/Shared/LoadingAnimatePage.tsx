@@ -57,8 +57,8 @@ function LoadingAnimatePage() {
         <div className="position absolute w-32 h-32 top-20 ">
           <Logo isWhite />
         </div>
-        <div className="text-center text-5xl px-32 leading-loose">
-        <TypingAnimation/> 
+        <div style={{lineHeight:2}} className="text-center text-2xl md:text-3xl lg:text-5xl px-5 md:px-32 ">
+        <TypingAnimation nospace/> 
         </div>
       </motion.div>
    

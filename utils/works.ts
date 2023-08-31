@@ -4,9 +4,10 @@ export const works = [
     entreprise: "Magma-tech",
     date: "Février 2023 et toujours present",
     description:
-      "Depuis février 2023, je suis ravi de faire partie d'une fintech dynamique et innovante. Cette expérience m'offre l'opportunité de travailler avec une équipe passionnée et rigoureuse, qui relève constamment des défis stimulants pour accomplir de grandes choses. Fermement convaincu que notre collaboration et notre engagement envers l'excellence nous conduiront vers de nouveaux sommets, je suis enthousiaste à l'idée de travailler ensemble pour atteindre nos objectifs. je suis impatient d'apporter mon expertise et mon énergie pour contribuer au succès de nos projets et soutenir la croissance de notre entreprise.",
+      "Depuis février 2023, je rejoins avec enthousiasme une fintech novatrice et dynamique. Avec une équipe passionnée, nous relevons constamment des défis pour atteindre l'excellence. Convaincu que notre collaboration nous mènera vers de nouveaux succès, j'ai hâte d'apporter mon expertise pour soutenir nos projets et la croissance de l'entreprise.",
     tasks: [
-      "En charge de la conception des différentes applications au niveau frontal de l'entreprise."
+      "En charge de la conception des différentes applications au niveau frontal de l'entreprise.",
+      "En charge de la conception et la supervisation du site de l'entreprise.",
     ],
   },
   {
@@ -14,7 +15,7 @@ export const works = [
     entreprise: "ADGroupe",
     date: "Mars 2021 - Fin Janvier 2023",
     description:
-      "En tant que responsable du département des développeurs Frontend, ma mission consiste à superviser la réalisation des applications clientes et des sites web dont l'entreprise est responsable. En 2021, j'ai eu la chance de rejoindre l'équipe dynamique, passionnée et créative d'ADGroupe. Après avoir relevé plusieurs défis ensemble, j'ai pu apprendre énormément et tirer parti de cette opportunité pour me consacrer au développement et à la croissance de l'entreprise. Je suis déterminé à continuer à apporter ma contribution et à travailler main dans la main avec mon équipe pour assurer notre succès commun.",
+      "En tant que responsable du département développeur Frontend, ma mission consistait à superviser la réalisation des applications clientes et des sites web dont l'entreprise était responsable. En 2021, j'ai eu la chance de rejoindre l'équipe dynamique, passionnée et créative d'ADGroupe. Après avoir relevé plusieurs défis ensemble, j'ai pu apprendre énormément et tirer parti de cette opportunité pour contribuer au développement et à la croissance de l'entreprise. J'étais déterminé à continuer à apporter ma contribution et à travailler main dans la main avec mon équipe pour assurer notre succès commun.",
     tasks: [
       "Collaboration a la conception du site de l'entreprise.",
       "Collaboration et supervisation de l'equipe frontend pour une application de gestion notarial.",
@@ -35,6 +36,6 @@ export const works = [
     entreprise: "Tiers",
     date: "En permanence",
     description: "Dans le cadre de mon travail, je suis amené à concevoir des sites et des applications en fonction des besoins spécifiques de nos clients ou projets. Cette responsabilité me permet de mettre en pratique mes compétences et de développer des solutions sur mesure pour répondre aux exigences de chaque situation.",
-    tasks: ["Conception d'une plateforme web pour la gestion d'une eglise"],
+    tasks: ["Conception d'une plateforme web pour la gestion d'une eglise" , "Collaboration au niveau front de la creation d'un site de recherche d'assurance" , "Design UI/UX d'une application de reservations d'hotel"],
   },
 ];

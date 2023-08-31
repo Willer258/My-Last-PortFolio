@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { showProverbs } from "@/utils/atomes";
 import { textes } from "@/utils/proverbes";
 import { motion, useAnimation } from "framer-motion";
@@ -13,6 +14,7 @@ export const TypingAnimation = ({
   duration,
   isList,
   onAnimationComplete,
+  nospace,
 }: any) => {
   const [displayedText, setDisplayedText] = useState("");
 
@@ -32,7 +34,7 @@ export const TypingAnimation = ({
     setTimeout(() => {
       genererTexte();
     }, delay ?? 0);
-  }, []);
+  }, [delay, genererTexte]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -62,9 +64,21 @@ export const TypingAnimation = ({
     );
   } else {
     return (
-      <span className={className} style={style}>
-       {displayedText}
-      </span>
+      <>
+        {" "}
+        {nospace ? (
+          <div className={className} style={style}>
+            {displayedText}
+          </div>
+        ) : (
+          <div className="relative">
+            <div className={className + " " + "absolute"} style={style}>
+              {displayedText}
+            </div>
+            <div className={className + " " + "text-transparent"}>{text}</div>
+          </div>
+        )}
+      </>
     );
   }
 };
@@ -113,12 +127,16 @@ export const RetypingTextAnimation = ({
 
   return (
     <motion.div
+      className="relative"
       animate={{ opacity: [0, 1] }}
       transition={{ duration: 1, delay: delay ?? 0 }}
     >
-      <span className={className}>
+      <div className={className + " " + "absolute"}>
         {textAdded} {textAdded == text ? currentText : null}
-      </span>
+      </div>
+      <div className="text-transparent ">
+        {text} {words[1]}
+      </div>
     </motion.div>
   );
 };
@@ -128,7 +146,7 @@ export const BandeTexteAnimation = ({
   text,
   delay,
   noLine,
-  whiteBar
+  whiteBar,
 }: any) => {
   const variants = {
     hidden: {
@@ -162,7 +180,9 @@ export const BandeTexteAnimation = ({
       <motion.div
         ref={ref}
         variants={variants}
-        className={`absolute h-full ${whiteBar ? 'bg-white' : 'bg-black'}  w-full`}
+        className={`absolute h-full ${
+          whiteBar ? "bg-white" : "bg-black"
+        }  w-full`}
         initial={{ x: "-100%" }}
         animate={controlsBack}
         transition={{ duration: 1, delay: delay ?? 0 }}
@@ -172,7 +192,9 @@ export const BandeTexteAnimation = ({
       <>
         {noLine ?? (
           <motion.div
-            className={`absolute h-2 bottom-0.5 ${whiteBar ? 'bg-white/30' : 'bg-black/30'} w-full`}
+            className={`absolute h-2 bottom-0.5 ${
+              whiteBar ? "bg-white/30" : "bg-black/30"
+            } w-full`}
             initial={{ width: 0 }}
             variants={variants}
             animate={controlsMark}
