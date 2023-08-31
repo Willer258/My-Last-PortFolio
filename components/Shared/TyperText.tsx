@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { showProverbs } from "@/utils/atomes";
 import { textes } from "@/utils/proverbes";
 import { motion, useAnimation } from "framer-motion";
@@ -34,7 +33,8 @@ export const TypingAnimation = ({
     setTimeout(() => {
       genererTexte();
     }, delay ?? 0);
-  }, [delay, genererTexte]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
