@@ -6,7 +6,7 @@ import Navigation from "./SidNavSubComponent/Navigation";
 const SideNav = () => {
   return (
     <AnimateCursorTarget type="blackBg">
-      <div className="fixed top-0 bottom-0 mix-blend-difference  z-40 flex left-0">
+      <div className="fixed h-[100%] top-0 bottom-0 mix-blend-difference  z-40 flex left-0">
         <div className="hidden  md:flex items-center justify-center h-full w-16 bg-black ">
           <span>
             <Logo isWhite/>

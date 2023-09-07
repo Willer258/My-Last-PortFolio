@@ -10,7 +10,7 @@ const Contacts = () => {
   return (
     <AnimateCursorTarget type={"blackBg"}>
       <div
-        className="lg:h-screen  place-content-center place-items-center grid bg-black lg:grid-cols-2 text-white relative "
+        className="md:h-screen  place-content-center place-items-center grid bg-black lg:grid-cols-2 text-white relative "
         id="contact"
       >
         <video
@@ -21,7 +21,7 @@ const Contacts = () => {
           muted
         ></video>
 
-        <div className=" relative h-full w-full  flex py-36 px-5 items-center  md:items-start flex-col space-y-16">
+        <div className=" relative h-full w-full  flex py-5 md:py-36 px-5 items-center  md:items-start flex-col space-y-16">
           <div className="flex md:items-start items-center space-y-3 flex-col">
             <BandeTexteAnimation
               whiteBar
