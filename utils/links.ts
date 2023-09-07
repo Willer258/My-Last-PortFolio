@@ -6,7 +6,7 @@ interface Ilinks {
 
 export const links: Ilinks[] = [
   {
-    link: "/",
+    link: "#home",
     icon: "fa-house",
     label: "Accueil",
   },

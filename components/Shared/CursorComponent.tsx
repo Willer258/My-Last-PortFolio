@@ -69,7 +69,7 @@ function CursorComponent() {
     },
   };
 
-  return <motion.div className="cursor " animate={cursor} variants={variants} />;
+  return <motion.div className="cursor  hidden lg:block" animate={cursor} variants={variants} />;
 }
 
 export default CursorComponent;

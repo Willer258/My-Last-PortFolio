@@ -69,7 +69,7 @@ const Profil = () => {
             <div className="relative">
             <div className="absolute space-y-3">
               <TypingAnimation
-                duration={30}
+                duration={10  }
                 onAnimationComplete={() => handleChildAnimationComplete(1)}
                 className="text-base"
                 text="Bonjour, je suis Houinlindjonon Alain Wilfried, développeur frontend et designer UI/UX à votre service."
@@ -78,7 +78,7 @@ const Profil = () => {
               {childAnimationComplete && (
                 <p>
                   <TypingAnimation
-                    duration={20}
+                    duration={5}
                     onAnimationComplete={() => handleChildAnimationComplete(2)}
                     className="text-base"
                     text=" En tant que développeur frontend, je m'engage à respecter des
@@ -94,7 +94,7 @@ const Profil = () => {
               {childAnimationComplete1 && (
                 <p>
                   <TypingAnimation
-                    duration={10}
+                    duration={5}
                     onAnimationComplete={() => handleChildAnimationComplete(3)}
                     className="text-base"
                     text="  En tant que designer UI/UX, j'ai commencé à travailler sur des
@@ -109,7 +109,7 @@ const Profil = () => {
               {childAnimationComplete2 && (
                 <p>
                   <TypingAnimation
-                    duration={10}
+                    duration={5}
                     className="text-base"
                     text=" Je suis résident de la Côte d'Ivoire, plus précisément d'Abidjan, et
           je suis en mesure de vous offrir une plateforme agréable, simple et

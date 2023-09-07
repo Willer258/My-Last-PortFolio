@@ -49,8 +49,8 @@ function DesignUIUX() {
       
   
     return (
-      <div className=" flex flex-col space-y-10 py-10">
-        <div className=" grid grid-cols-2 gap-x-20 mb-10">
+      <div className=" flex flex-col 2xl:space-y-10 py-3 2xl:py-10">
+        <div className=" grid lg:grid-cols-2 gap-y-5 lg:gap-x-20 mb-10">
           <div className="flex flex-col items-start space-y-5  ">
             <BandeTexteAnimation
               whiteBar
@@ -106,7 +106,7 @@ function DesignUIUX() {
           >
             Arsenal
           </motion.h4>
-          <div className="flex items-center justify-center my-10 space-x-10">
+          <div className="grid gap-10 mt-10 lg:mt-0 place-items-center grid-cols-2 md:grid-cols-3 lg:flex items-center justify-center my-3 2xl:my-10 lg:space-x-10">
             {tools.map((tools, index) => (
               <motion.div
                 initial={{ scale: 0 }}

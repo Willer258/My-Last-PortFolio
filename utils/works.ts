@@ -15,7 +15,7 @@ export const works = [
     entreprise: "ADGroupe",
     date: "Mars 2021 - Fin Janvier 2023",
     description:
-      "En tant que responsable du département développeur Frontend, ma mission consistait à superviser la réalisation des applications clientes et des sites web dont l'entreprise était responsable. En 2021, j'ai eu la chance de rejoindre l'équipe dynamique, passionnée et créative d'ADGroupe. Après avoir relevé plusieurs défis ensemble, j'ai pu apprendre énormément et tirer parti de cette opportunité pour contribuer au développement et à la croissance de l'entreprise. J'étais déterminé à continuer à apporter ma contribution et à travailler main dans la main avec mon équipe pour assurer notre succès commun.",
+      "En tant que responsable du département Développement Frontend, j'avais pour mission de superviser la réalisation des applications clientes et des sites web dont l'entreprise était responsable. En 2021, j'ai eu l'opportunité de rejoindre l'équipe dynamique et créative d'ADGroupe. Ensemble, nous avons relevé des défis stimulants et j'ai pu contribuer à la croissance de l'entreprise. J'étais déterminé à continuer à apporter ma contribution et à travailler en équipe pour assurer notre succès commun.",
     tasks: [
       "Collaboration a la conception du site de l'entreprise.",
       "Collaboration et supervisation de l'equipe frontend pour une application de gestion notarial.",

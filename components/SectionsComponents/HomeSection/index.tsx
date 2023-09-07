@@ -22,7 +22,7 @@ function HomeSection() {
 
 
   return (
-    <div id="home" className="relative h-screen lg:w-5/6 2xl:w-3/4 mx-auto px-2 md:px-5">
+    <div id="home" className="  relative h-screen lg:w-5/6 2xl:w-3/4 mx-auto px-2 md:px-5">
       <motion.div
         initial={{ width: 0, height: 0 }}
         animate={{ width: '25vw', height: '25vw' }}
