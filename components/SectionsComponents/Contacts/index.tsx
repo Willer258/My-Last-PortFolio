@@ -60,7 +60,7 @@ const Contacts = () => {
               whiteBar
               delay={1.5}
               className="text-xl 2xl:text-2xl font-bold"
-              text="Coordonnees"
+              text="Coordonnées"
             />
             <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 md:space-x-2 w-10/12 md:w-full items-center">
               <span className="font-bold">Email:</span>
