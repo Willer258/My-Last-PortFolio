@@ -8,7 +8,6 @@ import { Skills } from '../components/sections/Skills'
 import { Projects } from '../components/sections/Projects'
 import { Contact } from '../components/sections/Contact'
 import { Footer } from '../components/Footer'
-import { Chatbot } from '../components/Chatbot'
 import { SnakeGame } from '../components/games/SnakeGame'
 import { GameButton } from '../components/GameButton'
 import { useStore } from '../store/useStore'
@@ -37,7 +36,6 @@ const Home: NextPage = () => {
         </main>
 
         <Footer />
-        <Chatbot />
         <GameButton />
 
         {isGameOpen && <SnakeGame />}
