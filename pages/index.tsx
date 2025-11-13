@@ -1,20 +1,12 @@
-import type { NextPage, GetStaticProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/sections/Hero'
-import { About } from '../components/sections/About'
-import { Skills } from '../components/sections/Skills'
-import { Projects } from '../components/sections/Projects'
-import { Contact } from '../components/sections/Contact'
 import { Footer } from '../components/Footer'
-import { Chatbot } from '../components/Chatbot'
-import { SnakeGame } from '../components/games/SnakeGame'
-import { GameButton } from '../components/GameButton'
 import { useStore } from '../store/useStore'
 
 const Home: NextPage = () => {
-  const { isGameOpen, isDarkMode } = useStore()
+  const { isDarkMode } = useStore()
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
@@ -30,28 +22,13 @@ const Home: NextPage = () => {
 
         <main>
           <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Contact />
         </main>
 
         <Footer />
-        <Chatbot />
-        <GameButton />
 
-        {isGameOpen && <SnakeGame />}
       </div>
     </div>
   )
-}
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
-    },
-  }
 }
 
 export default Home

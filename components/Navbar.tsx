@@ -1,21 +1,18 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
 import { useStore } from '../store/useStore'
-import { FiMenu, FiX, FiSun, FiMoon, FiGlobe } from 'react-icons/fi'
 
 export const Navbar: React.FC = () => {
-  const { t, i18n } = useTranslation('common')
-  const { isDarkMode, toggleDarkMode, language, setLanguage } = useStore()
+  const { isDarkMode, toggleDarkMode } = useStore()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   const navItems = [
-    { name: t('nav.home'), href: '#home' },
-    { name: t('nav.about'), href: '#about' },
-    { name: t('nav.skills'), href: '#skills' },
-    { name: t('nav.projects'), href: '#projects' },
-    { name: t('nav.contact'), href: '#contact' },
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
   ]
 
   useEffect(() => {
@@ -33,12 +30,6 @@ export const Navbar: React.FC = () => {
       document.documentElement.classList.remove('dark')
     }
   }, [isDarkMode])
-
-  const toggleLanguage = () => {
-    const newLang = language === 'en' ? 'fr' : 'en'
-    setLanguage(newLang)
-    i18n.changeLanguage(newLang)
-  }
 
   return (
     <motion.nav
@@ -78,33 +69,23 @@ export const Navbar: React.FC = () => {
 
           {/* Icons */}
           <div className="flex items-center space-x-4">
-            {/* Language Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleLanguage}
-              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
-            >
-              <FiGlobe className="w-5 h-5" />
-            </motion.button>
-
             {/* Theme Toggle */}
             <motion.button
-              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-xl"
             >
-              {isDarkMode ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
+              {isDarkMode ? '☀️' : '🌙'}
             </motion.button>
 
             {/* Mobile Menu Button */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
+              className="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-xl"
             >
-              {isMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
+              {isMenuOpen ? '✕' : '☰'}
             </motion.button>
           </div>
         </div>
