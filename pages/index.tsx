@@ -2,7 +2,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/sections/Hero'
+import { About } from '../components/sections/About'
+import { Skills } from '../components/sections/Skills'
+import { Projects } from '../components/sections/Projects'
+import { Contact } from '../components/sections/Contact'
 import { Footer } from '../components/Footer'
+import { Chatbot } from '../components/Chatbot'
+import { GameButton } from '../components/GameButton'
 import { useStore } from '../store/useStore'
 
 const Home: NextPage = () => {
@@ -22,10 +28,17 @@ const Home: NextPage = () => {
 
         <main>
           <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
         </main>
 
         <Footer />
 
+        {/* Interactive Features */}
+        <Chatbot />
+        <GameButton />
       </div>
     </div>
   )
