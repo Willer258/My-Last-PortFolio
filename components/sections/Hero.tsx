@@ -1,17 +1,10 @@
 import { motion } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
 import { TypeAnimation } from 'react-type-animation'
-import { FiArrowDown } from 'react-icons/fi'
 import { Button } from '../ui/Button'
-import { Scene3D } from '../3d/Scene3D'
 
 export const Hero: React.FC = () => {
-  const { t } = useTranslation('common')
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <Scene3D />
-
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,7 +17,7 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-xl sm:text-2xl mb-4 text-gray-600 dark:text-gray-400"
           >
-            {t('hero.greeting')}
+            Hi, I&apos;m
           </motion.h2>
 
           <motion.h1
@@ -56,7 +49,7 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-2xl sm:text-3xl mb-4 font-semibold text-gray-700 dark:text-gray-300"
           >
-            {t('hero.title')}
+            Full Stack Developer
           </motion.h3>
 
           <motion.p
@@ -65,7 +58,7 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="text-lg sm:text-xl mb-8 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
-            {t('hero.subtitle')}
+            I create amazing digital experiences
           </motion.p>
 
           <motion.div
@@ -75,10 +68,10 @@ export const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Button variant="primary" size="lg">
-              {t('hero.cta')}
+              View My Work
             </Button>
             <Button variant="outline" size="lg">
-              {t('hero.contact')}
+              Get In Touch
             </Button>
           </motion.div>
         </motion.div>
@@ -94,8 +87,8 @@ export const Hero: React.FC = () => {
             transition={{ duration: 2, repeat: Infinity }}
             className="flex flex-col items-center text-gray-600 dark:text-gray-400"
           >
-            <span className="text-sm mb-2">{t('hero.scroll')}</span>
-            <FiArrowDown className="w-6 h-6" />
+            <span className="text-sm mb-2">Scroll to explore</span>
+            <span className="text-2xl">↓</span>
           </motion.div>
         </motion.div>
       </div>
