@@ -1,0 +1,132 @@
+export const skills = {
+  frontend: [
+    { name: 'React', level: 95, icon: 'SiReact' },
+    { name: 'Next.js', level: 90, icon: 'SiNextdotjs' },
+    { name: 'TypeScript', level: 88, icon: 'SiTypescript' },
+    { name: 'Tailwind CSS', level: 92, icon: 'SiTailwindcss' },
+    { name: 'Three.js', level: 75, icon: 'SiThreedotjs' },
+    { name: 'Framer Motion', level: 85, icon: 'SiFramer' },
+  ],
+  backend: [
+    { name: 'Node.js', level: 87, icon: 'SiNodedotjs' },
+    { name: 'Python', level: 82, icon: 'SiPython' },
+    { name: 'PostgreSQL', level: 80, icon: 'SiPostgresql' },
+    { name: 'MongoDB', level: 85, icon: 'SiMongodb' },
+    { name: 'GraphQL', level: 78, icon: 'SiGraphql' },
+    { name: 'Docker', level: 83, icon: 'SiDocker' },
+  ],
+  tools: [
+    { name: 'Git', level: 90, icon: 'SiGit' },
+    { name: 'VS Code', level: 95, icon: 'SiVisualstudiocode' },
+    { name: 'Figma', level: 80, icon: 'SiFigma' },
+    { name: 'AWS', level: 75, icon: 'SiAmazonaws' },
+  ],
+  learning: [
+    { name: 'Rust', level: 45, icon: 'SiRust' },
+    { name: 'WebAssembly', level: 40, icon: 'SiWebassembly' },
+    { name: 'Kubernetes', level: 50, icon: 'SiKubernetes' },
+  ],
+}
+
+export const projects = [
+  {
+    id: 1,
+    title: 'E-Commerce Platform',
+    description: 'A modern e-commerce platform with real-time inventory management and AI-powered recommendations.',
+    category: 'web',
+    tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
+    image: '/projects/ecommerce.jpg',
+    github: 'https://github.com',
+    demo: 'https://demo.com',
+    featured: true,
+  },
+  {
+    id: 2,
+    title: '3D Portfolio Showcase',
+    description: 'Interactive 3D portfolio using Three.js with stunning visual effects and smooth animations.',
+    category: 'web',
+    tags: ['Three.js', 'React', 'WebGL', 'GSAP'],
+    image: '/projects/3d-portfolio.jpg',
+    github: 'https://github.com',
+    demo: 'https://demo.com',
+    featured: true,
+  },
+  {
+    id: 3,
+    title: 'AI Chatbot Dashboard',
+    description: 'Advanced chatbot dashboard with natural language processing and sentiment analysis.',
+    category: 'web',
+    tags: ['React', 'Python', 'TensorFlow', 'WebSocket'],
+    image: '/projects/chatbot.jpg',
+    github: 'https://github.com',
+    demo: 'https://demo.com',
+    featured: false,
+  },
+  {
+    id: 4,
+    title: 'Fitness Tracking App',
+    description: 'Mobile fitness app with workout tracking, nutrition planning, and social features.',
+    category: 'mobile',
+    tags: ['React Native', 'Firebase', 'Redux', 'Node.js'],
+    image: '/projects/fitness.jpg',
+    github: 'https://github.com',
+    demo: 'https://demo.com',
+    featured: false,
+  },
+  {
+    id: 5,
+    title: 'Real-time Collaboration Tool',
+    description: 'Collaborative workspace with real-time editing, video calls, and project management.',
+    category: 'web',
+    tags: ['Next.js', 'WebRTC', 'Socket.io', 'MongoDB'],
+    image: '/projects/collab.jpg',
+    github: 'https://github.com',
+    demo: 'https://demo.com',
+    featured: true,
+  },
+  {
+    id: 6,
+    title: 'Design System Library',
+    description: 'Comprehensive design system with reusable components and documentation.',
+    category: 'design',
+    tags: ['React', 'Storybook', 'Tailwind', 'TypeScript'],
+    image: '/projects/design-system.jpg',
+    github: 'https://github.com',
+    demo: 'https://demo.com',
+    featured: false,
+  },
+]
+
+export const timeline = [
+  {
+    year: '2024',
+    title: 'Senior Full Stack Developer',
+    company: 'Tech Innovations Inc.',
+    description: 'Leading development of cutting-edge web applications using modern technologies.',
+  },
+  {
+    year: '2022',
+    title: 'Full Stack Developer',
+    company: 'Digital Solutions Ltd.',
+    description: 'Developed and maintained multiple client projects with focus on performance and UX.',
+  },
+  {
+    year: '2021',
+    title: 'Frontend Developer',
+    company: 'Creative Agency',
+    description: 'Created responsive and interactive user interfaces for various clients.',
+  },
+  {
+    year: '2020',
+    title: 'Started Coding Journey',
+    company: 'Self-taught',
+    description: 'Began learning web development and fell in love with creating digital experiences.',
+  },
+]
+
+export const socialLinks = {
+  github: 'https://github.com/yourusername',
+  linkedin: 'https://linkedin.com/in/yourusername',
+  twitter: 'https://twitter.com/yourusername',
+  email: 'your.email@example.com',
+}
