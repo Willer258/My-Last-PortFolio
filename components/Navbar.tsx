@@ -1,19 +1,26 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { MdLanguage } from 'react-icons/md'
 import { useStore } from '../store/useStore'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export const Navbar: React.FC = () => {
   const { isDarkMode, toggleDarkMode } = useStore()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const { t, locale, setLocale } = useLanguage()
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav.home, href: '#home' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.skills, href: '#skills' },
+    { name: t.nav.projects, href: '#projects' },
+    { name: t.nav.contact, href: '#contact' },
   ]
+
+  const toggleLanguage = () => {
+    setLocale(locale === 'fr' ? 'en' : 'fr')
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,6 +76,18 @@ export const Navbar: React.FC = () => {
 
           {/* Icons */}
           <div className="flex items-center space-x-4">
+            {/* Language Toggle */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleLanguage}
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center gap-1 text-sm font-medium text-gray-700 dark:text-gray-300"
+              title="Change language"
+            >
+              <MdLanguage className="text-lg" />
+              <span className="uppercase">{locale}</span>
+            </motion.button>
+
             {/* Theme Toggle */}
             <motion.button
               whileHover={{ scale: 1.1 }}

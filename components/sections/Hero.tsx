@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { Button } from '../ui/Button'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export const Hero: React.FC = () => {
+  const { t } = useLanguage()
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
@@ -17,7 +20,7 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-xl sm:text-2xl mb-4 text-gray-600 dark:text-gray-400"
           >
-            Hi, I&apos;m
+            {t.hero.greeting}
           </motion.h2>
 
           <motion.h1
@@ -30,11 +33,11 @@ export const Hero: React.FC = () => {
               sequence={[
                 'John Doe',
                 2000,
-                'Developer',
+                t.hero.titles.developer,
                 2000,
-                'Designer',
+                t.hero.titles.designer,
                 2000,
-                'Creator',
+                t.hero.titles.creator,
                 2000,
               ]}
               wrapper="span"
@@ -49,7 +52,7 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-2xl sm:text-3xl mb-4 font-semibold text-gray-700 dark:text-gray-300"
           >
-            Full Stack Developer
+            {t.hero.subtitle}
           </motion.h3>
 
           <motion.p
@@ -58,7 +61,7 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="text-lg sm:text-xl mb-8 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
-            I create amazing digital experiences
+            {t.hero.description}
           </motion.p>
 
           <motion.div
@@ -68,10 +71,10 @@ export const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Button variant="primary" size="lg">
-              View My Work
+              {t.hero.cta.viewWork}
             </Button>
             <Button variant="outline" size="lg">
-              Get In Touch
+              {t.hero.cta.contact}
             </Button>
           </motion.div>
         </motion.div>
@@ -87,7 +90,7 @@ export const Hero: React.FC = () => {
             transition={{ duration: 2, repeat: Infinity }}
             className="flex flex-col items-center text-gray-600 dark:text-gray-400"
           >
-            <span className="text-sm mb-2">Scroll to explore</span>
+            <span className="text-sm mb-2">{t.hero.scrollDown}</span>
             <span className="text-2xl">↓</span>
           </motion.div>
         </motion.div>

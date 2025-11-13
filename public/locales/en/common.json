@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "titles": {
+      "developer": "Developer",
+      "designer": "Designer",
+      "creator": "Creator"
+    },
+    "subtitle": "Full Stack Developer",
+    "description": "I create amazing digital experiences",
+    "cta": {
+      "viewWork": "View My Work",
+      "contact": "Get In Touch"
+    },
+    "scrollDown": "Scroll to explore"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Passionate about web development and new technologies, I specialize in creating modern and high-performance applications.",
+    "experience": "Experience",
+    "years": "years",
+    "download": "Download CV"
+  },
+  "skills": {
+    "title": "My Skills",
+    "subtitle": "Technologies and tools I master",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools"
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "Some projects I've worked on",
+    "viewProject": "View Project",
+    "viewCode": "View Code"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Have a project in mind? Let's talk!",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send",
+      "sending": "Sending..."
+    },
+    "success": "Message sent successfully!",
+    "error": "An error occurred. Please try again."
+  },
+  "footer": {
+    "madeWith": "Made with",
+    "and": "and lots of",
+    "rights": "All rights reserved",
+    "about": "About",
+    "aboutText": "Passionate developer creating amazing digital experiences with modern technologies.",
+    "quickLinks": "Quick Links",
+    "connect": "Connect"
+  },
+  "chatbot": {
+    "title": "Virtual Assistant",
+    "placeholder": "Ask me a question...",
+    "send": "Send",
+    "responses": {
+      "greeting": "Hello! How can I help you today?",
+      "help": "I can tell you about my skills, projects and experiences. Feel free to ask me questions!",
+      "skills": "I master React, TypeScript, Node.js, Next.js and many other modern technologies!",
+      "contact": "You can contact me via the contact form or by email.",
+      "default": "That's a great question! Feel free to explore my portfolio to learn more."
+    }
+  },
+  "game": {
+    "title": "Snake Game",
+    "score": "Score",
+    "highScore": "High Score",
+    "gameOver": "Game Over!",
+    "restart": "Restart",
+    "instructions": "Use arrow keys to control the snake"
+  }
+}

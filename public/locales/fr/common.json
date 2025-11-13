@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Bonjour, je suis",
+    "titles": {
+      "developer": "Développeur",
+      "designer": "Designer",
+      "creator": "Créateur"
+    },
+    "subtitle": "Développeur Full Stack",
+    "description": "Je crée des expériences numériques incroyables",
+    "cta": {
+      "viewWork": "Voir mon travail",
+      "contact": "Me contacter"
+    },
+    "scrollDown": "Défiler pour explorer"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "description": "Passionné par le développement web et les nouvelles technologies, je me spécialise dans la création d'applications modernes et performantes.",
+    "experience": "Expérience",
+    "years": "ans",
+    "download": "Télécharger le CV"
+  },
+  "skills": {
+    "title": "Mes Compétences",
+    "subtitle": "Technologies et outils que je maîtrise",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Outils"
+    }
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "subtitle": "Quelques projets sur lesquels j'ai travaillé",
+    "viewProject": "Voir le projet",
+    "viewCode": "Voir le code"
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "subtitle": "Vous avez un projet en tête ? Discutons-en !",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "send": "Envoyer",
+      "sending": "Envoi en cours..."
+    },
+    "success": "Message envoyé avec succès !",
+    "error": "Une erreur s'est produite. Veuillez réessayer."
+  },
+  "footer": {
+    "madeWith": "Fait avec",
+    "and": "et beaucoup de",
+    "rights": "Tous droits réservés",
+    "about": "À propos",
+    "aboutText": "Développeur passionné créant des expériences numériques incroyables avec des technologies modernes.",
+    "quickLinks": "Liens rapides",
+    "connect": "Me suivre"
+  },
+  "chatbot": {
+    "title": "Assistant virtuel",
+    "placeholder": "Posez-moi une question...",
+    "send": "Envoyer",
+    "responses": {
+      "greeting": "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
+      "help": "Je peux vous renseigner sur mes compétences, projets et expériences. N'hésitez pas à me poser des questions !",
+      "skills": "Je maîtrise React, TypeScript, Node.js, Next.js et bien d'autres technologies modernes !",
+      "contact": "Vous pouvez me contacter via le formulaire de contact ou par email.",
+      "default": "C'est une excellente question ! N'hésitez pas à explorer mon portfolio pour en savoir plus."
+    }
+  },
+  "game": {
+    "title": "Jeu Snake",
+    "score": "Score",
+    "highScore": "Meilleur score",
+    "gameOver": "Partie terminée !",
+    "restart": "Recommencer",
+    "instructions": "Utilisez les flèches pour diriger le serpent"
+  }
+}
