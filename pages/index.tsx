@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   const [showText] = useRecoilState(showProverbs);
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       {/* <div className="h-screen fixed top-0 left-0 right-0 bottom-0 z-50 bg-black flex justify-center items-center text-white lg:hidden">
         <motion.span animate={{ fontSize: "35px" }} className="text-center">
           <TypingAnimation text=" Le mode mobile n'est pas encore pret essaie sur PC Désolé" />
@@ -23,11 +23,7 @@ const Home: NextPage = () => {
       </div> */}
       <div className="space-y-10  overflow-hidden block">
         {showText ? (
-       
-        
-              <LoadingAnimatePage />
-         
-      
+          <LoadingAnimatePage />
         ) : (
           <div className="">
             <CursorComponent />
@@ -35,10 +31,10 @@ const Home: NextPage = () => {
               <HomeSection />
             </div>
 
-<div className="overflow-hidden">
-<Profil />
-</div>
-         
+            <div className="overflow-hidden">
+              <Profil />
+            </div>
+
             <Works />
             <Skills />
             <Contacts />

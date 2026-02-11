@@ -13,9 +13,9 @@ function LoadingAnimatePage() {
     init: {
     opacity:0,
       transition: {
-        ease: "circIn",
+        ease: "circIn" as const,
         duration: .3,
-        type: "spring",
+        type: "spring" as const,
         bounce: 0.1,
         // stiffness: 100,
       },
@@ -24,9 +24,9 @@ function LoadingAnimatePage() {
       opacity:1,
       width:'100%',
       transition: {
-        ease: "circIn",
+        ease: "circIn" as const,
         duration: 1.7,
-        type: "spring",
+        type: "spring" as const,
         bounce: 0.1,
         // stiffness: 100,
       },
@@ -35,9 +35,9 @@ function LoadingAnimatePage() {
       x: "400vw",
 
       transition: {
-        ease: "circIn",
+        ease: "circIn" as const,
         duration: 1.7,
-        type: "spring",
+        type: "spring" as const,
         bounce: 0.1,
         // stiffness: 100,
       },
