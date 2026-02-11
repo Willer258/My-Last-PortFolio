@@ -11,6 +11,8 @@ import Works from "../components/SectionsComponents/Works";
 import { showProverbs } from "@/utils/atomes";
 import { useRecoilState } from "recoil";
 import { TypingAnimation } from "@/components/Shared/TyperText";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { GetStaticProps } from 'next';
 const Home: NextPage = () => {
   const [showText] = useRecoilState(showProverbs);
 
@@ -43,6 +45,14 @@ const Home: NextPage = () => {
       </div>
     </AnimatePresence>
   );
+};
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'fr', ['common'])),
+    },
+  };
 };
 
 export default Home;

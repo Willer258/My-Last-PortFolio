@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "works": "Experience",
+    "contact": "Contact"
+  },
+  "greeting": "Hello, I'm",
+  "role": "Web Developer",
+  "viewProjects": "View my projects",
+  "contactMe": "Contact me",
+  "language": "Language"
+}

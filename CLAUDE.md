@@ -82,11 +82,41 @@ Static content is organized in the `utils/` folder:
 
 ### Animation Approach
 
-The application heavily uses Framer Motion for animations:
-- AnimatePresence with exitBeforeEnter for page transitions
-- Custom animated components in `components/Shared/`
+The application uses multiple animation libraries:
+- **Framer Motion**: Page transitions with AnimatePresence (mode="wait"), custom animated components
+- **GSAP + ScrollTrigger**: Advanced scroll-based animations
 - TyperText component for typing animations
 - CursorComponent for custom cursor effects
+
+### Internationalization (i18n)
+
+The application supports French and English using **next-i18next**:
+- **Default locale**: French (fr)
+- **Available locales**: fr, en
+- **Translation files**: `public/locales/{locale}/common.json`
+- **Configuration**: `next-i18next.config.js`
+- **Language switcher**: `components/Shared/LanguageSwitcher.tsx`
+
+**Usage in components:**
+```typescript
+import { useTranslation } from 'next-i18next';
+
+const MyComponent = () => {
+  const { t } = useTranslation('common');
+  return <h1>{t('greeting')}</h1>;
+};
+```
+
+**Required in pages:**
+```typescript
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? 'fr', ['common'])),
+  },
+});
+```
 
 ## Styling
 
