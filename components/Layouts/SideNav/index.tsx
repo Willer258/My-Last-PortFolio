@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
 import Logo from "@/components/Shared/Logo";
+import LanguageSwitcher from "@/components/Shared/LanguageSwitcher";
 import React from "react";
 import Navigation from "./SidNavSubComponent/Navigation";
 const SideNav = () => {
@@ -15,10 +16,15 @@ const SideNav = () => {
 
         <div
           className={
-            "w-16 bg-white h-full text-black flex flex-col items-center p-3 justify-center"
+            "w-16 bg-white h-full text-black flex flex-col items-center p-3 justify-between"
           }
         >
-          <Navigation />
+          <div className="flex-1 flex items-center">
+            <Navigation />
+          </div>
+          <div className="mb-4">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </AnimateCursorTarget>

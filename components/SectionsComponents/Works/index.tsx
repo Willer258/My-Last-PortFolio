@@ -3,8 +3,10 @@ import { works } from "@/utils/works";
 import React from "react";
 import Work from "./SubComponents/Work";
 import { BandeTexteAnimation } from "@/components/Shared/TyperText";
+import { useTranslation } from 'next-i18next';
 
 const Works = () => {
+  const { t } = useTranslation('common');
   return (
     <div
       id="works"
@@ -13,7 +15,7 @@ const Works = () => {
       <div className="flex  md:justify-center lg:justify-start lg:mb-40">
       <BandeTexteAnimation
         className="text-2xl md:text-4xl font-bold"
-        text="MON PARCOUR PRO"
+        text={t('works.title')}
       />
       </div>
      

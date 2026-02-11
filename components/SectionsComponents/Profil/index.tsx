@@ -8,7 +8,10 @@ import {
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from 'next-i18next';
+
 const Profil = () => {
+  const { t } = useTranslation('common');
   const [ref, inView] = useInView();
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -61,7 +64,7 @@ const Profil = () => {
           >
             <BandeTexteAnimation
               className= "text-2xl md:text-4xl font-bold"
-              text=" A propos de moi"
+              text={` ${t('about.title')}`}
             />
           </h2>
 
@@ -72,7 +75,7 @@ const Profil = () => {
                 duration={10  }
                 onAnimationComplete={() => handleChildAnimationComplete(1)}
                 className="text-base"
-                text="Bonjour, je suis Houinlindjonon Alain Wilfried, développeur frontend et designer UI/UX à votre service."
+                text={t('about.intro')}
               />
 
               {childAnimationComplete && (
@@ -81,13 +84,7 @@ const Profil = () => {
                     duration={5}
                     onAnimationComplete={() => handleChildAnimationComplete(2)}
                     className="text-base"
-                    text=" En tant que développeur frontend, je m'engage à respecter des
-           critères stricts tels que la conception, l'optimisation,
-           l'amélioration et la maintenance de sites ou d'applications de
-           qualité, tout en veillant au bon fonctionnement des mécaniques (API)
-           qui leur sont destinées. Fort de mon expérience et des nombreux
-           défis que j'ai relevés, je suis convaincu de pouvoir répondre à ces
-           exigences avec succès."
+                    text={` ${t('about.paragraph1')}`}
                   />
                 </p>
               )}
@@ -97,11 +94,7 @@ const Profil = () => {
                     duration={5}
                     onAnimationComplete={() => handleChildAnimationComplete(3)}
                     className="text-base"
-                    text="  En tant que designer UI/UX, j'ai commencé à travailler sur des
-          projets de conception de sites web et d'applications mobiles depuis
-          peu. Je suis convaincu que mes compétences en matière de design me
-          permettront de créer des interfaces utilisateur conviviales,
-          intuitives et esthétiquement agréables."
+                    text={`  ${t('about.paragraph2')}`}
                   />
                 </p>
               )}
@@ -111,10 +104,7 @@ const Profil = () => {
                   <TypingAnimation
                     duration={5}
                     className="text-base"
-                    text=" Je suis résident de la Côte d'Ivoire, plus précisément d'Abidjan, et
-          je suis en mesure de vous offrir une plateforme agréable, simple et
-          optimisée qui répondra à toutes vos exigences, que vous soyez basé
-          en Côte d'Ivoire ou n'importe où dans le monde."
+                    text={` ${t('about.paragraph3')}`}
                   />
                 </p>
               )}
@@ -123,45 +113,32 @@ const Profil = () => {
             <div className="invisible space-y-3 ">
               <TypingAnimation
                 className="text-base"
-                text="Bonjour, je suis Houinlindjonon Alain Wilfried, développeur frontend et designer UI/UX à votre service."
+                text={t('about.intro')}
               />
 
                 <p>
                   <TypingAnimation
                     duration={20}
                     className="text-base"
-                    text=" En tant que développeur frontend, je m'engage à respecter des
-           critères stricts tels que la conception, l'optimisation,
-           l'amélioration et la maintenance de sites ou d'applications de
-           qualité, tout en veillant au bon fonctionnement des mécaniques (API)
-           qui leur sont destinées. Fort de mon expérience et des nombreux
-           défis que j'ai relevés, je suis convaincu de pouvoir répondre à ces
-           exigences avec succès."
+                    text={` ${t('about.paragraph1')}`}
                   />
                 </p>
-            
+
                 <p>
                   <TypingAnimation
                     duration={10}
                     className="text-base"
-                    text="  En tant que designer UI/UX, j'ai commencé à travailler sur des
-          projets de conception de sites web et d'applications mobiles depuis
-          peu. Je suis convaincu que mes compétences en matière de design me
-          permettront de créer des interfaces utilisateur conviviales,
-          intuitives et esthétiquement agréables."
+                    text={`  ${t('about.paragraph2')}`}
                   />
                 </p>
             <p>
                   <TypingAnimation
                     duration={10}
                     className="text-base"
-                    text=" Je suis résident de la Côte d'Ivoire, plus précisément d'Abidjan, et
-          je suis en mesure de vous offrir une plateforme agréable, simple et
-          optimisée qui répondra à toutes vos exigences, que vous soyez basé
-          en Côte d'Ivoire ou n'importe où dans le monde."
+                    text={` ${t('about.paragraph3')}`}
                   />
                 </p>
-            
+
             </div>
             </div>
             
@@ -174,8 +151,8 @@ const Profil = () => {
               <AnimateBox>
                 <motion.img
                   src={image.src}
-                  alt="Houinlindjonon Alain Wilfried"
-                  className="w-full h-full 
+                  alt={t('about.imageAlt')}
+                  className="w-full h-full
           "
                 />
               </AnimateBox>

@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
 import Logo from "@/components/Shared/Logo";
-import { texts } from "@/utils/saluttexte";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import Button from "../../Shared/Button";
@@ -9,16 +8,18 @@ import {
   RetypingTextAnimation,
   TypingAnimation,
 } from "@/components/Shared/TyperText";
+import { useTranslation } from 'next-i18next';
 
 function HomeSection() {
-  const [stateText, setStateText] = useState(texts[0]);
+  const { t } = useTranslation('common');
+  const greetings = t('home.greetings', { returnObjects: true }) as string[];
+  const [stateText, setStateText] = useState(greetings[0]);
+
   useEffect(() => {
     setTimeout(() => {
-      {
-        setStateText(texts[Math.floor(Math.random() * texts.length)]);
-      }
+      setStateText(greetings[Math.floor(Math.random() * greetings.length)]);
     }, 5000);
-  }, [stateText]);
+  }, [stateText, greetings]);
 
 
   return (
@@ -54,21 +55,17 @@ function HomeSection() {
               animate={{ y: 0 }}
               className=" text-3xl md:text-5xl 2xl:text-6xl"
             >
-              <TypingAnimation text=" Wilfried Houinlindjonon" />
+              <TypingAnimation text={` ${t('home.name')}`} />
             </motion.h1>
           </AnimateCursorTarget>
 
           <AnimateCursorTarget type="text">
             <h2 className=" text-xl md:text-2xl 2xl:text-4xl font-bold ">
-              
-                {/* <TypingAnimation setTimeOuting={()=>setStateText(true)} text=" Designer, Concepteur" /> */}
-
-                <RetypingTextAnimation className={'leading-relaxed'}
-                
-                  words={[" de site web", " d'application web et mobile."]}
-                  text="Designer UI-UX/Concepteur"
+                <RetypingTextAnimation
+                  className={'leading-relaxed'}
+                  words={t('home.roles', { returnObjects: true }) as string[]}
+                  text={t('home.title')}
                 />
-             
             </h2>
           </AnimateCursorTarget>
 
@@ -78,9 +75,7 @@ function HomeSection() {
               animate={{ scale: "100%" }}
               className="2xl:text-lg w-5/6"
             >
-              Je suis un développeur basé à Abidjan CI, spécialisé dans la
-              construction de sites Web d'exception, applications mobiles, et
-              tout le reste.
+              {t('home.description')}
             </motion.p>
           </AnimateCursorTarget>
 
@@ -90,7 +85,7 @@ function HomeSection() {
                 animate={{ scale: "100%" }}
                 href="mailto:wilfriedhouinlindjonon91@gmail.com"
               >
-                <Button type="outlined">Prendre contact</Button>
+                <Button type="outlined">{t('home.contact')}</Button>
               </motion.a>
             </motion.div>
             <motion.div
@@ -106,7 +101,7 @@ function HomeSection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="  border ">Télécharger mon CV</Button>
+                <Button className="  border ">{t('home.downloadCV')}</Button>
               </a>
             </motion.div>
           </div>

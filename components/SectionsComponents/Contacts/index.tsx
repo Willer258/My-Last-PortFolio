@@ -5,8 +5,10 @@ import { BandeTexteAnimation } from "@/components/Shared/TyperText";
 import FontAwesomeIcon from "@/components/SpecialComponent/FontAwesomeIcon";
 import Image from "next/image";
 import React from "react";
+import { useTranslation } from 'next-i18next';
 
 const Contacts = () => {
+  const { t } = useTranslation('common');
   return (
     <AnimateCursorTarget type={"blackBg"}>
       <div
@@ -26,32 +28,32 @@ const Contacts = () => {
             <BandeTexteAnimation
               whiteBar
               className=" text-xl md:text-3xl 2xl:text-4xl font-bold"
-              text="Un site web ? "
+              text={`${t('contact.question1')} `}
             />
 
             <BandeTexteAnimation
               whiteBar
               delay={0.5}
               className=" hidden md:inline text-xl md:text-3xl 2xl:text-4xl font-bold"
-              text="Une application web ou mobile ?  "
+              text={`${t('contact.question2')}  `}
             />
             <BandeTexteAnimation
               whiteBar
               delay={0.5}
               className="md:hidden text-xl md:text-3xl 2xl:text-4xl font-bold"
-              text="Une application web ? "
+              text={`${t('contact.question2Mobile1')} `}
             />
             <BandeTexteAnimation
               whiteBar
               delay={0.7}
               className=" md:hidden text-xl md:text-3xl 2xl:text-4xl font-bold"
-              text="mobile ? "
+              text={`${t('contact.question2Mobile2')} `}
             />
             <BandeTexteAnimation
               whiteBar
               delay={1}
               className=" text-xl md:text-3xl 2xl:text-4xl font-bold"
-              text="Je suis a votre service !!!"
+              text={t('contact.service')}
             />
           </div>
 
@@ -60,10 +62,10 @@ const Contacts = () => {
               whiteBar
               delay={1.5}
               className="text-xl 2xl:text-2xl font-bold"
-              text="Coordonnées"
+              text={t('contact.coordinates')}
             />
             <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 md:space-x-2 w-10/12 md:w-full items-center">
-              <span className="font-bold">Email:</span>
+              <span className="font-bold">{t('contact.email')}:</span>
               <a
                 className="text-lg 2xl:text-xl text-center  "
                 href="mailto:wilfriedhouinlindjonon91@gmail.com"
@@ -75,7 +77,7 @@ const Contacts = () => {
             </div>
 
             <div className="flex flex-col md:flex-row  space-y-2 md:space-y-0 w-full md:space-x-2 items-center">
-              <span className="font-bold">Numéro de telephone:</span>
+              <span className="font-bold">{t('contact.phone')}:</span>
               <div className="flex flex-col items-center space-y-2 md:space-y-0 md:flex-row">
                 <a className="text-lg 2xl:text-xl" href="tel:+2250767668478">
                   +225 07-67-66-84-78
@@ -88,9 +90,9 @@ const Contacts = () => {
             </div>
 
             <div className="flex flex-col w-full space-y-2 md:space-y-0  md:space-x-2 items-center md:flex-row">
-              <span className="font-bold">Habitat :</span>
+              <span className="font-bold">{t('contact.location')} :</span>
               <a className="text-lg 2xl:text-xl" href="#">
-                Abidjan, Cote d'Ivoire{" "}
+                {t('contact.locationValue')}{" "}
               </a>
             </div>
           </div>
@@ -100,7 +102,7 @@ const Contacts = () => {
               whiteBar
               delay={2}
               className="text-xl 2xl:text-2xl  font-bold"
-              text="Liens sociaux"
+              text={t('contact.social')}
             />
 
             <div className="flex space-x-5">

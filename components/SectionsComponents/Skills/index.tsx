@@ -10,13 +10,16 @@ import DevMobileSection from "./SubComponents/DevMobileSection";
 import DesignUIUX from "./SubComponents/DesignUIUX";
 import Autres from "./SubComponents/Autres";
 import SkillsMobile from "./SkillsMobile";
+import { useTranslation } from 'next-i18next';
 
 const Skills = () => {
+  const { t } = useTranslation('common');
+
   const screens = [
-    { name: "Développement web", screen: <DevWebSection /> },
-    { name: "Développement mobile", screen: <DevMobileSection /> },
-    { name: "Design UI/UX", screen: <DesignUIUX /> },
-    { name: "Autres", screen: <Autres /> },
+    { name: t('skills.webDev'), screen: <DevWebSection /> },
+    { name: t('skills.mobileDev'), screen: <DevMobileSection /> },
+    { name: t('skills.design'), screen: <DesignUIUX /> },
+    { name: t('skills.others'), screen: <Autres /> },
   ];
 
   const [screenSelected, setScreenSelected] = useState(0);
@@ -36,7 +39,7 @@ const Skills = () => {
       <div ref={ref} className="flex lg:justify-center">
         <BandeTexteAnimation
           className="text-2xl md:text-4xl font-bold"
-          text=" Mes skills"
+          text={` ${t('skills.title')}`}
         />
       </div>
       {window.screen.width > 1279 ? (

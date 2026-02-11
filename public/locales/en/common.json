@@ -6,9 +6,45 @@
     "works": "Experience",
     "contact": "Contact"
   },
-  "greeting": "Hello, I'm",
-  "role": "Web Developer",
-  "viewProjects": "View my projects",
-  "contactMe": "Contact me",
-  "language": "Language"
+  "home": {
+    "greetings": ["Hello", "Hi", "Hey", "Welcome", "Greetings"],
+    "name": "Wilfried Houinlindjonon",
+    "title": "UI-UX Designer/Developer",
+    "roles": ["of websites", "of web and mobile applications."],
+    "description": "I'm a developer based in Abidjan CI, specialized in building exceptional websites, mobile applications, and everything in between.",
+    "contact": "Get in touch",
+    "downloadCV": "Download my CV"
+  },
+  "about": {
+    "title": "About me",
+    "intro": "Hello, I'm Houinlindjonon Alain Wilfried, frontend developer and UI/UX designer at your service.",
+    "paragraph1": "As a frontend developer, I commit to respecting strict criteria such as design, optimization, improvement, and maintenance of quality sites or applications, while ensuring the proper functioning of the mechanics (API) intended for them. With my experience and the many challenges I have overcome, I am confident that I can successfully meet these requirements.",
+    "paragraph2": "As a UI/UX designer, I have recently started working on web and mobile application design projects. I am confident that my design skills will allow me to create user-friendly, intuitive and aesthetically pleasing user interfaces.",
+    "paragraph3": "I am a resident of Côte d'Ivoire, more precisely Abidjan, and I am able to offer you a pleasant, simple and optimized platform that will meet all your requirements, whether you are based in Côte d'Ivoire or anywhere in the world.",
+    "imageAlt": "Houinlindjonon Alain Wilfried"
+  },
+  "skills": {
+    "title": "My skills",
+    "webDev": "Web development",
+    "mobileDev": "Mobile development",
+    "design": "UI/UX Design",
+    "others": "Others"
+  },
+  "works": {
+    "title": "MY PROFESSIONAL JOURNEY"
+  },
+  "contact": {
+    "title": "Contact",
+    "question1": "A website?",
+    "question2": "A web or mobile application?",
+    "question2Mobile1": "A web application?",
+    "question2Mobile2": "mobile?",
+    "service": "I'm at your service!!!",
+    "coordinates": "Contact information",
+    "email": "Email",
+    "phone": "Phone number",
+    "location": "Location",
+    "locationValue": "Abidjan, Ivory Coast",
+    "social": "Social links"
+  }
 }
