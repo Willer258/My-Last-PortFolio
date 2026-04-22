@@ -70,32 +70,7 @@
   right: 0;
 }
 
-/* Custom cursor */
-[class^="cursor"] {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  mix-blend-mode: difference;
-  pointer-events: none;
-}
-
-.cursor {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  z-index: 50;
-  transition: 0.1s;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.content:hover ~ .cursor {
-  width: 90px;
-  height: 90px;
-  mix-blend-mode: difference;
-}
+/* Custom cursor is handled entirely by CursorComponent.tsx via Framer Motion springs */
 
 /* Section title accent bar */
 .section-accent {
