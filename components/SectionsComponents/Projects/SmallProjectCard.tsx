@@ -18,7 +18,7 @@ export default function SmallProjectCard({ project, index }: { project: IProject
   const hasLink = !!project.link;
 
   return (
-    <ScrollReveal delay={index * 0.05}>
+    <ScrollReveal delay={0.05}>
       <div className="bg-surface-dark rounded-xl overflow-hidden group break-inside-avoid mb-4 grayscale hover:grayscale-0 transition-all duration-700 ease-out">
         {/* Screenshots carousel if available */}
         {hasScreenshots && (

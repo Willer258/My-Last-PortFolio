@@ -26,12 +26,12 @@ const Work = ({
   const { t } = useTranslation("common");
 
   return (
-    <ScrollReveal delay={index * 0.08}>
+    <ScrollReveal delay={0.05}>
       <AnimateCursorTarget type="button">
         <motion.div
           className="bg-surface-muted rounded-2xl p-8 md:p-10 transition-shadow duration-500 hover:shadow-lg"
           onViewportEnter={() => onInView?.(index)}
-          viewport={{ amount: 0.5 }}
+          viewport={{ amount: 0.2 }}
         >
           <div className="space-y-1">
             <h3 className="font-heading text-2xl md:text-3xl font-bold tracking-tightest">
