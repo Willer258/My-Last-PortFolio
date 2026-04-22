@@ -1,62 +1,82 @@
 import { cursorState } from "@/utils/atomes";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useRecoilState } from "recoil";
 
 function CursorComponent() {
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef({ x: 0, y: 0 });
   const [cursor] = useRecoilState(cursorState);
 
-  useEffect(() => {
-    const moveMouse = (e: MouseEvent) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", moveMouse);
-    return () => window.removeEventListener("mousemove", moveMouse);
+  const updateTransform = useCallback(() => {
+    const el = cursorRef.current;
+    if (!el) return;
+    const { x, y } = posRef.current;
+    // Direct DOM update — no React re-render
+    el.style.transform = `translate3d(${x - 10}px, ${y - 5}px, 0)`;
   }, []);
 
-  const baseTranslate = { translateX: cursorPosition.x - 10, translateY: cursorPosition.y - 10 };
+  useEffect(() => {
+    let rafId: number | null = null;
+    let dirty = false;
 
-  const variants: any = {
+    const onMouseMove = (e: MouseEvent) => {
+      posRef.current.x = e.clientX;
+      posRef.current.y = e.clientY;
+      if (!dirty) {
+        dirty = true;
+        rafId = requestAnimationFrame(() => {
+          updateTransform();
+          dirty = false;
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [updateTransform]);
+
+  const variants: Record<string, any> = {
     default: {
-      ...baseTranslate,
-      translateY: cursorPosition.y - 5,
       scale: 1,
+      width: 20,
+      height: 20,
       backgroundColor: "white",
       mixBlendMode: "difference",
     },
     button: {
-      translateX: cursorPosition.x - 75,
-      translateY: cursorPosition.y - 75,
       scale: 1,
+      width: 150,
+      height: 150,
       backgroundColor: "white",
       mixBlendMode: "difference",
       border: "solid 2px",
-      width: 150,
-      height: 150,
     },
     blackBg: {
-      ...baseTranslate,
       scale: 1,
+      width: 20,
+      height: 20,
       backgroundColor: "white",
     },
     image: {
-      ...baseTranslate,
       scale: 1,
+      width: 100,
+      height: 100,
       backgroundColor: "transparent",
       mixBlendMode: "difference",
       border: "solid 2px",
-      width: 100,
-      height: 100,
     },
     text: {
-      ...baseTranslate,
       scale: 1,
+      width: 20,
+      height: 20,
       backgroundColor: "white",
       mixBlendMode: "difference",
     },
     hidden: {
-      ...baseTranslate,
       scale: 0,
       opacity: 0,
     },
@@ -64,11 +84,12 @@ function CursorComponent() {
 
   return (
     <motion.div
+      ref={cursorRef}
       className="cursor hidden lg:block"
-      style={{ willChange: "transform" }}
+      style={{ willChange: "transform", transform: "translate3d(-100px, -100px, 0)" }}
       animate={cursor}
       variants={variants}
-      transition={{ type: "tween", duration: 0.05, ease: "linear" }}
+      transition={{ type: "tween", duration: 0.15, ease: "easeOut" }}
       aria-hidden="true"
     />
   );

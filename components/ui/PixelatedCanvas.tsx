@@ -227,49 +227,72 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
       canvasEl.addEventListener("pointerenter", onPointerEnter);
       canvasEl.addEventListener("pointerleave", onPointerLeave);
 
+      // Precompute sigma squared for Gaussian falloff
+      const sigma = Math.max(1, distortionRadius * 0.5);
+      const invTwoSigma2 = 1 / (2 * sigma * sigma);
+      // Influence cutoff radius squared — skip samples beyond this
+      const cutoffRadius2 = (sigma * 4) * (sigma * 4);
+
       const animate = () => {
+        rafRef.current = requestAnimationFrame(animate);
+
         const now = performance.now();
         const minDelta = 1000 / Math.max(1, maxFps);
-        if (now - lastFrameRef.current < minDelta) { rafRef.current = requestAnimationFrame(animate); return; }
+        if (now - lastFrameRef.current < minDelta) return;
         lastFrameRef.current = now;
+
         const ctx = canvasEl.getContext("2d");
         const dims = dimsRef.current;
         const samples = samplesRef.current;
-        if (!ctx || !dims || !samples) { rafRef.current = requestAnimationFrame(animate); return; }
+        if (!ctx || !dims || !samples) return;
 
         animMouseRef.current.x += (targetMouseRef.current.x - animMouseRef.current.x) * followSpeed;
         animMouseRef.current.y += (targetMouseRef.current.y - animMouseRef.current.y) * followSpeed;
         if (fadeOnLeave) { activityRef.current += (activityTargetRef.current - activityRef.current) * fadeSpeed; }
         else { activityRef.current = pointerInsideRef.current ? 1 : 0; }
 
+        const activity = Math.max(0, Math.min(1, activityRef.current));
+
+        // When fully idle (no activity, pointer left), drop to very low FPS
+        if (activity < 0.001 && !pointerInsideRef.current) {
+          // Only redraw once to settle, then skip
+          if (lastFrameRef.current - now < -500) return;
+        }
+
         if (backgroundColor) { ctx.fillStyle = backgroundColor; ctx.fillRect(0, 0, dims.width, dims.height); }
         else { ctx.clearRect(0, 0, dims.width, dims.height); }
 
         const mx = animMouseRef.current.x, my = animMouseRef.current.y;
-        const sigma = Math.max(1, distortionRadius * 0.5);
         const t = now * 0.001 * jitterSpeed;
-        const activity = Math.max(0, Math.min(1, activityRef.current));
 
         for (const s of samples) {
           if (s.drop || s.a <= 0) continue;
           let drawX = s.x + cellSize/2, drawY = s.y + cellSize/2;
-          const ddx = drawX - mx, ddy = drawY - my;
-          const dist2 = ddx*ddx + ddy*ddy;
-          const falloff = Math.exp(-dist2 / (2*sigma*sigma));
-          const influence = falloff * activity;
-          if (influence > 0.0005) {
-            if (distortionMode === "repel") { const dist = Math.sqrt(dist2)+0.0001; drawX += (ddx/dist)*distortionStrength*influence; drawY += (ddy/dist)*distortionStrength*influence; }
-            else if (distortionMode === "attract") { const dist = Math.sqrt(dist2)+0.0001; drawX -= (ddx/dist)*distortionStrength*influence; drawY -= (ddy/dist)*distortionStrength*influence; }
-            else if (distortionMode === "swirl") { const angle = distortionStrength*0.05*influence; const cosA = Math.cos(angle), sinA = Math.sin(angle); drawX = mx + cosA*ddx - sinA*ddy; drawY = my + sinA*ddx + cosA*ddy; }
-            if (jitterStrength > 0) { const k = s.seed*43758.5453; drawX += Math.sin(t+k)*jitterStrength*influence; drawY += Math.cos(t+k*1.13)*jitterStrength*influence; }
+
+          // Only compute distortion if there's activity and sample is near cursor
+          if (activity > 0.001) {
+            const ddx = drawX - mx, ddy = drawY - my;
+            const dist2 = ddx*ddx + ddy*ddy;
+
+            // Skip expensive math for distant samples
+            if (dist2 < cutoffRadius2) {
+              const falloff = Math.exp(-dist2 * invTwoSigma2);
+              const influence = falloff * activity;
+              if (influence > 0.0005) {
+                if (distortionMode === "repel") { const dist = Math.sqrt(dist2)+0.0001; drawX += (ddx/dist)*distortionStrength*influence; drawY += (ddy/dist)*distortionStrength*influence; }
+                else if (distortionMode === "attract") { const dist = Math.sqrt(dist2)+0.0001; drawX -= (ddx/dist)*distortionStrength*influence; drawY -= (ddy/dist)*distortionStrength*influence; }
+                else if (distortionMode === "swirl") { const angle = distortionStrength*0.05*influence; const cosA = Math.cos(angle), sinA = Math.sin(angle); drawX = mx + cosA*ddx - sinA*ddy; drawY = my + sinA*ddx + cosA*ddy; }
+                if (jitterStrength > 0) { const k = s.seed*43758.5453; drawX += Math.sin(t+k)*jitterStrength*influence; drawY += Math.cos(t+k*1.13)*jitterStrength*influence; }
+              }
+            }
           }
+
           ctx.globalAlpha = s.a;
           ctx.fillStyle = `rgb(${s.r}, ${s.g}, ${s.b})`;
-          if (shape === "circle") { const radius = dims.dot/2; ctx.beginPath(); ctx.arc(drawX, drawY, radius, 0, Math.PI*2); ctx.fill(); }
+          if (shape === "circle") { const radius = dims.dot/2; ctx.beginPath(); ctx.arc(drawX, drawY, radius, 0, 6.2832); ctx.fill(); }
           else { ctx.fillRect(drawX-dims.dot/2, drawY-dims.dot/2, dims.dot, dims.dot); }
         }
         ctx.globalAlpha = 1;
-        rafRef.current = requestAnimationFrame(animate);
       };
 
       if (rafRef.current) cancelAnimationFrame(rafRef.current);

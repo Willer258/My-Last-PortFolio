@@ -1,8 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
+import { useInView } from "@/utils/useInView";
 
 export default function GenerativeScene() {
+  const { ref: viewRef, isInView } = useInView("100px");
   const mountRef = useRef<HTMLDivElement>(null);
+  const isInViewRef = useRef(false);
+
+  useEffect(() => { isInViewRef.current = isInView }, [isInView]);
 
   useEffect(() => {
     const currentMount = mountRef.current;
@@ -116,13 +121,29 @@ export default function GenerativeScene() {
     pointLight.position.set(0, 0, 5);
     scene.add(pointLight);
 
+    // Reusable vector — no allocation per mousemove
+    const _vec = new THREE.Vector3();
+    const _dir = new THREE.Vector3();
+    const _pos = new THREE.Vector3();
+
     let frameId: number;
+    let lastFrame = 0;
+    const minDelta = 1000 / 30; // Cap at 30 FPS — this is a background decoration
+
     const animate = (t: number) => {
+      frameId = requestAnimationFrame(animate);
+
+      // Skip if not visible
+      if (!isInViewRef.current) return;
+
+      // FPS limiter
+      if (t - lastFrame < minDelta) return;
+      lastFrame = t;
+
       material.uniforms.time.value = t * 0.0003;
       mesh.rotation.y += 0.0005;
       mesh.rotation.x += 0.0002;
       renderer.render(scene, camera);
-      frameId = requestAnimationFrame(animate);
     };
     animate(0);
 
@@ -136,12 +157,12 @@ export default function GenerativeScene() {
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      const vec = new THREE.Vector3(x, y, 0.5).unproject(camera);
-      const dir = vec.sub(camera.position).normalize();
-      const dist = -camera.position.z / dir.z;
-      const pos = camera.position.clone().add(dir.multiplyScalar(dist));
-      pointLight.position.copy(pos);
-      material.uniforms.pointLightPos.value = pos;
+      _vec.set(x, y, 0.5).unproject(camera);
+      _dir.copy(_vec).sub(camera.position).normalize();
+      const dist = -camera.position.z / _dir.z;
+      _pos.copy(camera.position).add(_dir.multiplyScalar(dist));
+      pointLight.position.copy(_pos);
+      material.uniforms.pointLightPos.value.copy(_pos);
     };
 
     window.addEventListener("resize", handleResize, { passive: true });
@@ -158,7 +179,11 @@ export default function GenerativeScene() {
       material.dispose();
       renderer.dispose();
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return <div ref={mountRef} className="absolute inset-0 w-full h-full" />;
+  return (
+    <div ref={viewRef} className="absolute inset-0 w-full h-full">
+      <div ref={mountRef} className="absolute inset-0 w-full h-full" />
+    </div>
+  );
 }
