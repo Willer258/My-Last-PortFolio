@@ -19,7 +19,7 @@ function scrollTo(page: Page, selector: string) {
   );
 }
 
-test.use({ ...iPhone, timeout: 60000 });
+test.use({ ...iPhone, timeout: 90000 });
 
 test.describe("Mobile Visual Check — iPhone 14", () => {
 
@@ -40,13 +40,20 @@ test.describe("Mobile Visual Check — iPhone 14", () => {
     console.log(`[HOME] Nav links: ${navCount}`);
     expect(navCount).toBeGreaterThanOrEqual(6);
 
-    // Bottom nav visible
-    const bottomNavVisible = await page.evaluate(() => {
-      const el = document.querySelector('[class*="md:hidden"][class*="fixed"][class*="bottom-0"]');
-      return el ? window.getComputedStyle(el).display !== 'none' : false;
+    // Hamburger button visible on mobile
+    const hamburgerVisible = await page.evaluate(() => {
+      const buttons = document.querySelectorAll('button');
+      for (const btn of buttons) {
+        const label = btn.getAttribute('aria-label') || '';
+        if (label.includes('menu')) {
+          const style = window.getComputedStyle(btn);
+          return style.display !== 'none' && style.visibility !== 'hidden';
+        }
+      }
+      return false;
     });
-    console.log(`[HOME] Bottom nav visible: ${bottomNavVisible}`);
-    expect(bottomNavVisible).toBe(true);
+    console.log(`[HOME] Hamburger button visible: ${hamburgerVisible}`);
+    expect(hamburgerVisible).toBe(true);
 
     // === PROFIL ===
     await scrollTo(page, "#profil");

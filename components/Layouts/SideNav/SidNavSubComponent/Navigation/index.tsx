@@ -23,27 +23,46 @@ const scrollToSection = (e: React.MouseEvent, section: string) => {
   }
 };
 
-const Navigation = ({ isMobile }: { isMobile?: boolean }) => {
+const Navigation = ({ isMobile, onNavigate }: { isMobile?: boolean; onNavigate?: () => void }) => {
   const activeSection = useActiveSection();
   const { t } = useTranslation('common');
 
+  const handleClick = (e: React.MouseEvent, section: string) => {
+    scrollToSection(e, section);
+    onNavigate?.();
+  };
+
   if (isMobile) {
     return (
-      <ul className="flex justify-around list-none m-0 p-0 py-2.5 sm:py-3 px-1 sm:px-2">
-        {navItems.map((item) => {
+      <ul className="flex flex-col space-y-1 list-none m-0 p-0">
+        {navItems.map((item, index) => {
           const isActive = activeSection === item.section;
           return (
-            <li key={item.key}>
+            <motion.li
+              key={item.key}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.05 + index * 0.06, duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+            >
               <a
                 href={`#${item.section}`}
-                onClick={(e) => scrollToSection(e, item.section)}
-                className={`font-heading text-[11px] sm:text-xs tracking-wide sm:tracking-wider transition-colors duration-200 py-1 px-1.5 ${
+                onClick={(e) => handleClick(e, item.section)}
+                className={`font-heading text-lg tracking-wide transition-colors duration-200 block py-2.5 ${
                   isActive ? "text-white font-bold" : "text-white/40"
                 }`}
               >
-                {t(`nav.${item.key}`)}
+                <span className="flex items-center gap-3">
+                  {isActive && (
+                    <motion.span
+                      layoutId="mobile-nav-dot"
+                      className="w-1.5 h-1.5 rounded-full bg-white shrink-0"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  {t(`nav.${item.key}`)}
+                </span>
               </a>
-            </li>
+            </motion.li>
           );
         })}
       </ul>
