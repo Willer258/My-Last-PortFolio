@@ -45,11 +45,6 @@ export const TypingAnimation = ({
       } else {
         clearInterval(intervalId);
         onAnimationComplete && onAnimationComplete();
-        if (!text) {
-          setTimeout(() => {
-            setShowText(false);
-          }, 2000);
-        }
       }
     }, duration ?? 50);
 
@@ -181,7 +176,7 @@ export const BandeTexteAnimation = ({
         ref={ref}
         variants={variants}
         className={`absolute h-full ${
-          whiteBar ? "bg-white" : "bg-black"
+          whiteBar ? "bg-white" : "bg-ink"
         }  w-full`}
         initial={{ x: "-100%" }}
         animate={controlsBack}
@@ -193,7 +188,7 @@ export const BandeTexteAnimation = ({
         {noLine ?? (
           <motion.div
             className={`absolute h-2 bottom-0.5 ${
-              whiteBar ? "bg-white/30" : "bg-black/30"
+              whiteBar ? "bg-white/30" : "bg-ink/30"
             } w-full`}
             initial={{ width: 0 }}
             variants={variants}

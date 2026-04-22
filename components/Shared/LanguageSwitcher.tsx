@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import AnimateCursorTarget from './AnimateCursorTarget';
 
 const LanguageSwitcher = () => {
   const router = useRouter();
@@ -11,34 +10,39 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <AnimateCursorTarget type="default">
-      <div className="flex flex-col gap-2">
-        <motion.button
-          onClick={() => changeLanguage('fr')}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-            locale === 'fr'
-              ? 'bg-black text-white'
-              : 'bg-transparent border border-black text-black hover:bg-gray-100'
-          }`}
-        >
-          FR
-        </motion.button>
-        <motion.button
-          onClick={() => changeLanguage('en')}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-            locale === 'en'
-              ? 'bg-black text-white'
-              : 'bg-transparent border border-black text-black hover:bg-gray-100'
-          }`}
-        >
-          EN
-        </motion.button>
-      </div>
-    </AnimateCursorTarget>
+    <div className="flex gap-3" role="group" aria-label="Language">
+      <motion.button
+        type="button"
+        onClick={() => changeLanguage('fr')}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Français"
+        aria-current={locale === 'fr' ? 'true' : undefined}
+        className={`font-heading text-[10px] tracking-widest uppercase transition-all duration-200 ${
+          locale === 'fr'
+            ? 'text-white font-bold'
+            : 'text-white/30 hover:text-white/60'
+        }`}
+      >
+        FR
+      </motion.button>
+      <span className="text-white/15 text-[10px]">/</span>
+      <motion.button
+        type="button"
+        onClick={() => changeLanguage('en')}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="English"
+        aria-current={locale === 'en' ? 'true' : undefined}
+        className={`font-heading text-[10px] tracking-widest uppercase transition-all duration-200 ${
+          locale === 'en'
+            ? 'text-white font-bold'
+            : 'text-white/30 hover:text-white/60'
+        }`}
+      >
+        EN
+      </motion.button>
+    </div>
   );
 };
 

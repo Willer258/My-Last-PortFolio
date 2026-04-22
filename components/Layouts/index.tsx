@@ -1,33 +1,17 @@
 import React from "react";
 import MainHead from "../SpecialComponent/MainHead";
-import Footer from "./Footer";
 import SideNav from "./SideNav";
 import { useRecoilState } from "recoil";
 import { showProverbs } from "@/utils/atomes";
-import LoadingAnimatePage from "../Shared/LoadingAnimatePage";
 
 const Layout = ({ children }: any) => {
   const [showText] = useRecoilState(showProverbs);
 
-
   return (
-    <div>
-   
+    <div className="min-h-dvh bg-surface">
       <MainHead />
-      {!showText ?<SideNav />:null }
-
-      
-          {showText ? (
-       
-         
-            <LoadingAnimatePage />
-       
-    
-      ) : (
-        <div className="ml-16 md:ml-32">{children}</div>
-      )
-      }
-    
+      {!showText && <SideNav />}
+      <main className="pb-16 md:pb-0 md:pl-36">{children}</main>
     </div>
   );
 };

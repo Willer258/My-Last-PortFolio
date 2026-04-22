@@ -1,40 +1,57 @@
 import FontAwesomeIcon from "@/components/SpecialComponent/FontAwesomeIcon";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, Suspense, ComponentType } from "react";
 
-function SkillsMobile({ skills }: any) {
-  const [screenSelected, setScreenSelected]: any = useState();
+interface SkillsMobileProps {
+  tabNames: string[];
+  tabComponents: ComponentType[];
+}
+
+function SkillsMobile({ tabNames, tabComponents }: SkillsMobileProps) {
+  const [screenSelected, setScreenSelected] = useState<number | undefined>();
 
   return (
-    <div className="flex flex-col w-full mt-10 overflow-hidden rounded-xl">
-      {skills.map((skill: any, index: number) => (
-        <div key={index}>
-          <Link  href={`#skills${index}`}>
-            <div
-              onClick={() =>
-                setScreenSelected(index == screenSelected ? undefined : index)
-              }
-              className=" pl-3 py-5 uppercase flex justify-between px-3 items-center text-lg md:text-2xl border-b bg-black text-white font-semibold border-white"
+    <div className="flex flex-col w-full mt-10 overflow-hidden rounded-lg">
+      {tabNames.map((name, index) => {
+        const isOpen = screenSelected === index;
+        const Component = tabComponents[index];
+
+        return (
+          <div key={index}>
+            <button
+              type="button"
+              onClick={() => setScreenSelected(isOpen ? undefined : index)}
+              aria-expanded={isOpen}
+              aria-controls={`skills-mobile-${index}`}
+              className="w-full pl-4 py-4 flex justify-between px-4 items-center text-base md:text-xl border-b bg-surface-dark text-white font-heading font-semibold border-white/10"
             >
-              <span>{skill.name}</span>
-
+              <span>{name}</span>
               <FontAwesomeIcon
-                icon={screenSelected == index ? "fa-caret-up" : "fa-caret-down"}
+                icon={isOpen ? "fa-caret-up" : "fa-caret-down"}
               />
-            </div>
-          </Link>
-          <motion.div
-
-            animate={{
-              height: screenSelected == index ? "auto" : "0",
-            }}
-            className="bg-black text-white h-0 overflow-hidden"
-          >
-            <div id={`skills${index}`} style={{scrollPaddingTop:'50px'}} className=" p-5">{skill.screen}</div>
-          </motion.div>
-        </div>
-      ))}
+            </button>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  id={`skills-mobile-${index}`}
+                  role="region"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                  className="bg-surface-dark text-white overflow-hidden"
+                >
+                  <div className="p-5">
+                    <Suspense fallback={<div className="h-32" />}>
+                      <Component />
+                    </Suspense>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
     </div>
   );
 }

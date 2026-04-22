@@ -8,29 +8,30 @@ interface IButton {
   className?: string;
   type?: "outlined";
   isWhite?: boolean;
-  id?:string;
+  id?: string;
 }
-function Button({ children, icon, className, type, isWhite,id }: IButton) {
+
+function Button({ children, icon, className, type, isWhite, id }: IButton) {
   return (
-    <AnimateCursorTarget type={'button'}>
+    <AnimateCursorTarget type="button">
       <button
-      id={id}
-        className={`w-full content rounded-xl duration-300 font-semibold ${
-          className ?? ""
-        } ${
-          type == "outlined"
-            ? ` border-2 ${
-                isWhite
-                  ? "  text-white bg-black hover:text-black hover:bg-white  border-white "
-                  : " text-black border-black hover:text-white bg-white hover:bg-black"
+        type="button"
+        id={id}
+        className={`content rounded-lg duration-200 font-heading font-semibold tracking-wide
+          active:scale-[0.98] active:translate-y-[1px]
+          focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2
+          ${className ?? ""}
+          ${type === "outlined"
+            ? `border-2 ${isWhite
+                ? "text-white bg-surface-dark hover:text-surface-dark hover:bg-white border-white"
+                : "text-ink border-ink hover:text-white bg-transparent hover:bg-ink"
               }`
-            : ` ${
-                isWhite
-                  ? "bg-white hover:bg-black text-black hover:text-white border-2 hover:border-white "
-                  : "bg-black text-white hover:bg-white hover:text-black border-2 hover:border-black"
+            : `${isWhite
+                ? "bg-white hover:bg-surface-dark text-surface-dark hover:text-white border-2 hover:border-white"
+                : "bg-ink text-white hover:bg-white hover:text-ink border-2 border-transparent hover:border-ink"
               }`
-        } 
-      }  px-5 py-4  ${icon && "space-x-3"} `}
+          }
+          px-6 py-3.5 ${icon ? "space-x-3" : ""}`}
       >
         <span>{children}</span>
         <FontAwesomeIcon icon={icon} />

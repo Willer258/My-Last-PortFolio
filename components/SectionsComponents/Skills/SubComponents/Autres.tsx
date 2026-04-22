@@ -1,9 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { BandeTexteAnimation, TypingAnimation } from '@/components/Shared/TyperText';
 import { motion } from 'framer-motion';
-import React from 'react'
-
-
+import React from 'react';
 import ASANA from "@/assets/images/icons/autres/asana.svg";
 import DOCKER from "@/assets/images/icons/autres/docker.svg";
 import FIREBASE from "@/assets/images/icons/autres/firebase.svg";
@@ -11,147 +8,83 @@ import NETLIFY from "@/assets/images/icons/autres/netilfy.svg";
 import VERCEL from "@/assets/images/icons/autres/vercel.svg";
 import WORDPESS from "@/assets/images/icons/autres/wordpress.svg";
 import OPENAI from "@/assets/images/icons/autres/openai.svg";
+
+const toolGroups = [
+  {
+    category: "Hébergement & CI/CD",
+    items: [
+      { name: "Vercel", icon: VERCEL.src },
+      { name: "Netlify", icon: NETLIFY.src },
+      { name: "Firebase", icon: FIREBASE.src },
+      { name: "Docker", icon: DOCKER.src },
+    ],
+  },
+  {
+    category: "Gestion & Productivité",
+    items: [
+      { name: "Asana", icon: ASANA.src },
+      { name: "WordPress", icon: WORDPESS.src },
+      { name: "OpenAI", icon: OPENAI.src },
+    ],
+  },
+];
+
+const practices = [
+  "Git, GitHub & GitLab",
+  "Responsive design",
+  "Clean code & SOLID",
+  "Testing (Jest, Cypress)",
+  "SEO & Performance",
+  "Scrum & Agile",
+  "REST API design",
+  "Documentation technique",
+];
+
 function Autres() {
-    const tools = [
-        {
-          name: "ASANA",
-          icon: ASANA.src,
-        },
-        {
-          name: "DOCKER",
-          icon: DOCKER.src,
-        },
-        {
-          name: "FIREBASE",
-          icon: FIREBASE.src,
-        },
-        {
-          name: "NETLIFY",
-          icon: NETLIFY.src,
-        },
-        {
-          name: "VERCEL",
-          icon: VERCEL.src,
-        },
-        {
-          name: "WORDPESS",
-          icon: WORDPESS.src,
-        },
-        {
-          name: "OPENAI",
-          icon: OPENAI.src,
-        },
-        
-      ];
-    
-   
-      const performance = [
-          {
-            title: "Hosting",
-            niv: 30,
-          },
-          {
-            title: "Web mastering WordPress",
-            niv: 60,
-          },
-          {
-            title: "Community manager",
-            niv: 20,
-          },
-          {
-            title: "Scrum mastering",
-            niv: 40,
-          },
-          {
-            title: "Devellopement Backend",
-            niv: 40,
-          },
-          {
-            title: "Graphisme",
-            niv: 40,
-          },
-        ];
-        
-    
-      return (
-        <div className=" flex flex-col 2xl:space-y-10 py-3 2xl:py-10">
-          <div className=" grid lg:grid-cols-2 gap-y-5 lg:gap-x-20 mb-10">
-            <div className="flex flex-col items-start space-y-5  ">
-            <BandeTexteAnimation
-              whiteBar
-              className="text-2xl font-bold"
-              text="Description"
-            />
-              <TypingAnimation
-                duration={3}
-                className="text-base"
-                text="Même en tant que développeur, j'ai eu l'occasion d'experimenté d'autres métiers du web. Au-delà de mes compétences de base en développement, j'ai été amené à toucher à différents domaines connexes. Par exemple, j'ai pu m'intéresser à la conception d'interfaces utilisateur (UI) et à l'expérience utilisateur (UX), en cherchant à comprendre comment créer des interfaces attrayantes et intuitives. J'ai également pu acquérir des connaissances en matière de gestion de projet, de tests et d'optimisation des performances pour garantir des applications web de haute qualité. Cette diversité de compétences m'a permis d'avoir une vision plus complète du processus de développement web et d'être plus polyvalent dans mon travail."
-              />
-            </div>
-            <div className="flex flex-col items-start space-y-5 ">
-              <BandeTexteAnimation
-                whiteBar
-                className="text-2xl font-bold"
-                text="Autres Aptitudes"
-              />
-              <div className="flex flex-col w-full space-y-4">
-                {performance.map((item, index) => (
-                  <div className="flex flex-col space-y-2 " key={index}>
-                    <div className="overflow-hidden">
-                      <motion.div
-                        initial={{ y: -20 }}
-                        animate={{ y: 0, transition: { delay: index * 0.5 } }}
-                      >
-                        <motion.span className="uppercase font-semibold">
-                          {item.title}
-                        </motion.span>
-                      </motion.div>
-                    </div>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{
-                        width: `${item.niv}%`,
-                        transition: { delay: index * 0.5 },
-                      }}
-                      className={`bg-white rounded h-2`}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-  
-          {/* Framework */}
-    
-          <div>
-            <motion.h4
-              initial={{ y: -20 }}
-              animate={{ y: 0 }}
-              className="text-center text-2xl font-bold uppercase"
-            >
-              Autres outils
-            </motion.h4>
-            <div className="grid gap-10 mt-10 lg:mt-0 place-items-center grid-cols-2 md:grid-cols-3 lg:flex items-center justify-center my-3 2xl:my-10 lg:space-x-10">
-              {tools.map((tools, index) => (
+  return (
+    <div className="flex flex-col space-y-10 py-4 2xl:py-10">
+      <div className="grid lg:grid-cols-2 gap-y-8 lg:gap-x-16">
+        {toolGroups.map((group, gi) => (
+          <div key={gi} className="flex flex-col items-start space-y-4">
+            <h3 className="font-heading text-lg font-bold text-white/90">{group.category}</h3>
+            <div className="grid grid-cols-2 gap-3 w-full">
+              {group.items.map((tool, index) => (
                 <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1, transition: { delay: index * 0.3 } }}
-                  className="h-20 w-20"
                   key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08, duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                  className="flex items-center space-x-3 bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-colors duration-200"
                 >
-                  <img
-                    className="object-contain w-full h-full hover:scale-125 duration-300"
-                    src={tools.icon}
-                    alt={tools.name}
-                  />
+                  <img src={tool.icon} alt={tool.name} className="w-8 h-8 object-contain" loading="lazy" />
+                  <span className="font-heading text-sm font-medium">{tool.name}</span>
                 </motion.div>
               ))}
             </div>
           </div>
-    
-     
+        ))}
+      </div>
+
+      <div>
+        <h3 className="font-heading text-lg font-bold text-white/90 mb-4">Bonnes pratiques</h3>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {practices.map((practice, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05, duration: 0.3 }}
+              className="bg-white/5 rounded-lg px-3 py-2 text-center"
+            >
+              <span className="font-body text-xs text-white/70">{practice}</span>
+            </motion.div>
+          ))}
         </div>
-      );
+      </div>
+    </div>
+  );
 }
 
-export default Autres
+export default Autres;

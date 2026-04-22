@@ -1,13 +1,26 @@
 export const works = [
   {
     fonction: "Développeur Web",
-    entreprise: "WiASSUR",
-    date: "Septembre 2023 - Présent",
+    entreprise: "Joonapay",
+    date: "Mars 2026 - Présent",
     description:
-      "En septembre 2023, j'ai intégré une nouvelle entreprise, une insurtech précisément. Depuis mon arrivée, j'apprécie énormément l'environnement de travail stimulant et innovant. Chaque jour, j'ai l'opportunité d'apprendre énormément, tant au niveau professionnel que personnel. L'équipe, composée de professionnels talentueux et passionnés, m'encourage à repousser mes limites et à développer de nouvelles compétences. Cette expérience enrichissante me motive à contribuer activement aux succès futurs de l'entreprise.",
+      "Développement et maintenance de l'application web pour l'entreprise. Conception d'une application responsive permettant aux utilisateurs de suivre en temps réel l'évolution de leur commande. Collaboration avec l'équipe design pour améliorer l'expérience utilisateur.",
     tasks: [
-      "Ajout de fonctionnalités et gestion du bon fonctionnement du back-office.",
-      "Conception et gestion du bon fonctionnement du site web.",
+      "Développement et maintenance de l'application web.",
+      "Application de suivi de commandes en temps réel.",
+      "Collaboration avec l'équipe design pour l'UX.",
+    ],
+  },
+  {
+    fonction: "Développeur Fullstack",
+    entreprise: "WiASSUR",
+    date: "Septembre 2023 - Mars 2026",
+    description:
+      "Développement de nouvelles fonctionnalités pour améliorer l'expérience utilisateur. Formation des nouveaux membres de l'équipe sur les bonnes pratiques de développement. Collaboration avec l'équipe de design pour intégrer de nouvelles interfaces utilisateur.",
+    tasks: [
+      "Développement de fonctionnalités et gestion du back-office.",
+      "Formation de l'équipe sur les bonnes pratiques.",
+      "Intégration des interfaces UI/UX avec l'équipe design.",
       "Collaboration sur tous les services IT de l'entreprise.",
     ],
   },
@@ -16,23 +29,23 @@ export const works = [
     entreprise: "Magma-tech",
     date: "Février 2023 - Septembre 2023",
     description:
-      "En février 2023, j'ai rejoint avec enthousiasme une fintech novatrice et dynamique. Avec une équipe passionnée, nous relevions constamment des défis pour atteindre l'excellence. J'ai beaucoup apprécié la collaboration avec cette entreprise et j'ai énormément appris de leur part. Convaincu que notre collaboration nous mènerait vers de nouveaux succès, je me suis démené pour apporter mon expertise afin de soutenir nos projets et la croissance de l'entreprise.",
+      "Collaboration avec l'équipe de design pour améliorer l'expérience utilisateur. Participation à la migration de l'application mobile vers une nouvelle technologie. Mise en place d'un processus d'optimisation SEO, augmentant le trafic organique de 40%.",
     tasks: [
-      "Conception d'une application mobile pour l'entreprise.",
-      "Conception et collaboration sur différentes applications au niveau frontal de l'entreprise.",
-      "Conception et supervision du site de l'entreprise.",
+      "Amélioration UX des applications web.",
+      "Migration de l'application mobile.",
+      "Optimisation SEO (+40% trafic organique).",
     ],
   },
   {
     fonction: "Développeur Frontend",
     entreprise: "ADGroupe",
-    date: "Mars 2021 - Fin Janvier 2023",
+    date: "Mars 2021 - Janvier 2023",
     description:
-      "En tant que responsable du département Développement Frontend, j'ai supervisé la réalisation des applications clientes et des sites web. En 2021, j'ai rejoint l'équipe dynamique d'ADGroupe, où nous avons relevé des défis stimulants et contribué à la croissance de l'entreprise. J'étais déterminé à continuer à apporter ma contribution pour assurer notre succès commun.",
+      "Responsable du département Frontend. Collaboration avec l'équipe design, développement de fonctionnalités interactives, et formation des nouveaux membres de l'équipe.",
     tasks: [
-      "Collaboration à la conception du site de l'entreprise.",
-      "Collaboration et supervision de l'équipe frontend pour une application de gestion notariale.",
-      "Collaboration pour la conception d'une application pour la visite médicale.",
+      "Conception du site de l'entreprise.",
+      "Supervision de l'équipe frontend pour une app de gestion notariale.",
+      "Formation et encadrement des nouveaux développeurs.",
     ],
   },
   {
@@ -40,24 +53,23 @@ export const works = [
     entreprise: "Allo Docteur PC",
     date: "Juillet 2020 - Octobre 2020",
     description:
-      "Effectuer un stage au sein de cette startup a marqué ma première expérience dans le monde professionnel de l'informatique. J'ai eu l'occasion de découvrir différentes facettes de ce secteur et de relever plusieurs défis pédagogiques qui m'ont permis d'enrichir mes compétences et ma compréhension de ce domaine passionnant.",
-    tasks: ["Conception d'un site de vente de matériels."],
+      "Première expérience professionnelle dans le monde de l'informatique au sein d'une startup. Découverte de différentes facettes du secteur et défis pédagogiques enrichissants.",
+    tasks: [
+      "Conception d'un site e-commerce de vente de matériels.",
+    ],
   },
   {
     fonction: "Développeur Web Freelance",
-    entreprise: "Tiers",
+    entreprise: "Indépendant",
     date: "En permanence",
     description:
-      "Dans le cadre de mon travail, je suis amené à concevoir des sites et des applications en fonction des besoins spécifiques de nos clients ou projets. Cette responsabilité me permet de mettre en pratique mes compétences et de développer des solutions sur mesure pour répondre aux exigences de chaque situation.",
+      "Conception de sites et applications sur mesure pour répondre aux besoins spécifiques de chaque client. Produits digitaux allant du site vitrine à la plateforme SaaS complète.",
     tasks: [
-      "Conception d'une plateforme web pour la gestion d'une église.",
-      "Collaboration sur le front-end pour la création d'un site de recherche d'assurance.",
-      "Design UI/UX d'une application de réservations d'hôtel.",
-    
-        "Gestion de la responsivité d'une application web servant de back-office.",
-        "Design UI/UX d'une application de gestion de clients dans le cadre d'un accompagnement physique.",
-      
-      
+      "Plateforme e-commerce avec chatbot IA et paiements mobile money.",
+      "Application mobile de gestion de budget (Pockii).",
+      "CRM modulaire inspiré de Pipedrive.",
+      "Plateforme web de gestion d'église.",
+      "Site de recherche d'assurance.",
     ],
   },
 ];

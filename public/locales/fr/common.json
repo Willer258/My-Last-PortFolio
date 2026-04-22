@@ -3,35 +3,45 @@
     "home": "Accueil",
     "about": "À propos",
     "skills": "Compétences",
+    "projects": "Projets",
     "works": "Expériences",
     "contact": "Contact"
   },
   "home": {
     "greetings": ["Bonjour", "Salut", "Hey", "Coucou", "Bienvenue"],
     "name": "Wilfried Houinlindjonon",
-    "title": "Designer UI-UX/Concepteur",
-    "roles": ["de site web", "d'application web et mobile."],
-    "description": "Je suis un développeur basé à Abidjan CI, spécialisé dans la construction de sites Web d'exception, applications mobiles, et tout le reste.",
+    "title": "Développeur Full-stack",
+    "roles": ["d'applications web", "d'applications mobiles", "de produits digitaux"],
+    "description": "Développeur web full-stack passionné avec plus de 3 ans d'expérience. J'interviens aussi bien côté front-end (React, Next.js, Flutter) que back-end (Symfony, Node.js). Basé à Abidjan, je conçois des produits digitaux robustes, modernes et scalables.",
     "contact": "Prendre contact",
     "downloadCV": "Télécharger mon CV"
   },
   "about": {
     "title": "A propos de moi",
-    "intro": "Bonjour, je suis Houinlindjonon Alain Wilfried, développeur frontend et designer UI/UX à votre service.",
-    "paragraph1": "En tant que développeur frontend, je m'engage à respecter des critères stricts tels que la conception, l'optimisation, l'amélioration et la maintenance de sites ou d'applications de qualité, tout en veillant au bon fonctionnement des mécaniques (API) qui leur sont destinées. Fort de mon expérience et des nombreux défis que j'ai relevés, je suis convaincu de pouvoir répondre à ces exigences avec succès.",
-    "paragraph2": "En tant que designer UI/UX, j'ai commencé à travailler sur des projets de conception de sites web et d'applications mobiles depuis peu. Je suis convaincu que mes compétences en matière de design me permettront de créer des interfaces utilisateur conviviales, intuitives et esthétiquement agréables.",
+    "intro": "Bonjour, je suis Houinlindjonon Alain Wilfried, développeur full-stack passionné et créatif.",
+    "paragraph1": "J'interviens aussi bien côté front-end (React, Next.js, Vue.js, Flutter) que back-end (PHP, Symfony, MySQL, PostgreSQL). Engagé et orienté utilisateur, je conçois des produits digitaux robustes, modernes et scalables.",
+    "paragraph2": "Avec plus de 3 ans d'expérience en entreprise et en freelance, j'ai développé des applications web, mobiles et des plateformes SaaS. Je maîtrise les outils DevOps (Docker, Git, CI/CD) et les méthodologies agiles (Scrum).",
     "paragraph3": "Je suis résident de la Côte d'Ivoire, plus précisément d'Abidjan, et je suis en mesure de vous offrir une plateforme agréable, simple et optimisée qui répondra à toutes vos exigences, que vous soyez basé en Côte d'Ivoire ou n'importe où dans le monde.",
     "imageAlt": "Houinlindjonon Alain Wilfried"
   },
   "skills": {
-    "title": "Mes skills",
-    "webDev": "Développement web",
-    "mobileDev": "Développement mobile",
-    "design": "Design UI/UX",
-    "others": "Autres"
+    "title": "Mes compétences",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "mobileDev": "Mobile",
+    "design": "Design",
+    "tools": "Outils & DevOps"
+  },
+  "projects": {
+    "title": "Mes projets",
+    "subtitle": "Applications web, mobiles et fullstack que j'ai conçues et développées, en entreprise comme en indépendant.",
+    "otherProjects": "Autres réalisations",
+    "projects": "projets au total",
+    "moreThan": "Plus de {{count}} projets conçus"
   },
   "works": {
-    "title": "MON PARCOUR PRO"
+    "title": "Mon parcours pro",
+    "activities": "Activités"
   },
   "contact": {
     "title": "Contact",
