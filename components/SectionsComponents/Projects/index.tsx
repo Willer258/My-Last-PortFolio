@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { BandeTexteAnimation } from "@/components/Shared/TyperText";
 import ScrollReveal from "@/components/Shared/ScrollReveal";
 import StickyProjectCard from "./StickyProjectCard";
 import SmallProjectCard from "./SmallProjectCard";
-import { projects } from "@/utils/projects";
+import { projects, IProject } from "@/utils/projects";
 import { useTranslation } from 'next-i18next';
 
 const Projects = () => {
   const { t } = useTranslation('common');
 
-  const featured = projects.filter((p) => p.featured);
-  const others = projects.filter((p) => !p.featured);
+  const projectItems = t('projects.items', { returnObjects: true }) as Array<{ title: string; description: string }>;
+  const mergedProjects: IProject[] = useMemo(
+    () => projects.map((p, i) => ({ ...p, title: projectItems[i]?.title ?? '', description: projectItems[i]?.description ?? '' })),
+    [projectItems]
+  );
+
+  const featured = mergedProjects.filter((p) => p.featured);
+  const others = mergedProjects.filter((p) => !p.featured);
 
   return (
     <section className="py-12 md:py-20" id="projects">
@@ -62,7 +68,7 @@ const Projects = () => {
 
         <div className="mt-10 text-center">
           <span className="font-body text-sm text-ink-faint">
-            {t('projects.moreThan', { count: projects.length })}
+            {t('projects.moreThan', { count: mergedProjects.length })}
           </span>
         </div>
       </div>

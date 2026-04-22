@@ -14,7 +14,9 @@
     "roles": ["d'applications web", "d'applications mobiles", "de produits digitaux"],
     "description": "Développeur web full-stack passionné avec plus de 3 ans d'expérience. J'interviens aussi bien côté front-end (React, Next.js, Flutter) que back-end (Symfony, Node.js). Basé à Abidjan, je conçois des produits digitaux robustes, modernes et scalables.",
     "contact": "Prendre contact",
-    "downloadCV": "Télécharger mon CV"
+    "downloadCV": "Télécharger mon CV",
+    "scroll": "Scroll",
+    "cvAriaLabel": "Télécharger mon CV (PDF, nouvel onglet)"
   },
   "about": {
     "title": "A propos de moi",
@@ -30,18 +32,164 @@
     "backend": "Backend",
     "mobileDev": "Mobile",
     "design": "Design",
-    "tools": "Outils & DevOps"
+    "tools": "Outils & DevOps",
+    "frontendDesc": "Interfaces modernes, réactives et performantes. Du composant au déploiement.",
+    "backendDesc": "API REST, Doctrine ORM, MySQL & PostgreSQL.",
+    "toolsLabel": "Outils & Pratiques"
   },
   "projects": {
     "title": "Mes projets",
     "subtitle": "Applications web, mobiles et fullstack que j'ai conçues et développées, en entreprise comme en indépendant.",
     "otherProjects": "Autres réalisations",
     "projects": "projets au total",
-    "moreThan": "Plus de {{count}} projets conçus"
+    "moreThan": "Plus de {{count}} projets conçus",
+    "viewProject": "Voir le projet",
+    "viewAriaLabel": "Voir {{title}}",
+    "items": [
+      {
+        "title": "Plateforme E-commerce",
+        "description": "Plateforme e-commerce complète avec backoffice admin, chatbot IA, paiements mobile money (Orange/Wave), architecture monorepo et API REST."
+      },
+      {
+        "title": "Pockii",
+        "description": "Application mobile de gestion de budget en FCFA. Base de données locale chiffrée, interface en français, suivi des entrées/sorties et vision financière long terme."
+      },
+      {
+        "title": "CRM Modulaire",
+        "description": "Outil de gestion client inspiré de Pipedrive. Pipeline commercial, suivi des prospects, tâches, rappels et fiches clients complètes."
+      },
+      {
+        "title": "Assistant événementiel",
+        "description": "Outil intelligent pour événements. Accueil participants via QR code, chronologie, jeux interactifs, avis utilisateurs et panneau admin de configuration."
+      },
+      {
+        "title": "ImmoFacile",
+        "description": "Solution de gestion locative en Côte d'Ivoire. App propriétaire, app locataire, paiements mobile money, notifications WhatsApp, gestion loyers et contrats."
+      },
+      {
+        "title": "Site web WiASSUR",
+        "description": "Site vitrine de la compagnie d'assurance. Interface moderne avec animations et formulaires de souscription."
+      },
+      {
+        "title": "Application Fintech",
+        "description": "Application mobile cross-platform pour une fintech. Gestion de paiements, notifications et interface utilisateur fluide."
+      },
+      {
+        "title": "Site web Magma",
+        "description": "Site vitrine et plateforme web de la fintech. Présentation des services de transfert d'argent et de paiement."
+      },
+      {
+        "title": "Site web ADGroupe",
+        "description": "Site vitrine de l'entreprise de services numériques."
+      },
+      {
+        "title": "Comparateur d'assurances",
+        "description": "Plateforme de comparaison d'offres d'assurance. Filtres par catégorie (Auto, Santé, Voyage, Habitation) et résultats en temps réel."
+      },
+      {
+        "title": "Plateforme gestion d'église",
+        "description": "Plateforme web pour la gestion des membres, événements et finances d'une communauté religieuse."
+      }
+    ]
   },
   "works": {
     "title": "Mon parcours pro",
-    "activities": "Activités"
+    "activities": "Activités",
+    "items": [
+      {
+        "fonction": "Développeur Web",
+        "entreprise": "Joonapay",
+        "date": "Mars 2026 - Présent",
+        "description": "Développement et maintenance de l'application web pour l'entreprise. Conception d'une application responsive permettant aux utilisateurs de suivre en temps réel l'évolution de leur commande. Collaboration avec l'équipe design pour améliorer l'expérience utilisateur.",
+        "tasks": [
+          "Développement et maintenance de l'application web.",
+          "Application de suivi de commandes en temps réel.",
+          "Collaboration avec l'équipe design pour l'UX."
+        ]
+      },
+      {
+        "fonction": "Développeur Fullstack",
+        "entreprise": "WiASSUR",
+        "date": "Septembre 2023 - Mars 2026",
+        "description": "Développement de nouvelles fonctionnalités pour améliorer l'expérience utilisateur. Formation des nouveaux membres de l'équipe sur les bonnes pratiques de développement. Collaboration avec l'équipe de design pour intégrer de nouvelles interfaces utilisateur.",
+        "tasks": [
+          "Développement de fonctionnalités et gestion du back-office.",
+          "Formation de l'équipe sur les bonnes pratiques.",
+          "Intégration des interfaces UI/UX avec l'équipe design.",
+          "Collaboration sur tous les services IT de l'entreprise."
+        ]
+      },
+      {
+        "fonction": "Développeur Frontend",
+        "entreprise": "Magma-tech",
+        "date": "Février 2023 - Septembre 2023",
+        "description": "Collaboration avec l'équipe de design pour améliorer l'expérience utilisateur. Participation à la migration de l'application mobile vers une nouvelle technologie. Mise en place d'un processus d'optimisation SEO, augmentant le trafic organique de 40%.",
+        "tasks": [
+          "Amélioration UX des applications web.",
+          "Migration de l'application mobile.",
+          "Optimisation SEO (+40% trafic organique)."
+        ]
+      },
+      {
+        "fonction": "Développeur Frontend",
+        "entreprise": "ADGroupe",
+        "date": "Mars 2021 - Janvier 2023",
+        "description": "Responsable du département Frontend. Collaboration avec l'équipe design, développement de fonctionnalités interactives, et formation des nouveaux membres de l'équipe.",
+        "tasks": [
+          "Conception du site de l'entreprise.",
+          "Supervision de l'équipe frontend pour une app de gestion notariale.",
+          "Formation et encadrement des nouveaux développeurs."
+        ]
+      },
+      {
+        "fonction": "Développeur Web Stagiaire",
+        "entreprise": "Allo Docteur PC",
+        "date": "Juillet 2020 - Octobre 2020",
+        "description": "Première expérience professionnelle dans le monde de l'informatique au sein d'une startup. Découverte de différentes facettes du secteur et défis pédagogiques enrichissants.",
+        "tasks": [
+          "Conception d'un site e-commerce de vente de matériels."
+        ]
+      },
+      {
+        "fonction": "Développeur Web Freelance",
+        "entreprise": "Indépendant",
+        "date": "En permanence",
+        "description": "Conception de sites et applications sur mesure pour répondre aux besoins spécifiques de chaque client. Produits digitaux allant du site vitrine à la plateforme SaaS complète.",
+        "tasks": [
+          "Plateforme e-commerce avec chatbot IA et paiements mobile money.",
+          "Application mobile de gestion de budget (Pockii).",
+          "CRM modulaire inspiré de Pipedrive.",
+          "Plateforme web de gestion d'église.",
+          "Site de recherche d'assurance."
+        ]
+      }
+    ]
+  },
+  "loading": {
+    "quotes": [
+      "Le contenu est roi — Bill Gates",
+      "Si votre application est lente, personne ne l'utilisera — Mark Zuckerberg",
+      "Le design n'est pas ce à quoi cela ressemble, c'est comment cela fonctionne — Steve Jobs",
+      "L'expérience utilisateur est tout — Don Norman",
+      "Les frameworks viennent et partent, mais les compétences fondamentales restent — Chris Coyier",
+      "Le design est un plan pour arriver à un objectif — Mike Monteiro",
+      "Commencez par résoudre le problème, puis écrivez le code — John Johnson",
+      "Tout ce qui est conçu pour tout le monde finit par ne satisfaire personne — Paul Rand",
+      "Les bonnes pratiques ne sont pas universelles, mais contextuelles — Luke Wroblewski",
+      "Les développeurs web sont les artisans du 21ème siècle — Chris Coyier",
+      "Le mobile est l'avenir — Eric Schmidt",
+      "Le développement est un art autant qu'une science — Dan Brown",
+      "Le mobile est en train de changer le monde — Mary Meeker",
+      "Un site web devrait être construit pour les utilisateurs, pas pour les concepteurs — Jesse James Garrett",
+      "Le design, c'est ce qui relie la fonction à l'apparence — Steve Jobs",
+      "Un bon design est évident. Un excellent design est transparent — Joe Sparano",
+      "Le développement web est un marathon, pas un sprint — Chris Coyier",
+      "Le design ne doit pas seulement être fonctionnel, il doit aussi être plaisant — Raymond Loewy",
+      "La qualité de votre code détermine la qualité de votre application — Jason Gorman",
+      "Le design est là pour simplifier les choses, pas les compliquer — Tim Cook",
+      "Les bugs sont des erreurs de design — Tom Cargill",
+      "La simplicité est la sophistication ultime — Leonardo da Vinci"
+    ]
   },
   "contact": {
     "title": "Contact",

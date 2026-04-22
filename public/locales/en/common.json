@@ -14,7 +14,9 @@
     "roles": ["of web applications", "of mobile applications", "of digital products"],
     "description": "Passionate full-stack web developer with 3+ years of experience. I work on both front-end (React, Next.js, Flutter) and back-end (Symfony, Node.js). Based in Abidjan, I build robust, modern and scalable digital products.",
     "contact": "Get in touch",
-    "downloadCV": "Download my CV"
+    "downloadCV": "Download my CV",
+    "scroll": "Scroll",
+    "cvAriaLabel": "Download my CV (PDF, new tab)"
   },
   "about": {
     "title": "About me",
@@ -30,18 +32,164 @@
     "backend": "Backend",
     "mobileDev": "Mobile",
     "design": "Design",
-    "tools": "Tools & DevOps"
+    "tools": "Tools & DevOps",
+    "frontendDesc": "Modern, reactive and performant interfaces. From component to deployment.",
+    "backendDesc": "REST API, Doctrine ORM, MySQL & PostgreSQL.",
+    "toolsLabel": "Tools & Practices"
   },
   "projects": {
     "title": "My projects",
     "subtitle": "Web, mobile and fullstack applications I've designed and built, both in companies and as a freelancer.",
     "otherProjects": "Other work",
     "projects": "projects total",
-    "moreThan": "More than {{count}} projects built"
+    "moreThan": "More than {{count}} projects built",
+    "viewProject": "View project",
+    "viewAriaLabel": "View {{title}}",
+    "items": [
+      {
+        "title": "E-commerce Platform",
+        "description": "Complete e-commerce platform with admin backoffice, AI chatbot, mobile money payments (Orange/Wave), monorepo architecture and REST API."
+      },
+      {
+        "title": "Pockii",
+        "description": "Mobile budget management app in FCFA. Encrypted local database, French interface, income/expense tracking and long-term financial overview."
+      },
+      {
+        "title": "Modular CRM",
+        "description": "Client management tool inspired by Pipedrive. Sales pipeline, prospect tracking, tasks, reminders and complete client profiles."
+      },
+      {
+        "title": "Event Assistant",
+        "description": "Smart event tool. Participant check-in via QR code, timeline, interactive games, user reviews and admin configuration panel."
+      },
+      {
+        "title": "ImmoFacile",
+        "description": "Rental management solution in Ivory Coast. Landlord app, tenant app, mobile money payments, WhatsApp notifications, rent and contract management."
+      },
+      {
+        "title": "WiASSUR Website",
+        "description": "Insurance company showcase website. Modern interface with animations and subscription forms."
+      },
+      {
+        "title": "Fintech App",
+        "description": "Cross-platform mobile app for a fintech. Payment management, notifications and smooth user interface."
+      },
+      {
+        "title": "Magma Website",
+        "description": "Fintech showcase and web platform. Presentation of money transfer and payment services."
+      },
+      {
+        "title": "ADGroupe Website",
+        "description": "Showcase website for the digital services company."
+      },
+      {
+        "title": "Insurance Comparator",
+        "description": "Insurance offer comparison platform. Filters by category (Auto, Health, Travel, Home) and real-time results."
+      },
+      {
+        "title": "Church Management Platform",
+        "description": "Web platform for managing members, events and finances of a religious community."
+      }
+    ]
   },
   "works": {
     "title": "My professional journey",
-    "activities": "Activities"
+    "activities": "Activities",
+    "items": [
+      {
+        "fonction": "Web Developer",
+        "entreprise": "Joonapay",
+        "date": "March 2026 - Present",
+        "description": "Development and maintenance of the company's web application. Design of a responsive application allowing users to track their order status in real time. Collaboration with the design team to improve user experience.",
+        "tasks": [
+          "Development and maintenance of the web application.",
+          "Real-time order tracking application.",
+          "Collaboration with the design team on UX."
+        ]
+      },
+      {
+        "fonction": "Fullstack Developer",
+        "entreprise": "WiASSUR",
+        "date": "September 2023 - March 2026",
+        "description": "Development of new features to improve user experience. Training new team members on development best practices. Collaboration with the design team to integrate new user interfaces.",
+        "tasks": [
+          "Feature development and back-office management.",
+          "Team training on best practices.",
+          "UI/UX interface integration with design team.",
+          "Collaboration across all company IT services."
+        ]
+      },
+      {
+        "fonction": "Frontend Developer",
+        "entreprise": "Magma-tech",
+        "date": "February 2023 - September 2023",
+        "description": "Collaboration with the design team to improve user experience. Participation in mobile app migration to a new technology. Implementation of an SEO optimization process, increasing organic traffic by 40%.",
+        "tasks": [
+          "UX improvement of web applications.",
+          "Mobile application migration.",
+          "SEO optimization (+40% organic traffic)."
+        ]
+      },
+      {
+        "fonction": "Frontend Developer",
+        "entreprise": "ADGroupe",
+        "date": "March 2021 - January 2023",
+        "description": "Head of Frontend department. Collaboration with the design team, development of interactive features, and training of new team members.",
+        "tasks": [
+          "Company website design.",
+          "Frontend team supervision for a notarial management app.",
+          "Training and mentoring of new developers."
+        ]
+      },
+      {
+        "fonction": "Web Developer Intern",
+        "entreprise": "Allo Docteur PC",
+        "date": "July 2020 - October 2020",
+        "description": "First professional experience in the IT industry within a startup. Discovery of different facets of the sector and enriching educational challenges.",
+        "tasks": [
+          "Design of an e-commerce website for hardware sales."
+        ]
+      },
+      {
+        "fonction": "Freelance Web Developer",
+        "entreprise": "Freelance",
+        "date": "Ongoing",
+        "description": "Design of custom websites and applications to meet each client's specific needs. Digital products ranging from showcase sites to complete SaaS platforms.",
+        "tasks": [
+          "E-commerce platform with AI chatbot and mobile money payments.",
+          "Mobile budget management app (Pockii).",
+          "Modular CRM inspired by Pipedrive.",
+          "Church management web platform.",
+          "Insurance search website."
+        ]
+      }
+    ]
+  },
+  "loading": {
+    "quotes": [
+      "Content is king — Bill Gates",
+      "If your app is slow, nobody will use it — Mark Zuckerberg",
+      "Design is not what it looks like, it's how it works — Steve Jobs",
+      "User experience is everything — Don Norman",
+      "Frameworks come and go, but core skills remain — Chris Coyier",
+      "Design is a plan for arriving at a goal — Mike Monteiro",
+      "First solve the problem, then write the code — John Johnson",
+      "Everything designed for everyone ends up satisfying no one — Paul Rand",
+      "Best practices are not universal, they are contextual — Luke Wroblewski",
+      "Web developers are the craftsmen of the 21st century — Chris Coyier",
+      "Mobile is the future — Eric Schmidt",
+      "Development is as much an art as it is a science — Dan Brown",
+      "Mobile is changing the world — Mary Meeker",
+      "A website should be built for users, not for designers — Jesse James Garrett",
+      "Design is what connects function to appearance — Steve Jobs",
+      "Good design is obvious. Great design is transparent — Joe Sparano",
+      "Web development is a marathon, not a sprint — Chris Coyier",
+      "Design should not only be functional, it should also be enjoyable — Raymond Loewy",
+      "The quality of your code determines the quality of your application — Jason Gorman",
+      "Design is there to simplify things, not complicate them — Tim Cook",
+      "Bugs are design errors — Tom Cargill",
+      "Simplicity is the ultimate sophistication — Leonardo da Vinci"
+    ]
   },
   "contact": {
     "title": "Contact",

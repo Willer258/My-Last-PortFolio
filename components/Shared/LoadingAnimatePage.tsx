@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { showProverbs, cursorState } from "@/utils/atomes";
-import { textes } from "@/utils/proverbes";
+import { useTranslation } from "next-i18next";
 import PopInText from "./PopInText";
 
 const GenerativeScene = dynamic(() => import("./GenerativeScene"), { ssr: false });
@@ -11,15 +11,19 @@ const GenerativeScene = dynamic(() => import("./GenerativeScene"), { ssr: false 
 function LoadingAnimatePage() {
   const [, setShowText] = useRecoilState(showProverbs);
   const [, setCursor] = useRecoilState(cursorState);
+  const { t } = useTranslation("common");
   const [assetsReady, setAssetsReady] = useState(false);
   const [sequenceDone, setSequenceDone] = useState(false);
   const [sliding, setSliding] = useState(false);
   const [quote, setQuote] = useState("");
 
   useEffect(() => {
-    setQuote(textes[Math.floor(Math.random() * textes.length)]);
+    const quotes = t("loading.quotes", { returnObjects: true });
+    if (Array.isArray(quotes) && quotes.length > 0) {
+      setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    }
     setCursor("hidden");
-  }, [setCursor]);
+  }, [setCursor, t]);
 
   useEffect(() => {
     const check = async () => {

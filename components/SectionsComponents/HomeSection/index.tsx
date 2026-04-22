@@ -176,7 +176,7 @@ function HomeSection() {
                   href="/cv.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${t('home.downloadCV')} (PDF, nouvel onglet)`}
+                  aria-label={t('home.cvAriaLabel')}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ duration: 0.2 }}
@@ -199,7 +199,7 @@ function HomeSection() {
           animate={ready ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 1.2, ease: easeExpo }}
         >
-          <span className="font-heading text-[9px] tracking-[0.3em] uppercase text-ink-faint">Scroll</span>
+          <span className="font-heading text-[9px] tracking-[0.3em] uppercase text-ink-faint">{t('home.scroll')}</span>
           <motion.div
             className="w-px h-8 bg-ink/20 origin-top"
             animate={ready ? { scaleY: [0, 1, 0] } : {}}

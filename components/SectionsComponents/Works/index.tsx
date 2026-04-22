@@ -1,4 +1,3 @@
-import { works } from "@/utils/works";
 import React, { useState } from "react";
 import Work from "./SubComponents/Work";
 import TimelineDot from "./SubComponents/TimelineDot";
@@ -6,8 +5,17 @@ import { BandeTexteAnimation } from "@/components/Shared/TyperText";
 import ScrollReveal from "@/components/Shared/ScrollReveal";
 import { useTranslation } from "next-i18next";
 
+interface IWorkItem {
+  fonction: string;
+  entreprise: string;
+  date: string;
+  description: string;
+  tasks: string[];
+}
+
 const Works = () => {
   const { t } = useTranslation("common");
+  const works = t("works.items", { returnObjects: true }) as IWorkItem[];
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (

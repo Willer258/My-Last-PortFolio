@@ -6,6 +6,7 @@ const LanguageSwitcher = () => {
   const { locale, pathname, asPath, query } = router;
 
   const changeLanguage = (newLocale: string) => {
+    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000;SameSite=Lax`;
     router.push({ pathname, query }, asPath, { locale: newLocale });
   };
 

@@ -122,7 +122,7 @@ const Skills = () => {
                 React, Next.js & Vue
               </h3>
               <p className="font-body text-sm text-white/50 mt-3 max-w-md leading-relaxed">
-                {"Interfaces modernes, réactives et performantes. Du composant au déploiement."}
+                {t('skills.frontendDesc')}
               </p>
               <IconGrid items={frontend} delay={0.1} />
             </div>
@@ -140,7 +140,7 @@ const Skills = () => {
                 PHP & Symfony
               </h3>
               <p className="font-body text-sm text-white/50 mt-3 leading-relaxed">
-                {"API REST, Doctrine ORM, MySQL & PostgreSQL."}
+                {t('skills.backendDesc')}
               </p>
               <IconGrid items={backend} delay={0.15} />
             </div>
@@ -178,7 +178,7 @@ const Skills = () => {
         <ScrollReveal delay={0.25} className="lg:col-span-6">
           <TiltCard intensity={3} className="relative bg-surface-dark rounded-2xl p-6 md:p-8 h-full min-h-[220px] overflow-hidden">
             <div className="relative z-10">
-              <span className="font-heading text-xs tracking-[0.2em] text-white/30 uppercase">{"Outils & Pratiques"}</span>
+              <span className="font-heading text-xs tracking-[0.2em] text-white/30 uppercase">{t('skills.toolsLabel')}</span>
               <div className="flex flex-col md:flex-row md:gap-10 mt-4">
                 <div>
                   <IconGrid items={devops} delay={0.3} />

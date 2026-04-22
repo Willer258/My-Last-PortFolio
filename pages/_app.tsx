@@ -6,6 +6,7 @@ import { RecoilRoot } from "recoil";
 import { appWithTranslation } from 'next-i18next';
 import { Space_Grotesk, Outfit } from 'next/font/google';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -22,6 +23,17 @@ const outfit = Outfit({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  // Persist locale: redirect to saved locale if it differs from current
+  useEffect(() => {
+    const match = document.cookie.match(/NEXT_LOCALE=(\w+)/);
+    const saved = match?.[1];
+    if (saved && saved !== router.locale && ['fr', 'en'].includes(saved)) {
+      router.replace(router.asPath, router.asPath, { locale: saved });
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     let raf: number;
     (async () => {

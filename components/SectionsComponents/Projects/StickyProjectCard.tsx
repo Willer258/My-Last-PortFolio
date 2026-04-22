@@ -3,6 +3,7 @@ import React from "react";
 import ImageCarousel from "@/components/Shared/ImageCarousel";
 import ProjectMockup from "./ProjectMockup";
 import { IProject } from "@/utils/projects";
+import { useTranslation } from "next-i18next";
 
 const typeLabels: Record<string, string> = {
   web: "Web",
@@ -17,6 +18,7 @@ interface StickyProjectCardProps {
 }
 
 export default function StickyProjectCard({ project, index }: StickyProjectCardProps) {
+  const { t } = useTranslation("common");
   const hasScreenshots = project.screenshots && project.screenshots.length > 0;
 
   return (
@@ -61,7 +63,7 @@ export default function StickyProjectCard({ project, index }: StickyProjectCardP
             className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-white/70 hover:text-white transition-colors pt-2 group"
           >
             <span className="underline underline-offset-4 decoration-white/10 group-hover:decoration-white/40">
-              Voir le projet
+              {t("projects.viewProject")}
             </span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

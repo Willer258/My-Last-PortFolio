@@ -1,5 +1,4 @@
 import { showProverbs } from "@/utils/atomes";
-import { textes } from "@/utils/proverbes";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -23,9 +22,6 @@ export const TypingAnimation = ({
   function genererTexte() {
     if (text) {
       setTexte(text);
-    } else {
-      const index = Math.floor(Math.random() * textes.length);
-      setTexte(textes[index]);
     }
   }
 
