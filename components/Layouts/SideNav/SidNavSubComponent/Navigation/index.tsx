@@ -29,7 +29,7 @@ const Navigation = ({ isMobile }: { isMobile?: boolean }) => {
 
   if (isMobile) {
     return (
-      <ul className="flex justify-around list-none m-0 p-0 py-3 px-2">
+      <ul className="flex justify-around list-none m-0 p-0 py-2.5 sm:py-3 px-1 sm:px-2">
         {navItems.map((item) => {
           const isActive = activeSection === item.section;
           return (
@@ -37,7 +37,7 @@ const Navigation = ({ isMobile }: { isMobile?: boolean }) => {
               <a
                 href={`#${item.section}`}
                 onClick={(e) => scrollToSection(e, item.section)}
-                className={`font-heading text-[10px] tracking-wider transition-colors duration-200 ${
+                className={`font-heading text-[11px] sm:text-xs tracking-wide sm:tracking-wider transition-colors duration-200 py-1 px-1.5 ${
                   isActive ? "text-white font-bold" : "text-white/40"
                 }`}
               >

@@ -8,10 +8,10 @@ const Layout = ({ children }: any) => {
   const [showText] = useRecoilState(showProverbs);
 
   return (
-    <div className="min-h-dvh bg-surface">
+    <div className="min-h-dvh bg-surface overflow-x-hidden">
       <MainHead />
       {!showText && <SideNav />}
-      <main className="pb-16 md:pb-0 md:pl-36">{children}</main>
+      <main className="pb-14 sm:pb-16 md:pb-0 md:pl-36">{children}</main>
     </div>
   );
 };

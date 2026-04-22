@@ -111,6 +111,7 @@ const Profil = () => {
                 tintColor="#FFFFFF"
                 tintStrength={0.1}
                 objectFit="cover"
+                responsive
                 className="w-full h-auto"
               />
             </div>

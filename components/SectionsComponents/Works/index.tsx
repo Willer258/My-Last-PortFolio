@@ -91,11 +91,11 @@ const Works = () => {
       </div>
 
       {/* Mobile: Timeline left border layout */}
-      <div className="lg:hidden border-l-2 border-ink-faint/30 pl-6 space-y-10">
+      <div className="lg:hidden border-l-2 border-ink-faint/30 pl-5 sm:pl-6 space-y-8 sm:space-y-10">
         {works.map((work, index) => (
           <div key={index} className="relative">
             {/* Timeline dot on the border */}
-            <div className="absolute -left-[calc(1.5rem+5px)] top-10">
+            <div className="absolute -left-[calc(1.25rem+5px)] sm:-left-[calc(1.5rem+5px)] top-10">
               <TimelineDot active={index === activeIndex} />
             </div>
             <Work

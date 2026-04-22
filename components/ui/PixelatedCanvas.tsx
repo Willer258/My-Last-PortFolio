@@ -85,8 +85,10 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
 
       canvas.width = Math.max(1, Math.floor(displayWidth * dpr));
       canvas.height = Math.max(1, Math.floor(displayHeight * dpr));
-      canvas.style.width = `${displayWidth}px`;
-      canvas.style.height = `${displayHeight}px`;
+      if (!responsive) {
+        canvas.style.width = `${displayWidth}px`;
+        canvas.style.height = `${displayHeight}px`;
+      }
 
       const ctx = canvas.getContext("2d");
       if (!ctx) return;

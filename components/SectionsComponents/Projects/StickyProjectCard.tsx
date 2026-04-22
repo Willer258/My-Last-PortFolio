@@ -23,8 +23,7 @@ export default function StickyProjectCard({ project, index }: StickyProjectCardP
 
   return (
     <div
-      className="bg-surface-dark grid grid-cols-1 md:grid-cols-2 items-center gap-6 md:gap-12 p-8 md:p-14 lg:p-16 rounded-3xl mb-10 sticky min-h-[400px] md:min-h-[480px]"
-      style={{ top: '120px' }}
+      className="bg-surface-dark grid grid-cols-1 md:grid-cols-2 items-center gap-6 md:gap-12 p-6 sm:p-8 md:p-14 lg:p-16 rounded-2xl sm:rounded-3xl mb-8 md:mb-10 sticky top-20 md:top-[120px] min-h-[350px] sm:min-h-[400px] md:min-h-[480px]"
     >
       {/* Content */}
       <div className="flex flex-col justify-center space-y-5">

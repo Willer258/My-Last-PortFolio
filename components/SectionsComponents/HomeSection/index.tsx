@@ -14,12 +14,25 @@ import { texts as greetingsData } from "@/utils/saluttexte";
 
 const FluidParticles = dynamic(() => import("@/components/Shared/FluidParticles"), { ssr: false });
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+};
+
 const easeExpo = [0.16, 1, 0.3, 1] as const;
 
 function HomeSection() {
   const { t } = useTranslation('common');
   const [showText] = useRecoilState(showProverbs);
   const [ready, setReady] = useState(false);
+  const isMobile = useIsMobile();
   const [greetingIndex, setGreetingIndex] = useState(0);
   const stateText = greetingsData[greetingIndex];
 
@@ -60,13 +73,13 @@ function HomeSection() {
           transition={{ duration: 1.5, ease: easeExpo }}
         >
           <FluidParticles
-            particleDensity={100}
+            particleDensity={isMobile ? 250 : 100}
             particleSize={1}
             particleColor="#555555"
             activeColor="#000000"
-            maxBlastRadius={300}
+            maxBlastRadius={isMobile ? 150 : 300}
             hoverDelay={1}
-            interactionDistance={100}
+            interactionDistance={isMobile ? 60 : 100}
           />
         </motion.div>
 

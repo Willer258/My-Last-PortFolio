@@ -97,7 +97,7 @@ const Skills = () => {
   const { t } = useTranslation('common');
 
   return (
-    <section className="my-12 lg:my-20 max-w-6xl mx-auto px-4 md:px-8" id="skills">
+    <section className="my-12 lg:my-20 max-w-6xl mx-auto px-4 md:px-8 overflow-hidden" id="skills">
       <ScrollReveal>
         <div className="flex lg:justify-center mb-16">
           <div className="section-accent">

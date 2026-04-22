@@ -41,8 +41,8 @@ const Projects = () => {
         </ScrollReveal>
       </div>
 
-      {/* Featured projects — sticky stacking cards, 70% width */}
-      <div className="w-full px-2 md:px-0 md:w-[85%] lg:w-[80%] mx-auto">
+      {/* Featured projects — sticky stacking cards */}
+      <div className="w-full px-3 sm:px-4 md:px-0 md:w-[85%] lg:w-[80%] mx-auto">
         {featured.map((project, index) => (
           <StickyProjectCard key={project.title} project={project} index={index} />
         ))}
@@ -60,7 +60,7 @@ const Projects = () => {
           </div>
         </ScrollReveal>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
           {others.map((project, index) => (
             <SmallProjectCard key={project.title} project={project} index={index} />
           ))}

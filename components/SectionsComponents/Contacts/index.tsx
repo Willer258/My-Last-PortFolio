@@ -21,7 +21,7 @@ const Contacts = () => {
           <GenerativeScene />
         </div>
 
-        <div className="relative z-10 h-full w-full flex py-10 md:py-24 px-6 md:px-12 items-center md:items-start flex-col space-y-12">
+        <div className="relative z-10 h-full w-full flex py-10 md:py-24 px-4 sm:px-6 md:px-12 items-center md:items-start flex-col space-y-10 sm:space-y-12">
           {/* Questions */}
           <ScrollReveal>
             <div className="flex md:items-start items-center space-y-4 flex-col">
@@ -44,7 +44,7 @@ const Contacts = () => {
                 <div className="flex flex-col md:flex-row md:items-center gap-2">
                   <span className="font-heading text-[10px] tracking-[0.2em] uppercase text-white/40 w-20 shrink-0">{t('contact.email')}</span>
                   <a
-                    className="font-body text-sm text-white/80 hover:text-white transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-white/40"
+                    className="font-body text-xs sm:text-sm text-white/80 hover:text-white transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-white/40 break-all sm:break-normal"
                     href="mailto:wilfriedhouinlindjonon91@gmail.com"
                   >
                     wilfriedhouinlindjonon91@gmail.com
