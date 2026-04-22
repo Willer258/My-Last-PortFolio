@@ -1,20 +1,31 @@
 import { cursorState } from "@/utils/atomes";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useRef, useCallback } from "react";
 import { useRecoilState } from "recoil";
+
+// Half-sizes for centering the cursor on the pointer
+const cursorSizes: Record<string, number> = {
+  default: 10,
+  button: 75,
+  blackBg: 10,
+  image: 50,
+  text: 10,
+  hidden: 10,
+};
 
 function CursorComponent() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const posRef = useRef({ x: 0, y: 0 });
   const [cursor] = useRecoilState(cursorState);
+  const halfSize = cursorSizes[cursor] ?? 10;
 
   const updateTransform = useCallback(() => {
     const el = cursorRef.current;
     if (!el) return;
     const { x, y } = posRef.current;
-    // Direct DOM update — no React re-render
-    el.style.transform = `translate3d(${x - 10}px, ${y - 5}px, 0)`;
-  }, []);
+    const half = cursorSizes[cursor] ?? 10;
+    el.style.transform = `translate3d(${x - half}px, ${y - half}px, 0)`;
+  }, [cursor]);
 
   useEffect(() => {
     let rafId: number | null = null;
@@ -39,46 +50,56 @@ function CursorComponent() {
     };
   }, [updateTransform]);
 
+  // Re-center when cursor variant changes (size change)
+  useEffect(() => {
+    updateTransform();
+  }, [cursor, updateTransform]);
+
   const variants: Record<string, any> = {
     default: {
-      scale: 1,
       width: 20,
       height: 20,
       backgroundColor: "white",
       mixBlendMode: "difference",
+      opacity: 1,
+      scale: 1,
     },
     button: {
-      scale: 1,
       width: 150,
       height: 150,
       backgroundColor: "white",
       mixBlendMode: "difference",
+      opacity: 1,
+      scale: 1,
       border: "solid 2px",
     },
     blackBg: {
-      scale: 1,
       width: 20,
       height: 20,
       backgroundColor: "white",
+      opacity: 1,
+      scale: 1,
     },
     image: {
-      scale: 1,
       width: 100,
       height: 100,
       backgroundColor: "transparent",
       mixBlendMode: "difference",
+      opacity: 1,
+      scale: 1,
       border: "solid 2px",
     },
     text: {
-      scale: 1,
       width: 20,
       height: 20,
       backgroundColor: "white",
       mixBlendMode: "difference",
+      opacity: 1,
+      scale: 1,
     },
     hidden: {
-      scale: 0,
       opacity: 0,
+      scale: 0,
     },
   };
 

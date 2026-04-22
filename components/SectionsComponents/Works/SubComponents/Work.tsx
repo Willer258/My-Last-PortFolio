@@ -27,7 +27,7 @@ const Work = ({
 
   return (
     <ScrollReveal delay={0.05}>
-      <AnimateCursorTarget type="button">
+      <AnimateCursorTarget type="text">
         <motion.div
           className="bg-surface-muted rounded-2xl p-8 md:p-10 transition-shadow duration-500 hover:shadow-lg"
           onViewportEnter={() => onInView?.(index)}
