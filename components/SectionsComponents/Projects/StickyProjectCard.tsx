@@ -15,9 +15,10 @@ const typeLabels: Record<string, string> = {
 interface StickyProjectCardProps {
   project: IProject;
   index: number;
+  onOpen: () => void;
 }
 
-export default function StickyProjectCard({ project, index }: StickyProjectCardProps) {
+export default function StickyProjectCard({ project, index, onOpen }: StickyProjectCardProps) {
   const { t } = useTranslation("common");
   const hasScreenshots = project.screenshots && project.screenshots.length > 0;
 
@@ -54,21 +55,32 @@ export default function StickyProjectCard({ project, index }: StickyProjectCardP
           ))}
         </div>
 
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-white/70 hover:text-white transition-colors pt-2 group"
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2">
+          <button
+            type="button"
+            onClick={onOpen}
+            aria-label={t("projects.openCaseStudyAria", { title: project.title })}
+            className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-ink bg-white rounded-full px-5 py-2.5 hover:bg-white/90 transition-colors group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            <span className="underline underline-offset-4 decoration-white/10 group-hover:decoration-white/40">
-              {t("projects.viewProject")}
-            </span>
+            <span>{t("projects.viewCaseStudy")}</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
-        )}
+          </button>
+
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-white/70 hover:text-white transition-colors group"
+            >
+              <span className="underline underline-offset-4 decoration-white/10 group-hover:decoration-white/40">
+                {t("projects.viewProject")}
+              </span>
+            </a>
+          )}
+        </div>
       </div>
 
       {/* Image */}

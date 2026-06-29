@@ -8,10 +8,20 @@
     "contact": "Contact"
   },
   "home": {
-    "greetings": ["Bonjour", "Salut", "Hey", "Coucou", "Bienvenue"],
+    "greetings": [
+      "Bonjour",
+      "Salut",
+      "Hey",
+      "Coucou",
+      "Bienvenue"
+    ],
     "name": "Wilfried Houinlindjonon",
     "title": "Développeur Full-stack",
-    "roles": ["d'applications web", "d'applications mobiles", "de produits digitaux"],
+    "roles": [
+      "d'applications web",
+      "d'applications mobiles",
+      "de produits digitaux"
+    ],
     "description": "Développeur web full-stack passionné avec plus de 3 ans d'expérience. J'interviens aussi bien côté front-end (React, Next.js, Flutter) que back-end (Symfony, Node.js). Basé à Abidjan, je conçois des produits digitaux robustes, modernes et scalables.",
     "contact": "Prendre contact",
     "downloadCV": "Télécharger mon CV",
@@ -86,54 +96,186 @@
     "moreThan": "Plus de {{count}} projets conçus",
     "viewProject": "Voir le projet",
     "viewAriaLabel": "Voir {{title}}",
+    "viewCaseStudy": "Voir l'étude de cas",
+    "openCaseStudyAria": "Ouvrir l'étude de cas : {{title}}",
+    "detail": {
+      "close": "Fermer",
+      "problem": "Le problème",
+      "solution": "La solution",
+      "features": "Fonctionnalités clés",
+      "role": "Mon rôle",
+      "stack": "Stack technique",
+      "preview": "Aperçu",
+      "visit": "Voir en ligne"
+    },
     "items": [
       {
         "title": "Plateforme E-commerce",
-        "description": "Plateforme e-commerce complète avec backoffice admin, chatbot IA, paiements mobile money (Orange/Wave), architecture monorepo et API REST."
+        "description": "Plateforme e-commerce complète avec backoffice admin, chatbot IA, paiements mobile money (Orange/Wave), architecture monorepo et API REST.",
+        "problem": "Vendre en ligne en Côte d'Ivoire alors que les clients achètent surtout via WhatsApp et paient en Mobile Money, sans pour autant laisser de côté ceux qui veulent un vrai site marchand.",
+        "solution": "Une plateforme e-commerce complète en monorepo : site client et back-office admin (Next.js) sur une API REST Symfony. Un chatbot IA prend les commandes directement sur WhatsApp et Telegram, et le checkout invité est pensé mobile-first. Les commandes sont encaissées en Mobile Money (Orange Money, Wave) ou en paiement à la livraison.",
+        "role": "Développeur full-stack — architecture monorepo, API Symfony, front Next.js, intégration du chatbot et des paiements, et déploiement.",
+        "features": [
+          "Site e-commerce + back-office admin dans un seul monorepo",
+          "Chatbot IA de vente sur WhatsApp et Telegram",
+          "Paiement Orange Money, Wave et paiement à la livraison",
+          "Checkout invité, sans création de compte",
+          "Catalogue, commandes et clients pilotés depuis l'admin"
+        ]
       },
       {
         "title": "Pockii",
-        "description": "Application mobile de gestion de budget en FCFA. Base de données locale chiffrée, interface en français, suivi des entrées/sorties et vision financière long terme."
+        "description": "Application mobile de gestion de budget en FCFA. Base de données locale chiffrée, interface en français, suivi des entrées/sorties et vision financière long terme.",
+        "problem": "Beaucoup de personnes en zone FCFA suivent leur budget de tête ou sur un carnet, et se retrouvent à découvert avant la fin du mois.",
+        "solution": "Une application mobile de gestion de budget local-first, pensée pour le FCFA : saisie ultra-rapide des dépenses, répartition automatique selon la règle 50/30/20 et suivi du budget restant en temps réel. Toutes les données restent sur le téléphone, dans une base chiffrée.",
+        "role": "Développeur mobile — conception produit, UX, architecture Flutter/Riverpod et base de données locale chiffrée.",
+        "features": [
+          "Suivi du budget restant en temps réel et saisie rapide des dépenses",
+          "Règle 50/30/20 avec classification automatique des dépenses",
+          "Fonds d'urgence avec objectif et progression visuelle",
+          "Abonnements et dépenses prévues avec rappels",
+          "Données 100% locales, base chiffrée (SQLCipher)"
+        ]
       },
       {
         "title": "CRM Modulaire",
-        "description": "Outil de gestion client inspiré de Pipedrive. Pipeline commercial, suivi des prospects, tâches, rappels et fiches clients complètes."
+        "description": "Outil de gestion client inspiré de Pipedrive. Pipeline commercial, suivi des prospects, tâches, rappels et fiches clients complètes.",
+        "problem": "Les PME B2B jonglent entre tableurs et outils dispersés pour suivre contacts, deals et facturation, sans vue claire de leur pipeline commercial.",
+        "solution": "Un CRM multi-tenant inspiré de Pipedrive, avec une API Symfony sécurisée par JWT et documentée en OpenAPI, et un monorepo frontend (site public + back-office admin en Next.js). Chaque entreprise dispose de son espace de travail isolé, de ses pipelines et de sa facturation SaaS.",
+        "role": "Développeur full-stack — modélisation des données, API Symfony multi-tenant, front Next.js et facturation SaaS.",
+        "features": [
+          "Gestion des contacts, entreprises et deals par pipeline",
+          "Espaces de travail multi-tenant avec rôles et membres",
+          "Facturation SaaS : plans, abonnements, quotas et paiements",
+          "API REST sécurisée JWT, documentée en OpenAPI",
+          "Site public + back-office admin (monorepo Turborepo)"
+        ]
       },
       {
         "title": "Assistant événementiel",
-        "description": "Outil intelligent pour événements. Accueil participants via QR code, chronologie, jeux interactifs, avis utilisateurs et panneau admin de configuration."
+        "description": "Outil intelligent pour événements. Accueil participants via QR code, chronologie, jeux interactifs, avis utilisateurs et panneau admin de configuration.",
+        "problem": "Lors d'un événement, garder les participants engagés et fluidifier l'accueil reste difficile avec des outils papier ou éparpillés.",
+        "solution": "Une application web événementielle où les participants rejoignent l'événement en scannant un QR code, suivent le programme en temps réel, jouent à une chasse au trésor par QR codes et laissent leurs avis. Un panneau admin pilote l'ensemble en direct.",
+        "role": "Développeur web — conception, frontend Next.js animé (Framer Motion) et backend temps réel Firebase/Firestore.",
+        "features": [
+          "Accueil et inscription des participants par QR code",
+          "Programme et chronologie de l'événement en temps réel",
+          "Jeu interactif de chasse au trésor par scan de QR codes",
+          "Avis et retours des participants",
+          "Panneau admin : équipes, jeu en direct, annonces, écran d'affichage"
+        ]
       },
       {
         "title": "Pixeasy",
-        "description": "Solution de gestion locative en Côte d'Ivoire (ex-ImmoFacile). App propriétaire et app locataire, paiements mobile money, notifications WhatsApp, gestion des loyers, quittances et contrats."
+        "description": "Solution de gestion locative en Côte d'Ivoire (ex-ImmoFacile). App propriétaire et app locataire, paiements mobile money, notifications WhatsApp, gestion des loyers, quittances et contrats.",
+        "problem": "En Côte d'Ivoire, les bailleurs gèrent leurs loyers à la main (WhatsApp, carnets) et perdent du temps en relances, oublis et quittances.",
+        "solution": "Une plateforme de gestion locative avec app bailleur et app locataire, connectée à une API Symfony : suivi des loyers, génération de quittances et de contrats, et comptabilité. Connexion par OTP envoyé par SMS, paiements Mobile Money et relances/notifications via WhatsApp.",
+        "role": "Développeur full-stack — API Symfony, app web Next.js, app mobile Flutter (locataire) et intégrations OTP/paiements.",
+        "features": [
+          "Gestion des biens, logements, contrats et locataires",
+          "Suivi des loyers (payé / en retard) et quittances PDF",
+          "Connexion par OTP envoyé par SMS",
+          "Relances et notifications via WhatsApp",
+          "Paiements Mobile Money et comptabilité (charges, versements)"
+        ]
       },
       {
         "title": "Site web WiASSUR",
-        "description": "Site vitrine de la compagnie d'assurance. Interface moderne avec animations et formulaires de souscription."
+        "description": "Site vitrine de la compagnie d'assurance. Interface moderne avec animations et formulaires de souscription.",
+        "problem": "Une compagnie d'assurance avait besoin d'une vitrine en ligne moderne pour présenter ses offres et capter des demandes de souscription.",
+        "solution": "Un site vitrine soigné et animé (Next.js, Framer Motion, Tailwind) qui présente les produits d'assurance, avec des formulaires de souscription et de demande de devis orientant chaque prospect vers le bon contrat.",
+        "role": "Développeur frontend — intégration, animations et formulaires du site vitrine.",
+        "features": [
+          "Présentation des produits et garanties d'assurance",
+          "Formulaires de souscription et de demande de devis",
+          "Animations et transitions soignées (Framer Motion)",
+          "Design responsive mobile-first",
+          "Pages pensées pour la conversion des prospects"
+        ]
       },
       {
         "title": "Application Fintech",
-        "description": "Application mobile cross-platform pour une fintech. Gestion de paiements, notifications et interface utilisateur fluide."
+        "description": "Application mobile cross-platform pour une fintech. Gestion de paiements, notifications et interface utilisateur fluide.",
+        "problem": "Magma-tech avait besoin d'une application mobile pour permettre à ses utilisateurs d'effectuer des paiements et de rester informés en temps réel.",
+        "solution": "Une application mobile fintech (Flutter) connectée à Firebase, offrant des paiements fluides, une authentification sécurisée et des notifications push en temps réel pour le suivi des opérations.",
+        "role": "Développeur mobile — développement Flutter, intégration Firebase et notifications.",
+        "features": [
+          "Paiements et transactions depuis le mobile",
+          "Authentification sécurisée",
+          "Notifications push en temps réel",
+          "Suivi de l'historique des opérations",
+          "Application multiplateforme (Android/iOS) via Flutter"
+        ]
       },
       {
         "title": "Site web Magma",
-        "description": "Site vitrine et plateforme web de la fintech. Présentation des services de transfert d'argent et de paiement."
+        "description": "Site vitrine et plateforme web de la fintech. Présentation des services de transfert d'argent et de paiement.",
+        "problem": "Magma-tech, fintech de transfert d'argent, avait besoin d'un site moderne pour expliquer son service et inspirer confiance.",
+        "solution": "Un site web (React, TypeScript, Tailwind) qui présente l'offre de transfert d'argent de Magma, avec un design clair et responsive mettant en avant la simplicité et la sécurité du service.",
+        "role": "Développeur frontend — intégration React/TypeScript et mise en page responsive.",
+        "features": [
+          "Présentation du service de transfert d'argent",
+          "Design moderne, clair et responsive",
+          "Mise en avant des étapes d'envoi et des frais",
+          "Sections de confiance (sécurité, FAQ, contact)",
+          "Base de code typée TypeScript, maintenable"
+        ]
       },
       {
         "title": "Site web ADGroupe",
-        "description": "Site vitrine de l'entreprise de services numériques."
+        "description": "Site vitrine de l'entreprise de services numériques.",
+        "problem": "Une entreprise de services numériques voulait une vitrine professionnelle pour présenter ses prestations et générer des contacts.",
+        "solution": "Un site vitrine (React, JavaScript, CSS) présentant l'entreprise et ses services numériques, avec une identité visuelle soignée et un parcours simple vers la prise de contact.",
+        "role": "Développeur frontend — conception et intégration du site vitrine.",
+        "features": [
+          "Présentation de l'entreprise et de ses services",
+          "Sections portfolio / prestations",
+          "Formulaire et appels à l'action de contact",
+          "Design responsive",
+          "Interface soignée avec animations"
+        ]
       },
       {
         "title": "Comparateur d'assurances",
-        "description": "Plateforme de comparaison d'offres d'assurance. Filtres par catégorie (Auto, Santé, Voyage, Habitation) et résultats en temps réel."
+        "description": "Plateforme de comparaison d'offres d'assurance. Filtres par catégorie (Auto, Santé, Voyage, Habitation) et résultats en temps réel.",
+        "problem": "Comparer les offres d'assurance (auto, santé, voyage, habitation) est fastidieux : les clients doivent solliciter chaque assureur séparément.",
+        "solution": "Un comparateur en ligne (Vue.js) connecté à une API REST qui interroge plusieurs offres et affiche des résultats en temps réel, permettant à l'utilisateur de comparer et de choisir la formule adaptée en quelques clics.",
+        "role": "Développeur frontend — interface Vue.js et intégration de l'API de comparaison.",
+        "features": [
+          "Comparaison multi-branches : auto, santé, voyage, habitation",
+          "Résultats de devis en temps réel",
+          "Filtres et critères personnalisés",
+          "Interface réactive (Vue.js)",
+          "Connexion à une API REST de tarification"
+        ]
       },
       {
         "title": "Plateforme gestion d'église",
-        "description": "Plateforme web pour la gestion des membres, événements et finances d'une communauté religieuse."
+        "description": "Plateforme web pour la gestion des membres, événements et finances d'une communauté religieuse.",
+        "problem": "Une communauté religieuse gérait ses membres, ses événements et ses finances sur des fichiers dispersés, sans suivi centralisé.",
+        "solution": "Une plateforme web full-stack (Next.js + API Symfony, MySQL) qui centralise la gestion des membres, l'organisation des événements et le suivi des finances de la communauté dans un seul outil.",
+        "role": "Développeur full-stack — API Symfony, front Next.js et modélisation des données.",
+        "features": [
+          "Annuaire et gestion des membres",
+          "Organisation et calendrier des événements",
+          "Suivi des finances (dons, dépenses)",
+          "Tableau de bord d'administration",
+          "Accès sécurisé par rôles"
+        ]
       },
       {
         "title": "Kizuna Pay",
-        "description": "Plateforme de cagnottes en ligne (style GoFundMe) pour la Côte d'Ivoire. Paiements Mobile Money (Orange, MTN, Wave) via JoonaPay, KYC, modération et types de cagnottes : urgence, éducation, mariage, projets associatifs."
+        "description": "Plateforme de cagnottes en ligne (style GoFundMe) pour la Côte d'Ivoire. Paiements Mobile Money (Orange, MTN, Wave) via JoonaPay, KYC, modération et types de cagnottes : urgence, éducation, mariage, projets associatifs.",
+        "problem": "En Côte d'Ivoire, lancer une cagnotte (urgence, mariage, projet associatif) passe surtout par des transferts WhatsApp manuels, sans transparence ni traçabilité.",
+        "solution": "Une plateforme de cagnottes en ligne façon GoFundMe, adaptée au marché ivoirien : création de cagnottes par catégorie et dons en Mobile Money (Orange, MTN, Wave) via JoonaPay, avec vérification d'identité (KYC), modération et partage WhatsApp. Disponible en web et en PWA installable.",
+        "role": "Développeur full-stack — API Symfony, front Next.js/PWA, intégration du paiement JoonaPay, KYC et modération.",
+        "features": [
+          "Création de cagnottes par type (urgence, éducation, mariage, ONG, cadeau, sport)",
+          "Dons en Mobile Money (Orange, MTN, Wave) via JoonaPay",
+          "Vérification d'identité (KYC) et modération des cagnottes",
+          "Versements aux bénéficiaires et suivi des commissions",
+          "Partage WhatsApp et application web installable (PWA)"
+        ]
       }
     ]
   },

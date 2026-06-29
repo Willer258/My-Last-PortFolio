@@ -7,6 +7,11 @@ export interface IProject {
   link?: string;
   screenshots?: string[];
   featured?: boolean;
+  // Case-study content (filled from i18n projects.items[i])
+  problem?: string;
+  solution?: string;
+  role?: string;
+  features?: string[];
 }
 
 export const projects: Omit<IProject, "title" | "description">[] = [
@@ -58,6 +63,8 @@ export const projects: Omit<IProject, "title" | "description">[] = [
       "/projects/pixeasy-1.png",
       "/projects/pixeasy-2.png",
       "/projects/pixeasy-3.png",
+      "/projects/pixeasy-4.png",
+      "/projects/pixeasy-5.png",
     ],
   },
   {
@@ -116,6 +123,8 @@ export const projects: Omit<IProject, "title" | "description">[] = [
       "/projects/kizuna-1.png",
       "/projects/kizuna-2.png",
       "/projects/kizuna-3.png",
+      "/projects/kizuna-4.png",
+      "/projects/kizuna-5.png",
     ],
   },
 ];

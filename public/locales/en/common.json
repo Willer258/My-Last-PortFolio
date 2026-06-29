@@ -8,10 +8,20 @@
     "contact": "Contact"
   },
   "home": {
-    "greetings": ["Hello", "Hi", "Hey", "Welcome", "Greetings"],
+    "greetings": [
+      "Hello",
+      "Hi",
+      "Hey",
+      "Welcome",
+      "Greetings"
+    ],
     "name": "Wilfried Houinlindjonon",
     "title": "Full-stack Developer",
-    "roles": ["of web applications", "of mobile applications", "of digital products"],
+    "roles": [
+      "of web applications",
+      "of mobile applications",
+      "of digital products"
+    ],
     "description": "Passionate full-stack web developer with 3+ years of experience. I work on both front-end (React, Next.js, Flutter) and back-end (Symfony, Node.js). Based in Abidjan, I build robust, modern and scalable digital products.",
     "contact": "Get in touch",
     "downloadCV": "Download my CV",
@@ -86,54 +96,186 @@
     "moreThan": "More than {{count}} projects built",
     "viewProject": "View project",
     "viewAriaLabel": "View {{title}}",
+    "viewCaseStudy": "View case study",
+    "openCaseStudyAria": "Open case study: {{title}}",
+    "detail": {
+      "close": "Close",
+      "problem": "The problem",
+      "solution": "The solution",
+      "features": "Key features",
+      "role": "My role",
+      "stack": "Tech stack",
+      "preview": "Preview",
+      "visit": "Visit live"
+    },
     "items": [
       {
         "title": "E-commerce Platform",
-        "description": "Complete e-commerce platform with admin backoffice, AI chatbot, mobile money payments (Orange/Wave), monorepo architecture and REST API."
+        "description": "Complete e-commerce platform with admin backoffice, AI chatbot, mobile money payments (Orange/Wave), monorepo architecture and REST API.",
+        "problem": "Selling online in Côte d'Ivoire, where customers mostly buy over WhatsApp and pay with Mobile Money, without leaving out those who want a real storefront.",
+        "solution": "A complete monorepo e-commerce platform: a customer storefront and an admin back-office (Next.js) on a Symfony REST API. An AI chatbot takes orders straight from WhatsApp and Telegram, and the guest checkout is built mobile-first. Orders are collected via Mobile Money (Orange Money, Wave) or cash on delivery.",
+        "role": "Full-stack developer — monorepo architecture, Symfony API, Next.js front, chatbot and payment integration, and deployment.",
+        "features": [
+          "Storefront + admin back-office in a single monorepo",
+          "AI sales chatbot on WhatsApp and Telegram",
+          "Orange Money, Wave and cash-on-delivery payments",
+          "Guest checkout, no account required",
+          "Catalog, orders and customers managed from the admin"
+        ]
       },
       {
         "title": "Pockii",
-        "description": "Mobile budget management app in FCFA. Encrypted local database, French interface, income/expense tracking and long-term financial overview."
+        "description": "Mobile budget management app in FCFA. Encrypted local database, French interface, income/expense tracking and long-term financial overview.",
+        "problem": "Many people in the FCFA zone track their budget in their head or on paper and end up overdrawn before the month is out.",
+        "solution": "A local-first mobile budgeting app built for FCFA users: ultra-fast expense entry, automatic 50/30/20 allocation and real-time remaining-budget tracking. All data stays on the phone in an encrypted database.",
+        "role": "Mobile developer — product design, UX, Flutter/Riverpod architecture and the encrypted local database.",
+        "features": [
+          "Real-time remaining budget and fast expense entry",
+          "50/30/20 rule with automatic expense classification",
+          "Emergency fund with a goal and visual progress",
+          "Subscriptions and planned expenses with reminders",
+          "Fully offline data in an encrypted database (SQLCipher)"
+        ]
       },
       {
         "title": "Modular CRM",
-        "description": "Client management tool inspired by Pipedrive. Sales pipeline, prospect tracking, tasks, reminders and complete client profiles."
+        "description": "Client management tool inspired by Pipedrive. Sales pipeline, prospect tracking, tasks, reminders and complete client profiles.",
+        "problem": "B2B SMEs juggle spreadsheets and scattered tools to track contacts, deals and invoicing, with no clear view of their sales pipeline.",
+        "solution": "A multi-tenant CRM inspired by Pipedrive, with a JWT-secured Symfony API documented in OpenAPI and a frontend monorepo (public site + admin back-office in Next.js). Each company gets its own isolated workspace, pipelines and SaaS billing.",
+        "role": "Full-stack developer — data modeling, multi-tenant Symfony API, Next.js front and SaaS billing.",
+        "features": [
+          "Contacts, companies and deals organized by pipeline",
+          "Multi-tenant workspaces with roles and members",
+          "SaaS billing: plans, subscriptions, quotas and payments",
+          "JWT-secured REST API, documented with OpenAPI",
+          "Public site + admin back-office (Turborepo monorepo)"
+        ]
       },
       {
         "title": "Event Assistant",
-        "description": "Smart event tool. Participant check-in via QR code, timeline, interactive games, user reviews and admin configuration panel."
+        "description": "Smart event tool. Participant check-in via QR code, timeline, interactive games, user reviews and admin configuration panel.",
+        "problem": "At an event, keeping attendees engaged and smoothing check-in stays hard with paper or scattered tools.",
+        "solution": "An event web app where attendees join by scanning a QR code, follow the live program, play a QR-code treasure hunt and leave feedback. An admin panel runs everything in real time.",
+        "role": "Web developer — design, animated Next.js frontend (Framer Motion) and real-time Firebase/Firestore backend.",
+        "features": [
+          "Attendee check-in and registration via QR code",
+          "Live event program and timeline",
+          "Interactive QR-code treasure-hunt game",
+          "Attendee reviews and feedback",
+          "Admin panel: teams, live game, announcements, display screen"
+        ]
       },
       {
         "title": "Pixeasy",
-        "description": "Rental management solution in Ivory Coast (formerly ImmoFacile). Landlord and tenant apps, mobile money payments, WhatsApp notifications, rent, receipts and contract management."
+        "description": "Rental management solution in Ivory Coast (formerly ImmoFacile). Landlord and tenant apps, mobile money payments, WhatsApp notifications, rent, receipts and contract management.",
+        "problem": "In Côte d'Ivoire, landlords manage rent by hand (WhatsApp, notebooks) and lose time on reminders, oversights and receipts.",
+        "solution": "A rental-management platform with landlord and tenant apps backed by a Symfony API: rent tracking, receipt and contract generation, and accounting. Sign-in via SMS OTP, Mobile Money payments, and reminders/notifications over WhatsApp.",
+        "role": "Full-stack developer — Symfony API, Next.js web app, Flutter mobile app (tenant) and OTP/payment integrations.",
+        "features": [
+          "Manage properties, units, leases and tenants",
+          "Rent tracking (paid / overdue) and PDF receipts",
+          "Sign-in via SMS OTP",
+          "Reminders and notifications over WhatsApp",
+          "Mobile Money payments and accounting (charges, payouts)"
+        ]
       },
       {
         "title": "WiASSUR Website",
-        "description": "Insurance company showcase website. Modern interface with animations and subscription forms."
+        "description": "Insurance company showcase website. Modern interface with animations and subscription forms.",
+        "problem": "An insurance company needed a modern online showcase to present its offers and capture subscription requests.",
+        "solution": "A polished, animated marketing site (Next.js, Framer Motion, Tailwind) that presents the insurance products, with subscription and quote-request forms that route each prospect to the right policy.",
+        "role": "Frontend developer — build, animations and forms for the marketing site.",
+        "features": [
+          "Showcase of insurance products and coverage",
+          "Subscription and quote-request forms",
+          "Refined animations and transitions (Framer Motion)",
+          "Mobile-first responsive design",
+          "Pages designed to convert prospects"
+        ]
       },
       {
         "title": "Fintech App",
-        "description": "Cross-platform mobile app for a fintech. Payment management, notifications and smooth user interface."
+        "description": "Cross-platform mobile app for a fintech. Payment management, notifications and smooth user interface.",
+        "problem": "Magma-tech needed a mobile app to let its users make payments and stay informed in real time.",
+        "solution": "A fintech mobile app (Flutter) connected to Firebase, offering smooth payments, secure authentication and real-time push notifications to track activity.",
+        "role": "Mobile developer — Flutter development, Firebase integration and notifications.",
+        "features": [
+          "Payments and transactions from mobile",
+          "Secure authentication",
+          "Real-time push notifications",
+          "Transaction history tracking",
+          "Cross-platform app (Android/iOS) with Flutter"
+        ]
       },
       {
         "title": "Magma Website",
-        "description": "Fintech showcase and web platform. Presentation of money transfer and payment services."
+        "description": "Fintech showcase and web platform. Presentation of money transfer and payment services.",
+        "problem": "Magma-tech, a money-transfer fintech, needed a modern site to explain its service and build trust.",
+        "solution": "A website (React, TypeScript, Tailwind) presenting Magma's money-transfer offering, with a clear, responsive design that highlights how simple and secure the service is.",
+        "role": "Frontend developer — React/TypeScript build and responsive layout.",
+        "features": [
+          "Money-transfer service presentation",
+          "Modern, clear and responsive design",
+          "Clear send steps and fees",
+          "Trust sections (security, FAQ, contact)",
+          "Maintainable, typed TypeScript codebase"
+        ]
       },
       {
         "title": "ADGroupe Website",
-        "description": "Showcase website for the digital services company."
+        "description": "Showcase website for the digital services company.",
+        "problem": "A digital-services company wanted a professional showcase to present its offering and generate leads.",
+        "solution": "A marketing site (React, JavaScript, CSS) presenting the company and its digital services, with a polished visual identity and a simple path to getting in touch.",
+        "role": "Frontend developer — design and build of the marketing site.",
+        "features": [
+          "Company and services presentation",
+          "Portfolio / services sections",
+          "Contact form and calls to action",
+          "Responsive design",
+          "Refined UI with animations"
+        ]
       },
       {
         "title": "Insurance Comparator",
-        "description": "Insurance offer comparison platform. Filters by category (Auto, Health, Travel, Home) and real-time results."
+        "description": "Insurance offer comparison platform. Filters by category (Auto, Health, Travel, Home) and real-time results.",
+        "problem": "Comparing insurance offers (auto, health, travel, home) is tedious: customers have to contact each insurer separately.",
+        "solution": "An online comparator (Vue.js) connected to a REST API that queries multiple offers and shows real-time results, letting users compare and pick the right plan in a few clicks.",
+        "role": "Frontend developer — Vue.js interface and comparison-API integration.",
+        "features": [
+          "Multi-line comparison: auto, health, travel, home",
+          "Real-time quote results",
+          "Custom filters and criteria",
+          "Reactive interface (Vue.js)",
+          "Connected to a pricing REST API"
+        ]
       },
       {
         "title": "Church Management Platform",
-        "description": "Web platform for managing members, events and finances of a religious community."
+        "description": "Web platform for managing members, events and finances of a religious community.",
+        "problem": "A religious community managed its members, events and finances across scattered files, with no central tracking.",
+        "solution": "A full-stack web platform (Next.js + Symfony API, MySQL) that centralizes member management, event organization and finance tracking for the community in a single tool.",
+        "role": "Full-stack developer — Symfony API, Next.js front and data modeling.",
+        "features": [
+          "Member directory and management",
+          "Event organization and calendar",
+          "Finance tracking (donations, expenses)",
+          "Admin dashboard",
+          "Secure role-based access"
+        ]
       },
       {
         "title": "Kizuna Pay",
-        "description": "Online crowdfunding platform (GoFundMe-style) for Ivory Coast. Mobile Money payments (Orange, MTN, Wave) via JoonaPay, KYC, moderation and campaign types: emergency, education, weddings, nonprofit projects."
+        "description": "Online crowdfunding platform (GoFundMe-style) for Ivory Coast. Mobile Money payments (Orange, MTN, Wave) via JoonaPay, KYC, moderation and campaign types: emergency, education, weddings, nonprofit projects.",
+        "problem": "In Côte d'Ivoire, running a fundraiser (emergency, wedding, community project) mostly happens through manual WhatsApp transfers, with no transparency or traceability.",
+        "solution": "A GoFundMe-style online fundraising platform tailored to the Ivorian market: create category-based fundraisers and donate via Mobile Money (Orange, MTN, Wave) through JoonaPay, with identity verification (KYC), moderation and WhatsApp sharing. Available as a website and an installable PWA.",
+        "role": "Full-stack developer — Symfony API, Next.js/PWA front, JoonaPay payment integration, KYC and moderation.",
+        "features": [
+          "Create fundraisers by type (emergency, education, wedding, NGO, gift, sport)",
+          "Mobile Money donations (Orange, MTN, Wave) via JoonaPay",
+          "Identity verification (KYC) and fundraiser moderation",
+          "Payouts to beneficiaries and commission tracking",
+          "WhatsApp sharing and installable web app (PWA)"
+        ]
       }
     ]
   },
