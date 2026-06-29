@@ -26,11 +26,19 @@ export const projects: Omit<IProject, "title" | "description">[] = [
     stack: ["Flutter", "Dart", "Drift", "Riverpod"],
     type: "mobile",
     featured: true,
+    screenshots: [
+      "/projects/pockii-1.png",
+      "/projects/pockii-2.png",
+    ],
   },
   {
     stack: ["Next.js", "PHP", "Symfony", "MySQL"],
     type: "fullstack",
     featured: true,
+    screenshots: [
+      "/projects/crm-1.png",
+      "/projects/crm-2.png",
+    ],
   },
   {
     stack: ["Next.js", "Firebase", "Framer Motion"],
@@ -46,6 +54,11 @@ export const projects: Omit<IProject, "title" | "description">[] = [
   {
     stack: ["Flutter", "Node.js", "PostgreSQL"],
     type: "fullstack",
+    screenshots: [
+      "/projects/pixeasy-1.png",
+      "/projects/pixeasy-2.png",
+      "/projects/pixeasy-3.png",
+    ],
   },
   {
     stack: ["Next.js", "Framer Motion", "Tailwind"],
@@ -92,5 +105,17 @@ export const projects: Omit<IProject, "title" | "description">[] = [
   {
     stack: ["Next.js", "PHP", "Symfony", "MySQL"],
     type: "fullstack",
+  },
+
+  // === Kizuna Pay (cagnottes en ligne, Mobile Money via JoonaPay) ===
+  {
+    stack: ["Next.js", "Symfony", "MySQL", "PWA"],
+    type: "fullstack",
+    featured: true,
+    screenshots: [
+      "/projects/kizuna-1.png",
+      "/projects/kizuna-2.png",
+      "/projects/kizuna-3.png",
+    ],
   },
 ];
