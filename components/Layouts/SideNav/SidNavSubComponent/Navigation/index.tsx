@@ -48,7 +48,7 @@ const Navigation = ({ isMobile, onNavigate }: { isMobile?: boolean; onNavigate?:
                 href={`#${item.section}`}
                 onClick={(e) => handleClick(e, item.section)}
                 className={`font-heading text-lg tracking-wide transition-colors duration-200 block py-2.5 ${
-                  isActive ? "text-white font-bold" : "text-white/40"
+                  isActive ? "text-white font-bold" : "text-white/70"
                 }`}
               >
                 <span className="flex items-center gap-3">
@@ -89,7 +89,7 @@ const Navigation = ({ isMobile, onNavigate }: { isMobile?: boolean; onNavigate?:
                 className={`font-heading text-xs tracking-widest uppercase transition-all duration-300 ${
                   isActive
                     ? "text-white font-bold"
-                    : "text-white/30 hover:text-white/70"
+                    : "text-white/60 hover:text-white/90"
                 }`}
               >
                 {t(`nav.${item.key}`)}

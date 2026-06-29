@@ -1,9 +1,11 @@
 import { cursorState } from "@/utils/atomes";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 
 const SPRING_CONFIG = { damping: 25, stiffness: 300, mass: 0.5 };
+// Near-instant follow when the user prefers reduced motion (no visible trailing)
+const REDUCED_SPRING_CONFIG = { damping: 100, stiffness: 2000, mass: 0.1 };
 
 const variants: Record<string, {
   size: number;
@@ -59,16 +61,21 @@ const variants: Record<string, {
 function CursorComponent() {
   const [cursor] = useRecoilState(cursorState);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const spring = prefersReducedMotion ? REDUCED_SPRING_CONFIG : SPRING_CONFIG;
 
   // Spring-driven position for buttery smooth trailing
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
-  const springX = useSpring(mouseX, SPRING_CONFIG);
-  const springY = useSpring(mouseY, SPRING_CONFIG);
+  const springX = useSpring(mouseX, spring);
+  const springY = useSpring(mouseY, spring);
 
   // Spring-driven size
   const size = useMotionValue(variants.default.size);
-  const springSize = useSpring(size, { damping: 20, stiffness: 250 });
+  const springSize = useSpring(
+    size,
+    prefersReducedMotion ? REDUCED_SPRING_CONFIG : { damping: 20, stiffness: 250 }
+  );
 
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {

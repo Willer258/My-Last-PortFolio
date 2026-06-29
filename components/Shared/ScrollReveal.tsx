@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import React from "react";
 
 interface ScrollRevealProps {
@@ -16,18 +16,23 @@ function ScrollReveal({
   direction = "up",
   once = true,
 }: ScrollRevealProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   const offsets = {
     up: { y: 40, x: 0 },
     left: { y: 0, x: -40 },
     right: { y: 0, x: 40 },
   };
 
+  // Reduced motion: drop the translate and just fade in instantly (no delay)
+  const offset = prefersReducedMotion ? { y: 0, x: 0 } : offsets[direction];
+
   return (
     <motion.div
       initial={{
         opacity: 0,
-        y: offsets[direction].y,
-        x: offsets[direction].x,
+        y: offset.y,
+        x: offset.x,
       }}
       whileInView={{
         opacity: 1,
@@ -36,8 +41,8 @@ function ScrollReveal({
       }}
       viewport={{ once, margin: "0px 0px 100px 0px" }}
       transition={{
-        duration: 0.7,
-        delay,
+        duration: prefersReducedMotion ? 0.2 : 0.7,
+        delay: prefersReducedMotion ? 0 : delay,
         ease: [0.25, 1, 0.5, 1],
       }}
       className={className}

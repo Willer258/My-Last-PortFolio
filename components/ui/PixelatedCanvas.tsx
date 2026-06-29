@@ -1,4 +1,5 @@
 import React from "react";
+import { colors } from "@/utils/colors";
 
 type PixelatedCanvasProps = {
   src: string;
@@ -26,6 +27,7 @@ type PixelatedCanvasProps = {
   jitterSpeed?: number;
   fadeOnLeave?: boolean;
   fadeSpeed?: number;
+  ariaLabel?: string;
 };
 
 export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
@@ -35,7 +37,7 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
   cellSize = 3,
   dotScale = 0.9,
   shape = "square",
-  backgroundColor = "#000000",
+  backgroundColor = colors.black,
   grayscale = false,
   className,
   responsive = false,
@@ -54,6 +56,7 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
   jitterSpeed = 4,
   fadeOnLeave = true,
   fadeSpeed = 0.1,
+  ariaLabel,
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const samplesRef = React.useRef<
@@ -312,5 +315,12 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
     return () => { isCancelled = true; if ((img as any)._cleanup) (img as any)._cleanup(); };
   }, [src, width, height, cellSize, dotScale, shape, backgroundColor, grayscale, responsive, dropoutStrength, interactive, distortionStrength, distortionRadius, distortionMode, followSpeed, sampleAverage, tintColor, tintStrength, maxFps, objectFit, jitterStrength, jitterSpeed, fadeOnLeave, fadeSpeed]);
 
-  return <canvas ref={canvasRef} className={className} aria-label="Pixelated rendering of source image" role="img" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className={className}
+      role="img"
+      aria-label={ariaLabel ?? "Pixelated rendering of source image"}
+    />
+  );
 };
