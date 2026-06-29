@@ -19,7 +19,7 @@
     "cvAriaLabel": "Télécharger mon CV (PDF, nouvel onglet)"
   },
   "about": {
-    "title": "A propos de moi",
+    "title": "À propos de moi",
     "intro": "Bonjour, je suis Houinlindjonon Alain Wilfried, développeur full-stack passionné et créatif.",
     "paragraph1": "J'interviens aussi bien côté front-end (React, Next.js, Vue.js, Flutter) que back-end (PHP, Symfony, MySQL, PostgreSQL). Engagé et orienté utilisateur, je conçois des produits digitaux robustes, modernes et scalables.",
     "paragraph2": "Avec plus de 3 ans d'expérience en entreprise et en freelance, j'ai développé des applications web, mobiles et des plateformes SaaS. Je maîtrise les outils DevOps (Docker, Git, CI/CD) et les méthodologies agiles (Scrum).",
@@ -35,7 +35,48 @@
     "tools": "Outils & DevOps",
     "frontendDesc": "Interfaces modernes, réactives et performantes. Du composant au déploiement.",
     "backendDesc": "API REST, Doctrine ORM, MySQL & PostgreSQL.",
-    "toolsLabel": "Outils & Pratiques"
+    "toolsLabel": "Outils & Pratiques",
+    "description": "Description",
+    "performance": "Performances",
+    "arsenal": "Arsenal",
+    "stack": "Stack",
+    "abilities": "Aptitudes",
+    "bestPractices": "Bonnes pratiques",
+    "hostingCategory": "Hébergement & CI/CD",
+    "managementCategory": "Gestion & Productivité",
+    "webDescription": "En tant que développeur web spécialisé en React.js et Next.js, j'ai acquis une solide expertise dans la création d'interfaces utilisateur modernes et réactives. Je suis passionné par le développement web et je m'efforce d'offrir des expériences utilisateur fluides et performantes. Grâce à React.js, je peux facilement organiser et gérer l'état de mes applications, tandis que Next.js me permet de créer des applications évolutives avec des fonctionnalités avancées telles que le rendu côté serveur. Je suis constamment à l'affût des dernières tendances et des meilleures pratiques pour offrir des solutions web de haute qualité.",
+    "backendDescription": "Conception d'API REST avec Symfony, gestion de bases de données relationnelles avec Doctrine ORM, authentification JWT, et architecture en couches pour des applications web robustes et maintenables.",
+    "mobileDescription": "En tant que développeur mobile passionné, je me spécialise dans l'utilisation de Dart et Flutter comme langage et framework de prédilection. Grâce à Flutter, je peux créer des interfaces utilisateur fluides et attrayantes pour les applications mobiles. J'apprécie la polyvalence de Flutter, qui me permet de développer des applications multiplateformes avec une seule base de code. En utilisant Dart, j'écris un code clair et efficace, ce qui facilite le développement d'applications mobiles réactives et performantes. Mon objectif est de créer des applications mobiles de haute qualité en utilisant les dernières tendances et les meilleures pratiques, tout en offrant une expérience utilisateur exceptionnelle.",
+    "designDescription": "En tant que designer UI/UX débutant, je suis curieux et je souhaite découvrir le monde de la conception d'interfaces utilisateur. J'utilise Figma comme outil privilégié pour explorer et expérimenter la création de designs. Je suis ouvert à l'apprentissage des meilleures pratiques en matière de design et d'expérience utilisateur, afin de développer mes compétences dans la conception d'interfaces attrayantes et fonctionnelles. Je suis enthousiaste à l'idée d'explorer ce domaine et de collaborer avec d'autres professionnels pour créer des expériences utilisateur convaincantes. Mon objectif est de développer mon talent et de contribuer à la création d'interfaces intuitives et agréables pour les utilisateurs.",
+    "metrics": {
+      "integration": "Intégration",
+      "apiCalls": "Appels API",
+      "testing": "Tests",
+      "documentation": "Documentation",
+      "improvement": "Amélioration",
+      "maintenance": "Maintenance",
+      "restApi": "API REST",
+      "database": "Base de données",
+      "mvcArchitecture": "Architecture MVC",
+      "security": "Sécurité",
+      "deployment": "Déploiement",
+      "creativity": "Créativité",
+      "uxUnderstanding": "Compréhension UX",
+      "aestheticDesign": "Design esthétique",
+      "collaboration": "Collaboration",
+      "analytics": "Analytique",
+      "technicalKnowledge": "Connaissances techniques"
+    },
+    "practices": [
+      "Git, GitHub & GitLab",
+      "Responsive design",
+      "Clean code & SOLID",
+      "Tests (Jest, Cypress)",
+      "SEO & Performance",
+      "Scrum & Agile",
+      "Conception d'API REST",
+      "Documentation technique"
+    ]
   },
   "projects": {
     "title": "Mes projets",
@@ -63,8 +104,8 @@
         "description": "Outil intelligent pour événements. Accueil participants via QR code, chronologie, jeux interactifs, avis utilisateurs et panneau admin de configuration."
       },
       {
-        "title": "ImmoFacile",
-        "description": "Solution de gestion locative en Côte d'Ivoire. App propriétaire, app locataire, paiements mobile money, notifications WhatsApp, gestion loyers et contrats."
+        "title": "Pixeasy",
+        "description": "Solution de gestion locative en Côte d'Ivoire (ex-ImmoFacile). App propriétaire et app locataire, paiements mobile money, notifications WhatsApp, gestion des loyers, quittances et contrats."
       },
       {
         "title": "Site web WiASSUR",
@@ -89,6 +130,10 @@
       {
         "title": "Plateforme gestion d'église",
         "description": "Plateforme web pour la gestion des membres, événements et finances d'une communauté religieuse."
+      },
+      {
+        "title": "Kizuna Pay",
+        "description": "Plateforme de cagnottes en ligne (style GoFundMe) pour la Côte d'Ivoire. Paiements Mobile Money (Orange, MTN, Wave) via JoonaPay, KYC, modération et types de cagnottes : urgence, éducation, mariage, projets associatifs."
       }
     ]
   },
@@ -197,12 +242,38 @@
     "question2": "Une application web ou mobile ?",
     "question2Mobile1": "Une application web ?",
     "question2Mobile2": "mobile ?",
-    "service": "Je suis a votre service !!!",
+    "service": "Je suis à votre service !",
     "coordinates": "Coordonnées",
     "email": "Email",
     "phone": "Numéro de telephone",
     "location": "Habitat",
-    "locationValue": "Abidjan, Cote d'Ivoire",
+    "locationValue": "Abidjan, Côte d'Ivoire",
     "social": "Liens sociaux"
+  },
+  "a11y": {
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "prevImage": "Image précédente",
+    "nextImage": "Image suivante",
+    "skipToContent": "Aller au contenu",
+    "profilePhotoAlt": "Photo de profil de Wilfried Houinlindjonon, développeur full-stack à Abidjan"
+  },
+  "seo": {
+    "title": "Wilfried Houinlindjonon — Développeur full-stack freelance à Abidjan",
+    "description": "Développeur full-stack freelance basé à Abidjan, Côte d'Ivoire. Je conçois des sites web et des applications web & mobile modernes, performants et sur mesure.",
+    "ogTitle": "Wilfried Houinlindjonon — Développeur full-stack freelance",
+    "ogDescription": "Sites web, applications web et mobile sur mesure. Développeur full-stack freelance à Abidjan, Côte d'Ivoire."
+  },
+  "form": {
+    "heading": "Démarrons votre projet",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "projectType": "Type de projet",
+    "send": "Envoyer",
+    "sending": "Envoi en cours...",
+    "success": "Message envoyé avec succès ! Je vous répondrai très vite.",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "required": "Ce champ est obligatoire"
   }
 }

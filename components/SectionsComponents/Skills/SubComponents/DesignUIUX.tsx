@@ -2,6 +2,7 @@
 import { BandeTexteAnimation, TypingAnimation } from '@/components/Shared/TyperText';
 import { motion } from 'framer-motion';
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 import FIGMA from "@/assets/images/icons/Design/figma.svg";
 import CANVA from "@/assets/images/icons/Design/canva.svg";
 
@@ -11,24 +12,26 @@ const tools = [
 ];
 
 const perf = [
-  { title: "Créativité", niv: 60 },
-  { title: "Compréhension UX", niv: 50 },
-  { title: "Design esthétique", niv: 40 },
-  { title: "Collaboration", niv: 60 },
-  { title: "Analytique", niv: 30 },
-  { title: "Connaissances techniques", niv: 40 },
+  { key: "skills.metrics.creativity", niv: 60 },
+  { key: "skills.metrics.uxUnderstanding", niv: 50 },
+  { key: "skills.metrics.aestheticDesign", niv: 40 },
+  { key: "skills.metrics.collaboration", niv: 60 },
+  { key: "skills.metrics.analytics", niv: 30 },
+  { key: "skills.metrics.technicalKnowledge", niv: 40 },
 ];
 
 function DesignUIUX() {
+  const { t } = useTranslation('common');
+
   return (
     <div className="flex flex-col 2xl:space-y-10 py-4 2xl:py-10">
       <div className="grid lg:grid-cols-2 gap-y-5 lg:gap-x-16 mb-10">
         <div className="flex flex-col items-start space-y-5">
-          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text="Description" />
-          <TypingAnimation duration={3} className="font-body text-sm text-white/80 leading-relaxed" text="En tant que designer UI/UX débutant, je suis curieux et je souhaite découvrir le monde de la conception d'interfaces utilisateur. J'utilise Figma comme outil privilégié pour explorer et expérimenter la création de designs. Je suis ouvert à l'apprentissage des meilleures pratiques en matière de design et d'expérience utilisateur, afin de développer mes compétences dans la conception d'interfaces attrayantes et fonctionnelles. Je suis enthousiaste à l'idée d'explorer ce domaine et de collaborer avec d'autres professionnels pour créer des expériences utilisateur convaincantes. Mon objectif est de développer mon talent et de contribuer à la création d'interfaces intuitives et agréables pour les utilisateurs." />
+          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text={t('skills.description')} />
+          <TypingAnimation duration={3} className="font-body text-sm text-white/80 leading-relaxed" text={t('skills.designDescription')} />
         </div>
         <div className="flex flex-col items-start space-y-5">
-          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text="Performances" />
+          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text={t('skills.performance')} />
           <div className="flex flex-col w-full space-y-4">
             {perf.map((item, index) => (
               <div className="flex flex-col space-y-1.5" key={index}>
@@ -39,7 +42,7 @@ function DesignUIUX() {
                   transition={{ delay: index * 0.1, ease: "easeOut" }}
                   className="font-heading text-xs font-semibold tracking-wider text-white/60"
                 >
-                  {item.title}
+                  {t(item.key)}
                 </motion.span>
                 <div className="w-full bg-white/10 rounded-full h-1.5">
                   <motion.div
@@ -57,7 +60,7 @@ function DesignUIUX() {
       </div>
 
       <div>
-        <h4 className="text-center font-heading text-xl font-bold tracking-wide">Arsenal</h4>
+        <h4 className="text-center font-heading text-xl font-bold tracking-wide">{t('skills.arsenal')}</h4>
         <div className="grid gap-8 mt-8 lg:mt-4 place-items-center grid-cols-2 md:grid-cols-3 lg:flex items-center justify-center my-3 2xl:my-8 lg:space-x-8">
           {tools.map((tool, index) => (
             <motion.div

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useCallback, useEffect, useRef } from "react";
+import { useTranslation } from "next-i18next";
 
 interface ImageCarouselProps {
   images: string[];
@@ -17,6 +18,7 @@ export default function ImageCarousel({
   autoPlay = true,
   interval = 4000,
 }: ImageCarouselProps) {
+  const { t } = useTranslation("common");
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const touchStartX = useRef(0);
@@ -89,7 +91,7 @@ export default function ImageCarousel({
         type="button"
         onClick={prev}
         className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200"
-        aria-label="Image précédente"
+        aria-label={t("a11y.prevImage")}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -99,7 +101,7 @@ export default function ImageCarousel({
         type="button"
         onClick={next}
         className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200"
-        aria-label="Image suivante"
+        aria-label={t("a11y.nextImage")}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

@@ -35,7 +35,48 @@
     "tools": "Tools & DevOps",
     "frontendDesc": "Modern, reactive and performant interfaces. From component to deployment.",
     "backendDesc": "REST API, Doctrine ORM, MySQL & PostgreSQL.",
-    "toolsLabel": "Tools & Practices"
+    "toolsLabel": "Tools & Practices",
+    "description": "Description",
+    "performance": "Performance",
+    "arsenal": "Arsenal",
+    "stack": "Stack",
+    "abilities": "Abilities",
+    "bestPractices": "Best practices",
+    "hostingCategory": "Hosting & CI/CD",
+    "managementCategory": "Management & Productivity",
+    "webDescription": "As a web developer specialized in React.js and Next.js, I've built solid expertise in creating modern, responsive user interfaces. I'm passionate about web development and strive to deliver smooth, high-performance user experiences. With React.js, I can easily structure and manage my applications' state, while Next.js lets me build scalable applications with advanced features such as server-side rendering. I constantly keep up with the latest trends and best practices to deliver high-quality web solutions.",
+    "backendDescription": "Designing REST APIs with Symfony, managing relational databases with Doctrine ORM, JWT authentication, and layered architecture for robust, maintainable web applications.",
+    "mobileDescription": "As a passionate mobile developer, I specialize in Dart and Flutter as my language and framework of choice. With Flutter, I can create smooth and appealing user interfaces for mobile applications. I value Flutter's versatility, which lets me build cross-platform apps from a single codebase. Using Dart, I write clean and efficient code, making it easy to develop responsive, high-performance mobile applications. My goal is to build high-quality mobile apps using the latest trends and best practices, while delivering an exceptional user experience.",
+    "designDescription": "As an aspiring UI/UX designer, I'm curious and eager to explore the world of user interface design. I use Figma as my go-to tool to explore and experiment with creating designs. I'm open to learning best practices in design and user experience, so I can grow my skills in crafting appealing and functional interfaces. I'm excited to explore this field and collaborate with other professionals to create compelling user experiences. My goal is to develop my talent and contribute to building intuitive, enjoyable interfaces for users.",
+    "metrics": {
+      "integration": "Integration",
+      "apiCalls": "API calls",
+      "testing": "Testing",
+      "documentation": "Documentation",
+      "improvement": "Improvement",
+      "maintenance": "Maintenance",
+      "restApi": "REST API",
+      "database": "Database",
+      "mvcArchitecture": "MVC architecture",
+      "security": "Security",
+      "deployment": "Deployment",
+      "creativity": "Creativity",
+      "uxUnderstanding": "UX understanding",
+      "aestheticDesign": "Aesthetic design",
+      "collaboration": "Collaboration",
+      "analytics": "Analytics",
+      "technicalKnowledge": "Technical knowledge"
+    },
+    "practices": [
+      "Git, GitHub & GitLab",
+      "Responsive design",
+      "Clean code & SOLID",
+      "Testing (Jest, Cypress)",
+      "SEO & Performance",
+      "Scrum & Agile",
+      "REST API design",
+      "Technical documentation"
+    ]
   },
   "projects": {
     "title": "My projects",
@@ -63,8 +104,8 @@
         "description": "Smart event tool. Participant check-in via QR code, timeline, interactive games, user reviews and admin configuration panel."
       },
       {
-        "title": "ImmoFacile",
-        "description": "Rental management solution in Ivory Coast. Landlord app, tenant app, mobile money payments, WhatsApp notifications, rent and contract management."
+        "title": "Pixeasy",
+        "description": "Rental management solution in Ivory Coast (formerly ImmoFacile). Landlord and tenant apps, mobile money payments, WhatsApp notifications, rent, receipts and contract management."
       },
       {
         "title": "WiASSUR Website",
@@ -89,6 +130,10 @@
       {
         "title": "Church Management Platform",
         "description": "Web platform for managing members, events and finances of a religious community."
+      },
+      {
+        "title": "Kizuna Pay",
+        "description": "Online crowdfunding platform (GoFundMe-style) for Ivory Coast. Mobile Money payments (Orange, MTN, Wave) via JoonaPay, KYC, moderation and campaign types: emergency, education, weddings, nonprofit projects."
       }
     ]
   },
@@ -197,12 +242,38 @@
     "question2": "A web or mobile application?",
     "question2Mobile1": "A web application?",
     "question2Mobile2": "mobile?",
-    "service": "I'm at your service!!!",
+    "service": "I'm at your service!",
     "coordinates": "Contact information",
     "email": "Email",
     "phone": "Phone number",
     "location": "Location",
     "locationValue": "Abidjan, Ivory Coast",
     "social": "Social links"
+  },
+  "a11y": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "prevImage": "Previous image",
+    "nextImage": "Next image",
+    "skipToContent": "Skip to content",
+    "profilePhotoAlt": "Profile photo of Wilfried Houinlindjonon, full-stack developer in Abidjan"
+  },
+  "seo": {
+    "title": "Wilfried Houinlindjonon — Freelance Full-stack Developer in Abidjan",
+    "description": "Freelance full-stack developer based in Abidjan, Ivory Coast. I build modern, high-performance, custom websites and web & mobile applications.",
+    "ogTitle": "Wilfried Houinlindjonon — Freelance Full-stack Developer",
+    "ogDescription": "Custom websites, web and mobile applications. Freelance full-stack developer in Abidjan, Ivory Coast."
+  },
+  "form": {
+    "heading": "Let's start your project",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "projectType": "Project type",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Message sent successfully! I'll get back to you very soon.",
+    "error": "Something went wrong. Please try again.",
+    "required": "This field is required"
   }
 }

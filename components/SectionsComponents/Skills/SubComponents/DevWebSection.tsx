@@ -9,6 +9,7 @@ import NEXTJS from "@/assets/images/icons/devWeb/framework/nextjs.svg";
 import VUEJS from "@/assets/images/icons/devWeb/framework/vuejs.svg";
 import { BandeTexteAnimation, TypingAnimation } from "@/components/Shared/TyperText";
 import { motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 
 const languages = [
   { name: "HTML5", icon: HTML5.src },
@@ -21,24 +22,26 @@ const languages = [
 ];
 
 const perf = [
-  { title: "Integration", niv: 85 },
-  { title: "Call API", niv: 80 },
-  { title: "Testing", niv: 50 },
-  { title: "Documentation", niv: 60 },
-  { title: "Amelioration", niv: 70 },
-  { title: "Maintenance", niv: 80 },
+  { key: "skills.metrics.integration", niv: 85 },
+  { key: "skills.metrics.apiCalls", niv: 80 },
+  { key: "skills.metrics.testing", niv: 50 },
+  { key: "skills.metrics.documentation", niv: 60 },
+  { key: "skills.metrics.improvement", niv: 70 },
+  { key: "skills.metrics.maintenance", niv: 80 },
 ];
 
 function DevWebSection() {
+  const { t } = useTranslation("common");
+
   return (
     <div className="flex flex-col 2xl:space-y-10 py-4 2xl:py-10">
       <div className="grid lg:grid-cols-2 gap-y-5 lg:gap-x-16 mb-10">
         <div className="flex flex-col items-start space-y-5">
-          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text="Description" />
-          <TypingAnimation duration={3} className="font-body text-sm text-white/80 leading-relaxed" text="En tant que développeur web spécialisé en React.js et Next.js, j'ai acquis une solide expertise dans la création d'interfaces utilisateur modernes et réactives. Je suis passionné par le développement web et je m'efforce d'offrir des expériences utilisateur fluides et performantes. Grâce à React.js, je peux facilement organiser et gérer l'état de mes applications, tandis que Next.js me permet de créer des applications évolutives avec des fonctionnalités avancées telles que le rendu côté serveur. Je suis constamment à l'affût des dernières tendances et des meilleures pratiques pour offrir des solutions web de haute qualité." />
+          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text={t("skills.description")} />
+          <TypingAnimation duration={3} className="font-body text-sm text-white/80 leading-relaxed" text={t("skills.webDescription")} />
         </div>
         <div className="flex flex-col items-start space-y-5">
-          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text="Performances" />
+          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text={t("skills.performance")} />
           <div className="flex flex-col w-full space-y-4">
             {perf.map((item, index) => (
               <div className="flex flex-col space-y-1.5" key={index}>
@@ -49,7 +52,7 @@ function DevWebSection() {
                   transition={{ delay: index * 0.1, ease: "easeOut" }}
                   className="font-heading text-xs font-semibold tracking-wider text-white/60"
                 >
-                  {item.title}
+                  {t(item.key)}
                 </motion.span>
                 <div className="w-full bg-white/10 rounded-full h-1.5">
                   <motion.div
@@ -67,7 +70,7 @@ function DevWebSection() {
       </div>
 
       <div>
-        <h4 className="text-center font-heading text-xl font-bold tracking-wide">Arsenal</h4>
+        <h4 className="text-center font-heading text-xl font-bold tracking-wide">{t("skills.arsenal")}</h4>
         <div className="grid gap-8 mt-8 lg:mt-4 place-items-center grid-cols-2 md:grid-cols-3 lg:flex items-center justify-center my-3 2xl:my-8 lg:space-x-8">
           {languages.map((language, index) => (
             <motion.div
