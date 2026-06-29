@@ -36,26 +36,26 @@ export default function SmallProjectCard({ project, index }: { project: IProject
             <h4 className="font-heading text-sm font-bold text-white tracking-tight truncate">
               {project.title}
             </h4>
-            <span className="font-heading text-[8px] tracking-[0.15em] uppercase text-white/20 shrink-0">
+            <span className="font-heading text-[8px] tracking-[0.15em] uppercase text-white/70 shrink-0">
               {typeLabels[project.type]}
             </span>
           </div>
 
-          <p className="font-body text-[11px] text-white/35 leading-relaxed">
+          <p className="font-body text-[11px] text-white/70 leading-relaxed">
             {project.description}
           </p>
 
           <div className="flex items-center justify-between pt-2 border-t border-white/5">
             <div className="flex gap-1 flex-wrap">
               {project.stack.slice(0, 3).map((tech, i) => (
-                <span key={i} className="font-body text-[9px] text-white/25 bg-white/5 rounded px-1.5 py-0.5">
+                <span key={i} className="font-body text-[9px] text-white/70 bg-white/5 rounded px-1.5 py-0.5">
                   {tech}
                 </span>
               ))}
             </div>
             <div className="flex items-center gap-2">
               {project.company && (
-                <span className="font-heading text-[8px] tracking-wider text-white/15">
+                <span className="font-heading text-[8px] tracking-wider text-white/70">
                   {project.company}
                 </span>
               )}
@@ -64,7 +64,7 @@ export default function SmallProjectCard({ project, index }: { project: IProject
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/20 hover:text-white/60 transition-colors"
+                  className="text-white/70 hover:text-white transition-colors"
                   aria-label={t("projects.viewAriaLabel", { title: project.title })}
                 >
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

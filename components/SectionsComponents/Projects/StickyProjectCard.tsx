@@ -28,11 +28,11 @@ export default function StickyProjectCard({ project, index }: StickyProjectCardP
       {/* Content */}
       <div className="flex flex-col justify-center space-y-5">
         <div className="flex items-center gap-3">
-          <span className="font-heading text-[10px] tracking-[0.2em] uppercase text-white/30 bg-white/5 rounded-full px-3 py-1">
+          <span className="font-heading text-[10px] tracking-[0.2em] uppercase text-white/70 bg-white/5 rounded-full px-3 py-1">
             {typeLabels[project.type]}
           </span>
           {project.company && (
-            <span className="font-heading text-[10px] tracking-wider text-white/20">
+            <span className="font-heading text-[10px] tracking-wider text-white/70">
               {project.company}
             </span>
           )}
@@ -42,13 +42,13 @@ export default function StickyProjectCard({ project, index }: StickyProjectCardP
           {project.title}
         </h3>
 
-        <p className="font-body text-sm md:text-base lg:text-lg text-white/50 leading-relaxed">
+        <p className="font-body text-sm md:text-base lg:text-lg text-white/70 leading-relaxed">
           {project.description}
         </p>
 
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech, i) => (
-            <span key={i} className="font-body text-xs text-white/40 bg-white/5 rounded-full px-3 py-1.5">
+            <span key={i} className="font-body text-xs text-white/70 bg-white/5 rounded-full px-3 py-1.5">
               {tech}
             </span>
           ))}
@@ -84,7 +84,7 @@ export default function StickyProjectCard({ project, index }: StickyProjectCardP
         ) : (
           <div className="rounded-lg overflow-hidden shadow-lg">
             <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
-            <div className="h-6 bg-[#1a1a1a]" />
+            <div className="h-6 bg-surface-panel" />
           </div>
         )}
       </div>

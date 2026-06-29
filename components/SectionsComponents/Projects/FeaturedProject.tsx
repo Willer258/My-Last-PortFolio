@@ -31,7 +31,7 @@ export default function FeaturedProject({ project, index }: { project: IProject;
     <motion.div
       ref={ref}
       style={{ opacity, scale }}
-      className="py-12 lg:py-20"
+      className="relative py-12 lg:py-20"
     >
       <div className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-16 items-center`}>
         {/* Visual */}
@@ -51,7 +51,7 @@ export default function FeaturedProject({ project, index }: { project: IProject;
           ) : (
             <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/20 bg-surface-dark">
               <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
-              <div className="h-8 bg-[#1a1a1a]" />
+              <div className="h-8 bg-surface-panel" />
             </div>
           )}
         </motion.div>
