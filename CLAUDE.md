@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website built with Next.js 12.2.3, TypeScript, Tailwind CSS, Framer Motion, and Recoil for state management. It's a single-page application with smooth animations and a custom cursor effect.
+This is a personal portfolio website built with Next.js 15.1.6, React 18.3, TypeScript, Tailwind CSS, Framer Motion, and Recoil for state management. It's a single-page application with smooth scrolling (Lenis), scroll-based animations, a generative Three.js scene, and a custom cursor effect.
+
+Design intent and context live in `.impeccable.md` at the repo root (target audience, brand personality, aesthetic direction, and design principles). Read it before making visual changes to stay aligned with the existing language.
 
 ## Development Commands
 
@@ -47,13 +49,13 @@ Always use these aliases when importing files from these directories.
 
 The application follows a standard Next.js pages-based architecture with a single-page layout:
 
-- **pages/index.tsx**: Main home page that composes all sections (HomeSection, Profil, Works, Skills, Contacts)
-- **pages/_app.tsx**: Root application component that wraps everything with RecoilRoot and Layout
+- **pages/index.tsx**: Main home page that composes all sections in order (HomeSection, Profil, Projects, Works, Skills, Contacts)
+- **pages/_app.tsx**: Root application component that wraps everything with RecoilRoot and Layout, registers the Google fonts (Space Grotesk + Outfit), and initializes Lenis smooth scrolling
 - **components/Layouts/**: Contains the Layout component with MainHead, SideNav, and conditional rendering based on loading state
-- **components/SectionsComponents/**: Page sections organized by feature (Contacts, HomeSection, Profil, Skills, Works)
-- **components/Shared/**: Reusable components used across the application (TyperText, AnimateBox, LoadingAnimatePage, CursorComponent, Logo, Button)
+- **components/SectionsComponents/**: Page sections organized by feature (Contacts, HomeSection, Profil, Projects, Skills, Works). Projects renders sticky project cards (StickyProjectCard, FeaturedProject, SmallProjectCard, ProjectMockup)
+- **components/Shared/**: Reusable components used across the application (TyperText, AnimateBox, AnimateCursorTarget, Button, CursorComponent, FluidParticles, GenerativeScene, ImageCarousel, LanguageSwitcher, LoadingAnimatePage, PopInText, ScrollReveal, TiltCard)
 - **components/SpecialComponent/**: Special-purpose components (FontAwesomeIcon, MainHead)
-- **utils/**: Static data and Recoil atoms (works.ts, skills.ts, links.ts, proverbes.ts, atomes.ts)
+- **utils/**: Static data, Recoil atoms, and hooks (atomes.ts, colors.ts, links.ts, projects.ts, saluttexte.ts, skills.ts, useActiveSection.ts, useInView.ts)
 
 ### State Management
 
@@ -74,19 +76,25 @@ The Layout component (`components/Layouts/index.tsx`) provides:
 ### Data Organization
 
 Static content is organized in the `utils/` folder:
-- **works.ts**: Work experience data with fonction, entreprise, date, description, and tasks
+- **projects.ts**: Featured/secondary project data rendered by the Projects section
 - **skills.ts**: Skills data organized by categories
 - **links.ts**: Social media and external links
-- **proverbes.ts**: Text content for animations/loading screens
+- **colors.ts**: Shared color tokens
 - **saluttexte.ts**: Greeting text data
+- **atomes.ts**: Recoil atoms (see State Management)
+- **useActiveSection.ts / useInView.ts**: Scroll/visibility hooks
 
 ### Animation Approach
 
 The application uses multiple animation libraries:
 - **Framer Motion**: Page transitions with AnimatePresence (mode="wait"), custom animated components
-- **GSAP + ScrollTrigger**: Advanced scroll-based animations
+- **Lenis**: Smooth scrolling, initialized in `pages/_app.tsx` (dynamically imported, with `lenis/dist/lenis.css`)
+- **Three.js**: Generative 3D scene (`components/Shared/GenerativeScene.tsx`), used in the Contact section and the loading screen
 - TyperText component for typing animations
+- ScrollReveal / PopInText for scroll-triggered text reveals
 - CursorComponent for custom cursor effects
+
+All motion respects `prefers-reduced-motion`; animate transform/opacity only.
 
 ### Internationalization (i18n)
 
@@ -131,3 +139,6 @@ export const getStaticProps = async ({ locale }) => ({
 - All sections are rendered on the same page and use scroll-based navigation
 - Mobile responsiveness is implemented (note: there's commented-out code for a mobile warning that was previously used)
 - The app uses a loading animation system controlled by the `showProverbs` Recoil state
+- The Contact section (`components/SectionsComponents/Contacts`) exposes direct `mailto:`/`tel:` links, social links, and a submittable contact form (`ContactForm.tsx`) wired to **Web3Forms** via `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example` / `CONTACT_FORM_SETUP.md`); it falls back to a `mailto:` CTA when the key is absent
+- Project showcase data lives in `utils/projects.ts` (stack/type/featured/screenshots/link) merged **by index** with `projects.items[]` in the locale files — keep both arrays the same length and order. Screenshots live in `public/projects/`
+- Keep strict key parity between `public/locales/fr/common.json` and `public/locales/en/common.json` (same keys, translated values); no hard-coded strings, and translate aria-labels
