@@ -88,11 +88,11 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
     <AnimatePresence>
       {project && (
         <motion.div
-          className="fixed inset-0 z-[70] flex items-stretch md:items-center md:justify-center md:p-6 lg:p-10"
+          className="fixed inset-0 z-[70] flex justify-end"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: reduce ? 0 : 0.25 }}
+          transition={{ duration: reduce ? 0 : 0.3 }}
           aria-hidden={false}
         >
           {/* Backdrop */}
@@ -111,11 +111,11 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
             aria-labelledby="project-detail-title"
             data-lenis-prevent
             onWheel={(e) => e.stopPropagation()}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, scale: 0.98 }}
-            animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.985 }}
-            transition={{ duration: reduce ? 0 : 0.45, ease }}
-            className="relative z-10 w-full md:max-w-3xl bg-surface text-ink md:rounded-3xl overflow-y-auto max-h-screen md:max-h-[90vh] shadow-2xl shadow-ink/30"
+            initial={reduce ? { opacity: 0 } : { x: "100%" }}
+            animate={reduce ? { opacity: 1 } : { x: 0 }}
+            exit={reduce ? { opacity: 0 } : { x: "100%" }}
+            transition={{ duration: reduce ? 0 : 0.5, ease }}
+            className="relative z-10 ml-auto h-full w-full sm:max-w-[560px] md:max-w-[780px] lg:max-w-[960px] bg-surface text-ink overflow-y-auto shadow-2xl shadow-ink/40 md:rounded-l-3xl"
           >
             {/* Close — sticky, overlays without disrupting flow */}
             <div className="sticky top-0 z-30 h-0 flex justify-end pointer-events-none">
