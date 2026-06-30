@@ -149,3 +149,21 @@
     color: white;
   }
 }
+
+/* Respect the user's "reduce motion" system preference (a11y) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Freeze the decorative text-reveal sweeps in their resting state */
+  .white-text1 span::after,
+  .black-text2 span::after {
+    transform: translateX(110%) !important;
+  }
+}

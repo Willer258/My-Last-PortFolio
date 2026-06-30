@@ -2,6 +2,7 @@
 import { BandeTexteAnimation, TypingAnimation } from "@/components/Shared/TyperText";
 import { motion } from "framer-motion";
 import React from "react";
+import { useTranslation } from "next-i18next";
 import DART from "@/assets/images/icons/devMobile/language/dart.svg";
 import FLUTTER from "@/assets/images/icons/devMobile/framework/flutter.svg";
 
@@ -11,24 +12,26 @@ const languages = [
 ];
 
 const perf = [
-  { title: "Integration", niv: 80 },
-  { title: "Call API", niv: 70 },
-  { title: "Testing", niv: 50 },
-  { title: "Documentation", niv: 50 },
-  { title: "Amelioration", niv: 70 },
-  { title: "Maintenance", niv: 70 },
+  { key: "skills.metrics.integration", niv: 80 },
+  { key: "skills.metrics.apiCalls", niv: 70 },
+  { key: "skills.metrics.testing", niv: 50 },
+  { key: "skills.metrics.documentation", niv: 50 },
+  { key: "skills.metrics.improvement", niv: 70 },
+  { key: "skills.metrics.maintenance", niv: 70 },
 ];
 
 function DevMobileSection() {
+  const { t } = useTranslation("common");
+
   return (
     <div className="flex flex-col 2xl:space-y-10 py-4 2xl:py-10">
       <div className="grid lg:grid-cols-2 gap-y-5 lg:gap-x-16 mb-10">
         <div className="flex flex-col items-start space-y-5">
-          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text="Description" />
-          <TypingAnimation duration={3} className="font-body text-sm text-white/80 leading-relaxed" text="En tant que développeur mobile passionné, je me spécialise dans l'utilisation de Dart et Flutter comme langage et framework de prédilection. Grâce à Flutter, je peux créer des interfaces utilisateur fluides et attrayantes pour les applications mobiles. J'apprécie la polyvalence de Flutter, qui me permet de développer des applications multiplateformes avec une seule base de code. En utilisant Dart, j'écris un code clair et efficace, ce qui facilite le développement d'applications mobiles réactives et performantes. Mon objectif est de créer des applications mobiles de haute qualité en utilisant les dernières tendances et les meilleures pratiques, tout en offrant une expérience utilisateur exceptionnelle." />
+          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text={t("skills.description")} />
+          <TypingAnimation duration={3} className="font-body text-sm text-white/80 leading-relaxed" text={t("skills.mobileDescription")} />
         </div>
         <div className="flex flex-col items-start space-y-5">
-          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text="Performances" />
+          <BandeTexteAnimation whiteBar className="font-heading text-2xl font-bold" text={t("skills.performance")} />
           <div className="flex flex-col w-full space-y-4">
             {perf.map((item, index) => (
               <div className="flex flex-col space-y-1.5" key={index}>
@@ -39,7 +42,7 @@ function DevMobileSection() {
                   transition={{ delay: index * 0.1, ease: "easeOut" }}
                   className="font-heading text-xs font-semibold tracking-wider text-white/60"
                 >
-                  {item.title}
+                  {t(item.key)}
                 </motion.span>
                 <div className="w-full bg-white/10 rounded-full h-1.5">
                   <motion.div
@@ -57,7 +60,7 @@ function DevMobileSection() {
       </div>
 
       <div>
-        <h4 className="text-center font-heading text-xl font-bold tracking-wide">Arsenal</h4>
+        <h4 className="text-center font-heading text-xl font-bold tracking-wide">{t("skills.arsenal")}</h4>
         <div className="grid gap-8 mt-8 lg:mt-4 place-items-center grid-cols-2 md:grid-cols-3 lg:flex items-center justify-center my-3 2xl:my-8 lg:space-x-8">
           {languages.map((language, index) => (
             <motion.div

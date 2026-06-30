@@ -1,9 +1,9 @@
 import React from "react";
 
 const BrowserMockup = ({ title, stack }: { title: string; stack: string[] }) => (
-  <div className="w-full rounded-t-lg overflow-hidden bg-[#1a1a1a]">
+  <div className="w-full rounded-t-lg overflow-hidden bg-surface-panel">
     {/* Browser chrome */}
-    <div className="flex items-center gap-1.5 px-3 py-2 bg-[#111]">
+    <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-chrome">
       <div className="w-2 h-2 rounded-full bg-white/10" />
       <div className="w-2 h-2 rounded-full bg-white/10" />
       <div className="w-2 h-2 rounded-full bg-white/10" />
@@ -45,7 +45,7 @@ const BrowserMockup = ({ title, stack }: { title: string; stack: string[] }) => 
 
 const PhoneMockup = ({ title, stack }: { title: string; stack: string[] }) => (
   <div className="w-full flex justify-center py-2">
-    <div className="w-[100px] rounded-xl overflow-hidden bg-[#1a1a1a] border border-white/10">
+    <div className="w-[100px] rounded-xl overflow-hidden bg-surface-panel border border-white/10">
       {/* Status bar */}
       <div className="flex justify-between items-center px-2 py-1">
         <span className="text-[5px] text-white/20">9:41</span>
@@ -82,9 +82,9 @@ const PhoneMockup = ({ title, stack }: { title: string; stack: string[] }) => (
 );
 
 const DesignMockup = ({ title }: { title: string }) => (
-  <div className="w-full rounded-t-lg overflow-hidden bg-[#1a1a1a]">
+  <div className="w-full rounded-t-lg overflow-hidden bg-surface-panel">
     {/* Figma-like toolbar */}
-    <div className="flex items-center gap-2 px-3 py-2 bg-[#111]">
+    <div className="flex items-center gap-2 px-3 py-2 bg-surface-chrome">
       <div className="w-3 h-3 rounded-sm bg-white/10" />
       <div className="w-16 h-3 bg-white/5 rounded-sm" />
       <div className="flex-1" />
@@ -118,9 +118,9 @@ const DesignMockup = ({ title }: { title: string }) => (
 );
 
 const FullstackMockup = ({ title, stack }: { title: string; stack: string[] }) => (
-  <div className="w-full rounded-t-lg overflow-hidden bg-[#1a1a1a]">
+  <div className="w-full rounded-t-lg overflow-hidden bg-surface-panel">
     {/* Terminal + browser split */}
-    <div className="flex items-center gap-1.5 px-3 py-2 bg-[#111]">
+    <div className="flex items-center gap-1.5 px-3 py-2 bg-surface-chrome">
       <div className="w-2 h-2 rounded-full bg-white/10" />
       <div className="w-2 h-2 rounded-full bg-white/10" />
       <div className="w-2 h-2 rounded-full bg-white/10" />
@@ -144,7 +144,7 @@ const FullstackMockup = ({ title, stack }: { title: string; stack: string[] }) =
         </div>
       </div>
       {/* Backend/terminal side */}
-      <div className="p-3 space-y-1.5 bg-[#111]">
+      <div className="p-3 space-y-1.5 bg-surface-chrome">
         <div className="flex items-center gap-1">
           <span className="text-[6px] text-green-400/40">$</span>
           <div className="w-16 h-1.5 bg-white/5 rounded" />

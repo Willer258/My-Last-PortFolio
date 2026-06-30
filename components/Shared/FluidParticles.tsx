@@ -42,6 +42,10 @@ export default function FluidParticles({
     const canvas = canvasRef.current
     if (!canvas || !container) return
 
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
     // FPS cap: 30 on touch devices, 60 on desktop
     const targetFps = isTouchDevice() ? 30 : 60
     const minFrameTime = 1000 / targetFps
@@ -239,10 +243,41 @@ export default function FluidParticles({
       }
     }
 
-    const ro = new ResizeObserver(() => setupCanvas())
+    // Static render used when the user prefers reduced motion: draws the
+    // particle field once at rest with no RAF loop and no pointer interaction.
+    const drawStatic = () => {
+      const ctx = contextRef.current
+      const data = particlesRef.current
+      const count = particleCountRef.current
+      if (!ctx || !data) return
+      const { w, h } = sizeRef.current
+      ctx.clearRect(0, 0, w, h)
+      ctx.fillStyle = particleColor
+      for (let i = 0; i < count; i++) {
+        const off = i * STRIDE
+        ctx.beginPath()
+        ctx.arc(data[off + BX], data[off + BY], data[off + SIZE], 0, 6.2832)
+        ctx.fill()
+      }
+    }
+
+    const ro = new ResizeObserver(() => {
+      setupCanvas()
+      if (prefersReducedMotion) drawStatic()
+    })
     ro.observe(container)
 
     setupCanvas()
+
+    // Reduced motion: render once and skip the animation loop + interactions
+    if (prefersReducedMotion) {
+      drawStatic()
+      return () => {
+        ro.disconnect()
+        if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current)
+      }
+    }
+
     animate()
 
     window.addEventListener("mousemove", onMouseMove, { passive: true })

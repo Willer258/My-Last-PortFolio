@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useCallback, useEffect, useRef } from "react";
+import { useTranslation } from "next-i18next";
 
 interface ImageCarouselProps {
   images: string[];
@@ -8,6 +9,13 @@ interface ImageCarouselProps {
   className?: string;
   autoPlay?: boolean;
   interval?: number;
+  /** Portrait/mobile screenshots: center & contain inside the frame instead of full-bleed.
+   *  The parent controls the frame height via `className` (e.g. "h-[420px]"). */
+  portrait?: boolean;
+  /** Keep prev/next arrows always visible (e.g. inside the case-study overlay). */
+  controlsAlwaysVisible?: boolean;
+  /** Fill the parent surface (object-cover). Parent must have a definite size. */
+  cover?: boolean;
 }
 
 export default function ImageCarousel({
@@ -16,7 +24,11 @@ export default function ImageCarousel({
   className,
   autoPlay = true,
   interval = 4000,
+  portrait = false,
+  controlsAlwaysVisible = false,
+  cover = false,
 }: ImageCarouselProps) {
+  const { t } = useTranslation("common");
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const touchStartX = useRef(0);
@@ -51,13 +63,27 @@ export default function ImageCarousel({
     return () => clearInterval(timer);
   }, [autoPlay, interval, next, images.length]);
 
+  const imgClass = cover
+    ? "w-full h-full object-cover"
+    : portrait
+    ? "max-h-full max-w-full w-auto object-contain"
+    : "w-full h-auto";
+  const ctrlOpacity = controlsAlwaysVisible ? "opacity-100" : "opacity-70 md:opacity-0 md:group-hover:opacity-100";
+
   if (images.length === 0) return null;
   if (images.length === 1) {
+    if (portrait) {
+      return (
+        <div className={`relative flex items-center justify-center overflow-hidden ${className ?? ""}`}>
+          <img src={images[0]} alt={alt} className={imgClass} loading="lazy" />
+        </div>
+      );
+    }
     return (
       <img
         src={images[0]}
         alt={alt}
-        className={`w-full h-auto ${className ?? ""}`}
+        className={`${imgClass} ${className ?? ""}`}
         loading="lazy"
       />
     );
@@ -65,7 +91,7 @@ export default function ImageCarousel({
 
   return (
     <div
-      className={`relative overflow-hidden group ${className ?? ""}`}
+      className={`relative overflow-hidden group ${portrait ? "flex items-center justify-center" : ""} ${className ?? ""}`}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -79,7 +105,7 @@ export default function ImageCarousel({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: direction * -60 }}
           transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-          className="w-full h-auto"
+          className={imgClass}
           loading="lazy"
         />
       </AnimatePresence>
@@ -88,8 +114,8 @@ export default function ImageCarousel({
       <button
         type="button"
         onClick={prev}
-        className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200"
-        aria-label="Image précédente"
+        className={`absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center ${ctrlOpacity} transition-opacity duration-200`}
+        aria-label={t("a11y.prevImage")}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -98,8 +124,8 @@ export default function ImageCarousel({
       <button
         type="button"
         onClick={next}
-        className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200"
-        aria-label="Image suivante"
+        className={`absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center ${ctrlOpacity} transition-opacity duration-200`}
+        aria-label={t("a11y.nextImage")}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

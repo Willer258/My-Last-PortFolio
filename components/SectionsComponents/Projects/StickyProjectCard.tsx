@@ -15,9 +15,10 @@ const typeLabels: Record<string, string> = {
 interface StickyProjectCardProps {
   project: IProject;
   index: number;
+  onOpen: () => void;
 }
 
-export default function StickyProjectCard({ project, index }: StickyProjectCardProps) {
+export default function StickyProjectCard({ project, index, onOpen }: StickyProjectCardProps) {
   const { t } = useTranslation("common");
   const hasScreenshots = project.screenshots && project.screenshots.length > 0;
 
@@ -28,11 +29,11 @@ export default function StickyProjectCard({ project, index }: StickyProjectCardP
       {/* Content */}
       <div className="flex flex-col justify-center space-y-5">
         <div className="flex items-center gap-3">
-          <span className="font-heading text-[10px] tracking-[0.2em] uppercase text-white/30 bg-white/5 rounded-full px-3 py-1">
+          <span className="font-heading text-[10px] tracking-[0.2em] uppercase text-white/70 bg-white/5 rounded-full px-3 py-1">
             {typeLabels[project.type]}
           </span>
           {project.company && (
-            <span className="font-heading text-[10px] tracking-wider text-white/20">
+            <span className="font-heading text-[10px] tracking-wider text-white/70">
               {project.company}
             </span>
           )}
@@ -42,49 +43,60 @@ export default function StickyProjectCard({ project, index }: StickyProjectCardP
           {project.title}
         </h3>
 
-        <p className="font-body text-sm md:text-base lg:text-lg text-white/50 leading-relaxed">
+        <p className="font-body text-sm md:text-base lg:text-lg text-white/70 leading-relaxed line-clamp-3">
           {project.description}
         </p>
 
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech, i) => (
-            <span key={i} className="font-body text-xs text-white/40 bg-white/5 rounded-full px-3 py-1.5">
+            <span key={i} className="font-body text-xs text-white/70 bg-white/5 rounded-full px-3 py-1.5">
               {tech}
             </span>
           ))}
         </div>
 
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-white/70 hover:text-white transition-colors pt-2 group"
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2">
+          <button
+            type="button"
+            onClick={onOpen}
+            aria-label={t("projects.openCaseStudyAria", { title: project.title })}
+            className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-ink bg-white rounded-full px-5 py-2.5 hover:bg-white/90 transition-colors group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            <span className="underline underline-offset-4 decoration-white/10 group-hover:decoration-white/40">
-              {t("projects.viewProject")}
-            </span>
+            <span>{t("projects.viewCaseStudy")}</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
-        )}
+          </button>
+
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-white/70 hover:text-white transition-colors group"
+            >
+              <span className="underline underline-offset-4 decoration-white/10 group-hover:decoration-white/40">
+                {t("projects.viewProject")}
+              </span>
+            </a>
+          )}
+        </div>
       </div>
 
-      {/* Image */}
-      <div className="mt-8 md:mt-0 group/img grayscale hover:grayscale-0 transition-all duration-700 ease-out">
+      {/* Image — fixed-height frame, full image contained (uniform height across all projects) */}
+      <div className="mt-8 md:mt-0 grayscale hover:grayscale-0 transition-all duration-700 ease-out">
         {hasScreenshots ? (
           <ImageCarousel
             images={project.screenshots!}
             alt={project.title}
-            autoPlay
+            autoPlay={project.type !== "mobile"}
             interval={5000}
-            className="w-full h-auto rounded-lg shadow-lg object-cover"
+            portrait
+            className="w-full h-[240px] sm:h-[300px] md:h-[360px] rounded-xl bg-white/[0.03]"
           />
         ) : (
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <div className="w-full h-[240px] sm:h-[300px] md:h-[360px] rounded-xl overflow-hidden flex items-center justify-center bg-white/[0.03]">
             <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
-            <div className="h-6 bg-[#1a1a1a]" />
           </div>
         )}
       </div>

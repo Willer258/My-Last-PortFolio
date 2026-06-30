@@ -2,11 +2,13 @@ import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
 import LanguageSwitcher from "@/components/Shared/LanguageSwitcher";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useCallback } from "react";
+import { useTranslation } from "next-i18next";
 import Navigation from "./SidNavSubComponent/Navigation";
 
 const easeExpo = [0.76, 0, 0.24, 1] as const;
 
 const SideNav = () => {
+  const { t } = useTranslation("common");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = useCallback(() => setDrawerOpen((prev) => !prev), []);
@@ -41,7 +43,7 @@ const SideNav = () => {
         type="button"
         onClick={toggleDrawer}
         className="md:hidden fixed bottom-5 right-5 z-[45] w-12 h-12 rounded-full bg-surface-dark text-white flex items-center justify-center shadow-lg shadow-black/20 active:scale-95 transition-transform"
-        aria-label={drawerOpen ? "Fermer le menu" : "Ouvrir le menu"}
+        aria-label={drawerOpen ? t("a11y.closeMenu") : t("a11y.openMenu")}
         aria-expanded={drawerOpen}
       >
         <div className="flex flex-col items-center justify-center gap-[5px] w-5">

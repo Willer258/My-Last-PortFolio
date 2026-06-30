@@ -1,8 +1,6 @@
-import { showProverbs } from "@/utils/atomes";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useRecoilState } from "recoil";
 
 export const TypingAnimation = ({
   text,
@@ -18,7 +16,7 @@ export const TypingAnimation = ({
 
   const [texte, setTexte] = useState("");
 
-  const [, setShowText] = useRecoilState(showProverbs);
+  const prefersReducedMotion = useReducedMotion();
   function genererTexte() {
     if (text) {
       setTexte(text);
@@ -33,6 +31,15 @@ export const TypingAnimation = ({
   }, []);
 
   useEffect(() => {
+    // Reduced motion: render the full text at once, skip the typing animation
+    if (prefersReducedMotion) {
+      if (texte && displayedText !== texte) {
+        setDisplayedText(texte);
+        onAnimationComplete && onAnimationComplete();
+      }
+      return;
+    }
+
     const intervalId = setInterval(() => {
       const length = displayedText.length;
 
@@ -45,7 +52,7 @@ export const TypingAnimation = ({
     }, duration ?? 50);
 
     return () => clearInterval(intervalId);
-  }, [displayedText, setShowText, texte]);
+  }, [displayedText, texte, prefersReducedMotion]);
 
   if (isList) {
     return (
@@ -66,7 +73,10 @@ export const TypingAnimation = ({
             <div className={className + " " + "absolute"} style={style}>
               {displayedText}
             </div>
-            <div className={className + " " + "text-transparent"}>{text}</div>
+            {/* Transparent copy reserves layout width only — hidden from assistive tech */}
+            <div className={className + " " + "text-transparent"} aria-hidden="true">
+              {text}
+            </div>
           </div>
         )}
       </>
@@ -85,8 +95,11 @@ export const RetypingTextAnimation = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [index, setIndex] = useState(0);
   const [count, setCount] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    // Reduced motion: show the full text + first word statically, no cycling
+    if (prefersReducedMotion) return;
     const timer = setTimeout(() => {
       const current = index % words.length;
       const word = words[current];
@@ -114,7 +127,20 @@ export const RetypingTextAnimation = ({
     }, 50);
 
     return () => clearTimeout(timer);
-  }, [currentText, isDeleting, index, words, text, textAdded.length, count]);
+  }, [currentText, isDeleting, index, words, text, textAdded.length, count, prefersReducedMotion]);
+
+  if (prefersReducedMotion) {
+    return (
+      <div className="relative">
+        <div className={className + " " + "absolute"}>
+          {text} {words?.[0]}
+        </div>
+        <div className="text-transparent ">
+          {text} {words?.[1]}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -138,7 +164,10 @@ export const BandeTexteAnimation = ({
   delay,
   noLine,
   whiteBar,
+  as,
 }: any) => {
+  // Semantic element for the revealed text (defaults to a level-2 heading)
+  const Tag = as ?? "h2";
   const variants = {
     hidden: {
       x: "-100%",
@@ -194,15 +223,16 @@ export const BandeTexteAnimation = ({
           />
         )}
 
-        <motion.h2
-          className={className}
-          initial={{ opacity: 0 }}
-          variants={variants}
-          animate={controlsText}
-          transition={{ delay: (delay ?? 0) + 0.5 }}
-        >
-          {text}
-        </motion.h2>
+        <Tag className={className}>
+          <motion.span
+            initial={{ opacity: 0 }}
+            variants={variants}
+            animate={controlsText}
+            transition={{ delay: (delay ?? 0) + 0.5 }}
+          >
+            {text}
+          </motion.span>
+        </Tag>
       </>
     </div>
   );

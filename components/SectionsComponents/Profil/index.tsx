@@ -1,5 +1,6 @@
 import image from "@/assets/profile.jpg";
 import ScrollReveal from "@/components/Shared/ScrollReveal";
+import { colors } from "@/utils/colors";
 import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -61,7 +62,7 @@ const Profil = () => {
     <section
       ref={sectionRef}
       id="profil"
-      className="max-w-6xl mx-auto py-16 md:py-24 px-4 md:px-8 relative"
+      className="max-w-6xl mx-auto py-16 md:py-24 px-4 md:px-8 relative overflow-x-clip"
     >
       {/* Title */}
       <ScrollReveal>
@@ -93,12 +94,13 @@ const Profil = () => {
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <PixelatedCanvas
                 src={image.src}
+                ariaLabel={t('a11y.profilePhotoAlt')}
                 width={600}
                 height={600}
                 cellSize={3}
                 dotScale={0.9}
                 shape="square"
-                backgroundColor="#0c0c0c"
+                backgroundColor={colors.surfaceDark}
                 dropoutStrength={0.3}
                 interactive
                 distortionStrength={3}

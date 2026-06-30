@@ -1,17 +1,37 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { BandeTexteAnimation } from "@/components/Shared/TyperText";
 import ScrollReveal from "@/components/Shared/ScrollReveal";
 import StickyProjectCard from "./StickyProjectCard";
 import SmallProjectCard from "./SmallProjectCard";
+import ProjectDetail from "./ProjectDetail";
 import { projects, IProject } from "@/utils/projects";
 import { useTranslation } from 'next-i18next';
 
+type ProjectItemContent = {
+  title: string;
+  description: string;
+  problem?: string;
+  solution?: string;
+  role?: string;
+  features?: string[];
+};
+
 const Projects = () => {
   const { t } = useTranslation('common');
+  const [selected, setSelected] = useState<IProject | null>(null);
 
-  const projectItems = t('projects.items', { returnObjects: true }) as Array<{ title: string; description: string }>;
+  const projectItems = t('projects.items', { returnObjects: true }) as ProjectItemContent[];
   const mergedProjects: IProject[] = useMemo(
-    () => projects.map((p, i) => ({ ...p, title: projectItems[i]?.title ?? '', description: projectItems[i]?.description ?? '' })),
+    () =>
+      projects.map((p, i) => ({
+        ...p,
+        title: projectItems[i]?.title ?? '',
+        description: projectItems[i]?.description ?? '',
+        problem: projectItems[i]?.problem,
+        solution: projectItems[i]?.solution,
+        role: projectItems[i]?.role,
+        features: projectItems[i]?.features,
+      })),
     [projectItems]
   );
 
@@ -44,7 +64,7 @@ const Projects = () => {
       {/* Featured projects — sticky stacking cards */}
       <div className="w-full px-3 sm:px-4 md:px-0 md:w-[85%] lg:w-[80%] mx-auto">
         {featured.map((project, index) => (
-          <StickyProjectCard key={project.title} project={project} index={index} />
+          <StickyProjectCard key={project.title} project={project} index={index} onOpen={() => setSelected(project)} />
         ))}
       </div>
 
@@ -60,9 +80,9 @@ const Projects = () => {
           </div>
         </ScrollReveal>
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           {others.map((project, index) => (
-            <SmallProjectCard key={project.title} project={project} index={index} />
+            <SmallProjectCard key={project.title} project={project} index={index} onOpen={() => setSelected(project)} />
           ))}
         </div>
 
@@ -72,6 +92,8 @@ const Projects = () => {
           </span>
         </div>
       </div>
+
+      <ProjectDetail project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 };

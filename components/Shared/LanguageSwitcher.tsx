@@ -22,7 +22,7 @@ const LanguageSwitcher = () => {
         className={`font-heading text-[10px] tracking-widest uppercase transition-all duration-200 ${
           locale === 'fr'
             ? 'text-white font-bold'
-            : 'text-white/30 hover:text-white/60'
+            : 'text-white/60 hover:text-white/90'
         }`}
       >
         FR
@@ -38,7 +38,7 @@ const LanguageSwitcher = () => {
         className={`font-heading text-[10px] tracking-widest uppercase transition-all duration-200 ${
           locale === 'en'
             ? 'text-white font-bold'
-            : 'text-white/30 hover:text-white/60'
+            : 'text-white/60 hover:text-white/90'
         }`}
       >
         EN

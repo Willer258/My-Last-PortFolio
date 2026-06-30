@@ -1,6 +1,6 @@
 import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
 import dynamic from "next/dynamic";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { motion, useAnimation, useReducedMotion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState, useCallback } from "react";
 import Button from "../../Shared/Button";
 import {
@@ -11,6 +11,7 @@ import { useTranslation } from 'next-i18next';
 import { useRecoilState } from "recoil";
 import { showProverbs } from "@/utils/atomes";
 import { texts as greetingsData } from "@/utils/saluttexte";
+import { colors } from "@/utils/colors";
 
 const FluidParticles = dynamic(() => import("@/components/Shared/FluidParticles"), { ssr: false });
 
@@ -33,8 +34,12 @@ function HomeSection() {
   const [showText] = useRecoilState(showProverbs);
   const [ready, setReady] = useState(false);
   const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
   const [greetingIndex, setGreetingIndex] = useState(0);
   const stateText = greetingsData[greetingIndex];
+
+  // Collapse entry delays/staggers when the user prefers reduced motion
+  const md = (delay: number) => (prefersReducedMotion ? 0 : delay);
 
   // Wait for loading to finish before starting hero animations
   useEffect(() => {
@@ -65,18 +70,19 @@ function HomeSection() {
   return (
     <AnimateCursorTarget type="hidden">
       <section id="home" className="relative min-h-dvh mb-16 xl:mb-0 overflow-hidden">
-        {/* Fluid particles — fade in when ready */}
+        {/* Fluid particles — fade in when ready (decorative) */}
         <motion.div
           className="absolute inset-0 z-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: ready ? 1 : 0 }}
           transition={{ duration: 1.5, ease: easeExpo }}
+          aria-hidden="true"
         >
           <FluidParticles
             particleDensity={isMobile ? 250 : 100}
             particleSize={1}
-            particleColor="#555555"
-            activeColor="#000000"
+            particleColor={colors.particle}
+            activeColor={colors.black}
             maxBlastRadius={isMobile ? 150 : 300}
             hoverDelay={1}
             interactionDistance={isMobile ? 60 : 100}
@@ -88,7 +94,7 @@ function HomeSection() {
           className="absolute left-[15%] top-0 w-px bg-ink/10 z-0 origin-top hidden lg:block"
           initial={{ scaleY: 0 }}
           animate={{ scaleY: ready ? 1 : 0 }}
-          transition={{ duration: 1.2, delay: 0.3, ease: easeExpo }}
+          transition={{ duration: 1.2, delay: md(0.3), ease: easeExpo }}
           style={{ height: "100%" }}
         />
 
@@ -110,11 +116,11 @@ function HomeSection() {
                       {stateText.split('').map((char, i) => (
                         <motion.span
                           key={`${stateText}-${i}`}
-                          initial={{ opacity: 0, y: 12, scale: 0.5 }}
+                          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.5 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           transition={{
                             duration: 0.3,
-                            delay: i * 0.05,
+                            delay: md(i * 0.05),
                             ease: [0.34, 1.56, 0.64, 1],
                           }}
                           className="inline-block"
@@ -132,10 +138,14 @@ function HomeSection() {
                 <motion.h1
                   initial={{ y: "100%" }}
                   animate={ready ? { y: 0 } : {}}
-                  transition={{ duration: 0.9, delay: items[1].delay, ease: easeExpo }}
+                  transition={{ duration: 0.9, delay: md(items[1].delay), ease: easeExpo }}
                   className="font-heading text-4xl md:text-6xl 2xl:text-7xl font-bold tracking-tightest leading-display"
+                  aria-label={t('home.name')}
                 >
-                  {ready ? <TypingAnimation text={` ${t('home.name')}`} /> : t('home.name')}
+                  {/* Visual reveal is decorative — the h1 name is exposed once via aria-label */}
+                  <span aria-hidden="true">
+                    {ready ? <TypingAnimation text={` ${t('home.name')}`} /> : t('home.name')}
+                  </span>
                 </motion.h1>
               </div>
 
@@ -144,7 +154,7 @@ function HomeSection() {
                 <motion.div
                   initial={{ y: "100%" }}
                   animate={ready ? { y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: items[2].delay, ease: easeExpo }}
+                  transition={{ duration: 0.8, delay: md(items[2].delay), ease: easeExpo }}
                 >
                   <h2 className="font-heading text-xl md:text-2xl 2xl:text-3xl font-semibold text-ink-muted">
                     {ready ? (
@@ -162,9 +172,9 @@ function HomeSection() {
 
               {/* Description — fade up */}
               <motion.p
-                initial={{ opacity: 0, y: items[3].y }}
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : items[3].y }}
                 animate={ready ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: items[3].delay, ease: easeExpo }}
+                transition={{ duration: 0.8, delay: md(items[3].delay), ease: easeExpo }}
                 className="font-body text-base md:text-lg text-ink-muted leading-relaxed max-w-content"
               >
                 {t('home.description')}
@@ -172,9 +182,9 @@ function HomeSection() {
 
               {/* CTA buttons — fade up with stagger */}
               <motion.div
-                initial={{ opacity: 0, y: items[4].y }}
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : items[4].y }}
                 animate={ready ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: items[4].delay, ease: easeExpo }}
+                transition={{ duration: 0.7, delay: md(items[4].delay), ease: easeExpo }}
                 className="flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-4 pt-2"
               >
                 <motion.a
@@ -210,13 +220,17 @@ function HomeSection() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           initial={{ opacity: 0 }}
           animate={ready ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 1.2, ease: easeExpo }}
+          transition={{ duration: 0.6, delay: md(1.2), ease: easeExpo }}
         >
           <span className="font-heading text-[9px] tracking-[0.3em] uppercase text-ink-faint">{t('home.scroll')}</span>
           <motion.div
             className="w-px h-8 bg-ink/20 origin-top"
-            animate={ready ? { scaleY: [0, 1, 0] } : {}}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            animate={ready ? (prefersReducedMotion ? { scaleY: 1 } : { scaleY: [0, 1, 0] }) : {}}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0.3 }
+                : { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+            }
           />
         </motion.div>
       </section>

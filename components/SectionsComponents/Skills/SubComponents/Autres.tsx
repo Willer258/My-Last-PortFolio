@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion';
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 import ASANA from "@/assets/images/icons/autres/asana.svg";
 import DOCKER from "@/assets/images/icons/autres/docker.svg";
 import FIREBASE from "@/assets/images/icons/autres/firebase.svg";
@@ -11,7 +12,7 @@ import OPENAI from "@/assets/images/icons/autres/openai.svg";
 
 const toolGroups = [
   {
-    category: "Hébergement & CI/CD",
+    categoryKey: "skills.hostingCategory",
     items: [
       { name: "Vercel", icon: VERCEL.src },
       { name: "Netlify", icon: NETLIFY.src },
@@ -20,7 +21,7 @@ const toolGroups = [
     ],
   },
   {
-    category: "Gestion & Productivité",
+    categoryKey: "skills.managementCategory",
     items: [
       { name: "Asana", icon: ASANA.src },
       { name: "WordPress", icon: WORDPESS.src },
@@ -29,24 +30,16 @@ const toolGroups = [
   },
 ];
 
-const practices = [
-  "Git, GitHub & GitLab",
-  "Responsive design",
-  "Clean code & SOLID",
-  "Testing (Jest, Cypress)",
-  "SEO & Performance",
-  "Scrum & Agile",
-  "REST API design",
-  "Documentation technique",
-];
-
 function Autres() {
+  const { t } = useTranslation('common');
+  const practices = t('skills.practices', { returnObjects: true }) as string[];
+
   return (
     <div className="flex flex-col space-y-10 py-4 2xl:py-10">
       <div className="grid lg:grid-cols-2 gap-y-8 lg:gap-x-16">
         {toolGroups.map((group, gi) => (
           <div key={gi} className="flex flex-col items-start space-y-4">
-            <h3 className="font-heading text-lg font-bold text-white/90">{group.category}</h3>
+            <h3 className="font-heading text-lg font-bold text-white/90">{t(group.categoryKey)}</h3>
             <div className="grid grid-cols-2 gap-3 w-full">
               {group.items.map((tool, index) => (
                 <motion.div
@@ -67,7 +60,7 @@ function Autres() {
       </div>
 
       <div>
-        <h3 className="font-heading text-lg font-bold text-white/90 mb-4">Bonnes pratiques</h3>
+        <h3 className="font-heading text-lg font-bold text-white/90 mb-4">{t('skills.bestPractices')}</h3>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {practices.map((practice, index) => (
             <motion.div

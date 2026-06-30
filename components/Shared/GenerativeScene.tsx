@@ -13,6 +13,10 @@ export default function GenerativeScene() {
     const currentMount = mountRef.current;
     if (!currentMount) return;
 
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -126,7 +130,7 @@ export default function GenerativeScene() {
     const _dir = new THREE.Vector3();
     const _pos = new THREE.Vector3();
 
-    let frameId: number;
+    let frameId = 0;
     let lastFrame = 0;
     const minDelta = 1000 / 30; // Cap at 30 FPS — this is a background decoration
 
@@ -145,13 +149,21 @@ export default function GenerativeScene() {
       mesh.rotation.x += 0.0002;
       renderer.render(scene, camera);
     };
-    animate(0);
+
+    if (prefersReducedMotion) {
+      // Reduced motion: render a single static frame, no continuous rotation
+      renderer.render(scene, camera);
+    } else {
+      animate(0);
+    }
 
     const handleResize = () => {
       if (!currentMount) return;
       camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+      // Keep the frozen frame correctly sized when not animating
+      if (prefersReducedMotion) renderer.render(scene, camera);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -166,7 +178,10 @@ export default function GenerativeScene() {
     };
 
     window.addEventListener("resize", handleResize, { passive: true });
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    // The light-follow only repaints via the RAF loop, so skip it when frozen
+    if (!prefersReducedMotion) {
+      window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    }
 
     return () => {
       cancelAnimationFrame(frameId);
@@ -182,7 +197,7 @@ export default function GenerativeScene() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div ref={viewRef} className="absolute inset-0 w-full h-full">
+    <div ref={viewRef} aria-hidden="true" className="absolute inset-0 w-full h-full">
       <div ref={mountRef} className="absolute inset-0 w-full h-full" />
     </div>
   );

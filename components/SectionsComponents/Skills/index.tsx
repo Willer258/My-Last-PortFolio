@@ -85,7 +85,7 @@ const IconGrid = ({ items, delay = 0 }: { items: { name: string; icon: string }[
         <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/5 hover:bg-white/10 p-2.5 transition-all duration-200 hover:scale-105">
           <img src={item.icon} alt={item.name} className="w-full h-full object-contain" loading="lazy" />
         </div>
-        <span className="font-heading text-[10px] tracking-wider text-white/40 group-hover:text-white/70 transition-colors">
+        <span className="font-heading text-[10px] tracking-wider text-white/70 group-hover:text-white transition-colors">
           {item.name}
         </span>
       </motion.div>
@@ -117,11 +117,11 @@ const Skills = () => {
         <ScrollReveal className="lg:col-span-7">
           <TiltCard intensity={4} className="relative bg-surface-dark rounded-2xl p-6 md:p-8 h-full min-h-[280px] overflow-hidden">
             <div className="relative z-10">
-              <span className="font-heading text-xs tracking-[0.2em] text-white/30 uppercase">Frontend</span>
+              <span className="font-heading text-xs tracking-[0.2em] text-white/70 uppercase">Frontend</span>
               <h3 className="font-heading text-2xl md:text-3xl font-bold text-white mt-2 tracking-tightest">
                 React, Next.js & Vue
               </h3>
-              <p className="font-body text-sm text-white/50 mt-3 max-w-md leading-relaxed">
+              <p className="font-body text-sm text-white/70 mt-3 max-w-md leading-relaxed">
                 {t('skills.frontendDesc')}
               </p>
               <IconGrid items={frontend} delay={0.1} />
@@ -135,11 +135,11 @@ const Skills = () => {
         <ScrollReveal delay={0.1} className="lg:col-span-5">
           <TiltCard intensity={4} className="relative bg-surface-dark rounded-2xl p-6 md:p-8 h-full min-h-[280px] overflow-hidden">
             <div className="relative z-10">
-              <span className="font-heading text-xs tracking-[0.2em] text-white/30 uppercase">Backend</span>
+              <span className="font-heading text-xs tracking-[0.2em] text-white/70 uppercase">Backend</span>
               <h3 className="font-heading text-2xl md:text-3xl font-bold text-white mt-2 tracking-tightest">
                 PHP & Symfony
               </h3>
-              <p className="font-body text-sm text-white/50 mt-3 leading-relaxed">
+              <p className="font-body text-sm text-white/70 mt-3 leading-relaxed">
                 {t('skills.backendDesc')}
               </p>
               <IconGrid items={backend} delay={0.15} />
@@ -152,7 +152,7 @@ const Skills = () => {
         <ScrollReveal delay={0.15} className="lg:col-span-3">
           <TiltCard intensity={5} className="relative bg-surface-dark rounded-2xl p-6 h-full min-h-[220px] overflow-hidden">
             <div className="relative z-10">
-              <span className="font-heading text-xs tracking-[0.2em] text-white/30 uppercase">Mobile</span>
+              <span className="font-heading text-xs tracking-[0.2em] text-white/70 uppercase">Mobile</span>
               <h3 className="font-heading text-xl font-bold text-white mt-2 tracking-tightest">
                 Flutter
               </h3>
@@ -165,7 +165,7 @@ const Skills = () => {
         <ScrollReveal delay={0.2} className="lg:col-span-3">
           <TiltCard intensity={5} className="relative bg-surface-dark rounded-2xl p-6 h-full min-h-[220px] overflow-hidden">
             <div className="relative z-10">
-              <span className="font-heading text-xs tracking-[0.2em] text-white/30 uppercase">Design</span>
+              <span className="font-heading text-xs tracking-[0.2em] text-white/70 uppercase">Design</span>
               <h3 className="font-heading text-xl font-bold text-white mt-2 tracking-tightest">
                 UI/UX
               </h3>
@@ -178,7 +178,7 @@ const Skills = () => {
         <ScrollReveal delay={0.25} className="lg:col-span-6">
           <TiltCard intensity={3} className="relative bg-surface-dark rounded-2xl p-6 md:p-8 h-full min-h-[220px] overflow-hidden">
             <div className="relative z-10">
-              <span className="font-heading text-xs tracking-[0.2em] text-white/30 uppercase">{t('skills.toolsLabel')}</span>
+              <span className="font-heading text-xs tracking-[0.2em] text-white/70 uppercase">{t('skills.toolsLabel')}</span>
               <div className="flex flex-col md:flex-row md:gap-10 mt-4">
                 <div>
                   <IconGrid items={devops} delay={0.3} />
@@ -192,7 +192,7 @@ const Skills = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.35 + i * 0.04, duration: 0.3 }}
-                        className="font-body text-[11px] text-white/50 bg-white/5 hover:bg-white/10 rounded-full px-3 py-1.5 transition-colors duration-200"
+                        className="font-body text-[11px] text-white/70 bg-white/5 hover:bg-white/10 rounded-full px-3 py-1.5 transition-colors duration-200"
                       >
                         {p}
                       </motion.span>
