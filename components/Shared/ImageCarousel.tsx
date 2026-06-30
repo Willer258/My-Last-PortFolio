@@ -9,6 +9,9 @@ interface ImageCarouselProps {
   className?: string;
   autoPlay?: boolean;
   interval?: number;
+  /** Portrait/mobile screenshots: center & contain inside the frame instead of full-bleed.
+   *  The parent controls the frame height via `className` (e.g. "h-[420px]"). */
+  portrait?: boolean;
 }
 
 export default function ImageCarousel({
@@ -17,6 +20,7 @@ export default function ImageCarousel({
   className,
   autoPlay = true,
   interval = 4000,
+  portrait = false,
 }: ImageCarouselProps) {
   const { t } = useTranslation("common");
   const [current, setCurrent] = useState(0);
@@ -53,8 +57,17 @@ export default function ImageCarousel({
     return () => clearInterval(timer);
   }, [autoPlay, interval, next, images.length]);
 
+  const imgClass = portrait ? "max-h-full w-auto object-contain" : "w-full h-auto";
+
   if (images.length === 0) return null;
   if (images.length === 1) {
+    if (portrait) {
+      return (
+        <div className={`relative flex items-center justify-center overflow-hidden ${className ?? ""}`}>
+          <img src={images[0]} alt={alt} className={imgClass} loading="lazy" />
+        </div>
+      );
+    }
     return (
       <img
         src={images[0]}
@@ -67,7 +80,7 @@ export default function ImageCarousel({
 
   return (
     <div
-      className={`relative overflow-hidden group ${className ?? ""}`}
+      className={`relative overflow-hidden group ${portrait ? "flex items-center justify-center" : ""} ${className ?? ""}`}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -81,7 +94,7 @@ export default function ImageCarousel({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: direction * -60 }}
           transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-          className="w-full h-auto"
+          className={imgClass}
           loading="lazy"
         />
       </AnimatePresence>

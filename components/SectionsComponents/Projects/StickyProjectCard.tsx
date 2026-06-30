@@ -89,9 +89,14 @@ export default function StickyProjectCard({ project, index, onOpen }: StickyProj
           <ImageCarousel
             images={project.screenshots!}
             alt={project.title}
-            autoPlay
+            autoPlay={project.type !== "mobile"}
             interval={5000}
-            className="w-full h-auto rounded-lg shadow-lg object-cover"
+            portrait={project.type === "mobile"}
+            className={
+              project.type === "mobile"
+                ? "w-full h-[380px] sm:h-[440px] md:h-[480px] rounded-lg"
+                : "w-full h-auto rounded-lg shadow-lg"
+            }
           />
         ) : (
           <div className="rounded-lg overflow-hidden shadow-lg">

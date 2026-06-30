@@ -132,9 +132,10 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                     <ImageCarousel
                       images={project.screenshots!}
                       alt={project.title}
-                      autoPlay={!reduce}
+                      autoPlay={!reduce && project.type !== "mobile"}
                       interval={5000}
-                      className="w-full h-auto"
+                      portrait={project.type === "mobile"}
+                      className={project.type === "mobile" ? "w-full h-[55vh] md:h-[62vh]" : "w-full h-auto"}
                     />
                   ) : (
                     <ProjectMockup type={project.type} title={project.title} stack={project.stack} />

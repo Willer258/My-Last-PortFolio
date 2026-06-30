@@ -27,6 +27,8 @@ export default function SmallProjectCard({ project, index, onOpen }: { project: 
               images={project.screenshots!}
               alt={project.title}
               autoPlay={false}
+              portrait={project.type === "mobile"}
+              className={project.type === "mobile" ? "h-[300px]" : undefined}
             />
           </div>
         )}
