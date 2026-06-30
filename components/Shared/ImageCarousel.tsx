@@ -12,6 +12,8 @@ interface ImageCarouselProps {
   /** Portrait/mobile screenshots: center & contain inside the frame instead of full-bleed.
    *  The parent controls the frame height via `className` (e.g. "h-[420px]"). */
   portrait?: boolean;
+  /** Keep prev/next arrows always visible (e.g. inside the case-study overlay). */
+  controlsAlwaysVisible?: boolean;
 }
 
 export default function ImageCarousel({
@@ -21,6 +23,7 @@ export default function ImageCarousel({
   autoPlay = true,
   interval = 4000,
   portrait = false,
+  controlsAlwaysVisible = false,
 }: ImageCarouselProps) {
   const { t } = useTranslation("common");
   const [current, setCurrent] = useState(0);
@@ -58,6 +61,7 @@ export default function ImageCarousel({
   }, [autoPlay, interval, next, images.length]);
 
   const imgClass = portrait ? "max-h-full w-auto object-contain" : "w-full h-auto";
+  const ctrlOpacity = controlsAlwaysVisible ? "opacity-100" : "opacity-70 md:opacity-0 md:group-hover:opacity-100";
 
   if (images.length === 0) return null;
   if (images.length === 1) {
@@ -103,7 +107,7 @@ export default function ImageCarousel({
       <button
         type="button"
         onClick={prev}
-        className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200"
+        className={`absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center ${ctrlOpacity} transition-opacity duration-200`}
         aria-label={t("a11y.prevImage")}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -113,7 +117,7 @@ export default function ImageCarousel({
       <button
         type="button"
         onClick={next}
-        className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200"
+        className={`absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white/70 hover:text-white hover:bg-black/60 flex items-center justify-center ${ctrlOpacity} transition-opacity duration-200`}
         aria-label={t("a11y.nextImage")}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

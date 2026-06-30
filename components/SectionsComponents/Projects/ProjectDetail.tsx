@@ -102,6 +102,8 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
             role="dialog"
             aria-modal="true"
             aria-labelledby="project-detail-title"
+            data-lenis-prevent
+            onWheel={(e) => e.stopPropagation()}
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, scale: 0.98 }}
             animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.985 }}
@@ -122,8 +124,8 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
             </button>
 
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              {/* Gallery */}
-              <div className="bg-surface-muted p-5 sm:p-8 lg:p-10 flex flex-col gap-4">
+              {/* Gallery (sticky on desktop so it stays visible while reading) */}
+              <div className="bg-surface-muted p-5 sm:p-8 lg:p-10 flex flex-col gap-4 lg:sticky lg:top-0 lg:self-start lg:max-h-[88vh]">
                 <span className="font-heading text-xs tracking-[0.2em] uppercase text-ink-muted">
                   {t("projects.detail.preview")}
                 </span>
@@ -132,8 +134,8 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                     <ImageCarousel
                       images={project.screenshots!}
                       alt={project.title}
-                      autoPlay={!reduce && project.type !== "mobile"}
-                      interval={5000}
+                      autoPlay={false}
+                      controlsAlwaysVisible
                       portrait={project.type === "mobile"}
                       className={project.type === "mobile" ? "w-full h-[55vh] md:h-[62vh]" : "w-full h-auto"}
                     />
