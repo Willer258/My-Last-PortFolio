@@ -14,6 +14,8 @@ interface ImageCarouselProps {
   portrait?: boolean;
   /** Keep prev/next arrows always visible (e.g. inside the case-study overlay). */
   controlsAlwaysVisible?: boolean;
+  /** Fill the parent surface (object-cover). Parent must have a definite size. */
+  cover?: boolean;
 }
 
 export default function ImageCarousel({
@@ -24,6 +26,7 @@ export default function ImageCarousel({
   interval = 4000,
   portrait = false,
   controlsAlwaysVisible = false,
+  cover = false,
 }: ImageCarouselProps) {
   const { t } = useTranslation("common");
   const [current, setCurrent] = useState(0);
@@ -60,7 +63,11 @@ export default function ImageCarousel({
     return () => clearInterval(timer);
   }, [autoPlay, interval, next, images.length]);
 
-  const imgClass = portrait ? "max-h-full w-auto object-contain" : "w-full h-auto";
+  const imgClass = cover
+    ? "w-full h-full object-cover"
+    : portrait
+    ? "max-h-full max-w-full w-auto object-contain"
+    : "w-full h-auto";
   const ctrlOpacity = controlsAlwaysVisible ? "opacity-100" : "opacity-70 md:opacity-0 md:group-hover:opacity-100";
 
   if (images.length === 0) return null;
@@ -76,7 +83,7 @@ export default function ImageCarousel({
       <img
         src={images[0]}
         alt={alt}
-        className={`w-full h-auto ${className ?? ""}`}
+        className={`${imgClass} ${className ?? ""}`}
         loading="lazy"
       />
     );

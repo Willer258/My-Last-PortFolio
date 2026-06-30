@@ -106,7 +106,9 @@
       "role": "Mon rôle",
       "stack": "Stack technique",
       "preview": "Aperçu",
-      "visit": "Voir en ligne"
+      "visit": "Voir en ligne",
+      "viewFull": "Voir pleinement",
+      "closeFull": "Fermer l'aperçu plein écran"
     },
     "items": [
       {

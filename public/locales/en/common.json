@@ -106,7 +106,9 @@
       "role": "My role",
       "stack": "Tech stack",
       "preview": "Preview",
-      "visit": "Visit live"
+      "visit": "Visit live",
+      "viewFull": "View full",
+      "closeFull": "Close full-screen preview"
     },
     "items": [
       {
