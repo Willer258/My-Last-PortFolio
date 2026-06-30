@@ -126,14 +126,15 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
 
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Gallery (sticky on desktop so it stays visible while reading) */}
-              <div className="bg-surface-muted p-5 sm:p-8 lg:p-10 flex flex-col gap-4 lg:sticky lg:top-0 lg:self-start lg:max-h-[88vh]">
-                <span className="font-heading text-xs tracking-[0.2em] uppercase text-ink-muted">
+              <div className="bg-surface-muted p-5 sm:p-8 lg:p-10 flex flex-col gap-4 lg:sticky lg:top-0 lg:h-[88vh]">
+                <span className="font-heading text-xs tracking-[0.2em] uppercase text-ink-muted shrink-0">
                   {t("projects.detail.preview")}
                 </span>
+                <div className="flex-1 min-h-0 flex items-center justify-center">
                 <TiltCard
                   intensity={reduce ? 0 : 8}
                   glare={!reduce}
-                  className={`relative will-change-transform ${project.type === "mobile" ? "" : "rounded-xl"}`}
+                  className={`relative will-change-transform w-full ${project.type === "mobile" ? "" : "rounded-xl"}`}
                 >
                   {!hasShots ? (
                     <div className="rounded-xl overflow-hidden shadow-xl shadow-ink/10">
@@ -148,7 +149,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                         autoPlay={false}
                         controlsAlwaysVisible
                         portrait
-                        className="w-full h-[440px] sm:h-[520px]"
+                        className="w-full h-[440px] sm:h-[520px] lg:h-[68vh]"
                       />
                     </div>
                   ) : (
@@ -174,6 +175,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                     </div>
                   )}
                 </TiltCard>
+                </div>
               </div>
 
               {/* Content */}
