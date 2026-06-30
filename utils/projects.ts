@@ -59,6 +59,7 @@ export const projects: Omit<IProject, "title" | "description">[] = [
   {
     stack: ["Flutter", "Node.js", "PostgreSQL"],
     type: "fullstack",
+    featured: true,
     screenshots: [
       "/projects/pixeasy-1.png",
       "/projects/pixeasy-2.png",

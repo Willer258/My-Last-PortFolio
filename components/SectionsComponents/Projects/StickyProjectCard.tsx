@@ -43,7 +43,7 @@ export default function StickyProjectCard({ project, index, onOpen }: StickyProj
           {project.title}
         </h3>
 
-        <p className="font-body text-sm md:text-base lg:text-lg text-white/70 leading-relaxed">
+        <p className="font-body text-sm md:text-base lg:text-lg text-white/70 leading-relaxed line-clamp-3">
           {project.description}
         </p>
 
@@ -83,25 +83,20 @@ export default function StickyProjectCard({ project, index, onOpen }: StickyProj
         </div>
       </div>
 
-      {/* Image */}
-      <div className="mt-8 md:mt-0 group/img grayscale hover:grayscale-0 transition-all duration-700 ease-out">
+      {/* Image — fixed-height frame, full image contained (uniform height across all projects) */}
+      <div className="mt-8 md:mt-0 grayscale hover:grayscale-0 transition-all duration-700 ease-out">
         {hasScreenshots ? (
           <ImageCarousel
             images={project.screenshots!}
             alt={project.title}
             autoPlay={project.type !== "mobile"}
             interval={5000}
-            portrait={project.type === "mobile"}
-            className={
-              project.type === "mobile"
-                ? "w-full h-[380px] sm:h-[440px] md:h-[480px] rounded-lg"
-                : "w-full h-auto rounded-lg shadow-lg"
-            }
+            portrait
+            className="w-full h-[240px] sm:h-[300px] md:h-[360px] rounded-xl bg-white/[0.03]"
           />
         ) : (
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <div className="w-full h-[240px] sm:h-[300px] md:h-[360px] rounded-xl overflow-hidden flex items-center justify-center bg-white/[0.03]">
             <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
-            <div className="h-6 bg-surface-panel" />
           </div>
         )}
       </div>

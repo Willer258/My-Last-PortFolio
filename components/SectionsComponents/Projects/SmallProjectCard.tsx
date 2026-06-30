@@ -2,6 +2,7 @@
 import React from "react";
 import ScrollReveal from "@/components/Shared/ScrollReveal";
 import ImageCarousel from "@/components/Shared/ImageCarousel";
+import ProjectMockup from "./ProjectMockup";
 import { IProject } from "@/utils/projects";
 import { useTranslation } from "next-i18next";
 
@@ -19,21 +20,25 @@ export default function SmallProjectCard({ project, index, onOpen }: { project: 
 
   return (
     <ScrollReveal delay={0.05}>
-      <div className="relative bg-surface-dark rounded-xl overflow-hidden group break-inside-avoid mb-4 grayscale hover:grayscale-0 transition-all duration-700 ease-out">
-        {/* Screenshots carousel if available */}
-        {hasScreenshots && (
-          <div className="overflow-hidden">
+      <div className="relative h-full flex flex-col bg-surface-dark rounded-xl overflow-hidden group grayscale hover:grayscale-0 transition-all duration-700 ease-out">
+        {/* Image — fixed-height frame, full image contained (uniform across cards) */}
+        <div className="overflow-hidden border-b border-white/5">
+          {hasScreenshots ? (
             <ImageCarousel
               images={project.screenshots!}
               alt={project.title}
               autoPlay={false}
-              portrait={project.type === "mobile"}
-              className={project.type === "mobile" ? "h-[300px]" : undefined}
+              portrait
+              className="w-full h-[180px] bg-white/[0.03]"
             />
-          </div>
-        )}
+          ) : (
+            <div className="w-full h-[180px] overflow-hidden flex items-center justify-center bg-white/[0.03] p-4">
+              <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
+            </div>
+          )}
+        </div>
 
-        <div className="p-4 space-y-2">
+        <div className="p-4 space-y-2 flex-1 flex flex-col">
           <div className="flex items-center justify-between gap-2">
             <h4 className="font-heading text-sm font-bold text-white tracking-tight truncate">
               {project.title}
@@ -43,11 +48,11 @@ export default function SmallProjectCard({ project, index, onOpen }: { project: 
             </span>
           </div>
 
-          <p className="font-body text-[11px] text-white/70 leading-relaxed">
+          <p className="font-body text-[11px] text-white/70 leading-relaxed line-clamp-3">
             {project.description}
           </p>
 
-          <div className="flex items-center justify-between pt-2 border-t border-white/5">
+          <div className="flex items-center justify-between gap-2 pt-2 mt-auto border-t border-white/5">
             <div className="flex gap-1 flex-wrap">
               {project.stack.slice(0, 3).map((tech, i) => (
                 <span key={i} className="font-body text-[9px] text-white/70 bg-white/5 rounded px-1.5 py-0.5">
