@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import ImageCarousel from "@/components/Shared/ImageCarousel";
+import TiltCard from "@/components/Shared/TiltCard";
 import ProjectMockup from "./ProjectMockup";
 import { IProject } from "@/utils/projects";
 
@@ -129,20 +130,50 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                 <span className="font-heading text-xs tracking-[0.2em] uppercase text-ink-muted">
                   {t("projects.detail.preview")}
                 </span>
-                <div className="rounded-xl overflow-hidden shadow-lg shadow-ink/10">
-                  {hasShots ? (
-                    <ImageCarousel
-                      images={project.screenshots!}
-                      alt={project.title}
-                      autoPlay={false}
-                      controlsAlwaysVisible
-                      portrait={project.type === "mobile"}
-                      className={project.type === "mobile" ? "w-full h-[55vh] md:h-[62vh]" : "w-full h-auto"}
-                    />
+                <TiltCard
+                  intensity={reduce ? 0 : 8}
+                  glare={!reduce}
+                  className={`relative will-change-transform ${project.type === "mobile" ? "" : "rounded-xl"}`}
+                >
+                  {!hasShots ? (
+                    <div className="rounded-xl overflow-hidden shadow-xl shadow-ink/10">
+                      <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
+                    </div>
+                  ) : project.type === "mobile" ? (
+                    /* Phone frame for mobile screenshots */
+                    <div className="mx-auto w-[250px] max-w-full rounded-[2.2rem] border-[7px] border-ink bg-ink shadow-2xl shadow-ink/40 overflow-hidden">
+                      <ImageCarousel
+                        images={project.screenshots!}
+                        alt={project.title}
+                        autoPlay={false}
+                        controlsAlwaysVisible
+                        portrait
+                        className="w-full h-[440px] sm:h-[520px]"
+                      />
+                    </div>
                   ) : (
-                    <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
+                    /* Browser window frame for web / fullstack screenshots */
+                    <div className="rounded-xl overflow-hidden border border-ink/10 shadow-2xl shadow-ink/20 bg-white">
+                      <div className="flex items-center gap-1.5 px-3.5 py-2.5 bg-surface-muted border-b border-ink/5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-ink/15" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-ink/15" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-ink/15" />
+                        <span className="ml-2 font-body text-[10px] text-ink-faint truncate">
+                          {project.link
+                            ? project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")
+                            : project.title.toLowerCase().replace(/[^a-z0-9]+/g, "") + ".app"}
+                        </span>
+                      </div>
+                      <ImageCarousel
+                        images={project.screenshots!}
+                        alt={project.title}
+                        autoPlay={false}
+                        controlsAlwaysVisible
+                        className="w-full h-auto"
+                      />
+                    </div>
                   )}
-                </div>
+                </TiltCard>
               </div>
 
               {/* Content */}
