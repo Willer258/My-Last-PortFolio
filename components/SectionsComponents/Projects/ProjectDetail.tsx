@@ -133,22 +133,18 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
             </div>
 
             <motion.div variants={container} initial="hidden" animate="show">
-              {/* Gallery hero — shows the FULL image (landscape full-width, mobile contained) */}
-              <motion.div variants={item} className="relative bg-surface-dark">
-                <span className="absolute top-4 left-4 z-20 font-heading text-[10px] tracking-[0.2em] uppercase text-white/90 bg-ink/45 backdrop-blur-sm rounded-full px-3 py-1.5 pointer-events-none">
+              {/* Gallery hero — full screenshot inside a browser / phone container */}
+              <motion.div variants={item} className="relative bg-surface-dark px-4 sm:px-8 py-8 sm:py-12 flex justify-center">
+                <span className="absolute top-4 left-4 z-20 font-heading text-[10px] tracking-[0.2em] uppercase text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 pointer-events-none">
                   {t("projects.detail.preview")}
                 </span>
-                {hasShots ? (
-                  project.type === "mobile" ? (
-                    <ImageCarousel
-                      images={project.screenshots!}
-                      alt={project.title}
-                      autoPlay={false}
-                      controlsAlwaysVisible
-                      portrait
-                      className="w-full h-[58vh] sm:h-[64vh]"
-                    />
-                  ) : (
+                {!hasShots ? (
+                  <div className="w-full max-w-3xl flex items-center justify-center">
+                    <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
+                  </div>
+                ) : project.type === "mobile" ? (
+                  /* Phone frame */
+                  <div className="w-[230px] sm:w-[260px] max-w-full rounded-[2.5rem] border-[9px] border-ink bg-ink shadow-2xl shadow-black/50 overflow-hidden">
                     <ImageCarousel
                       images={project.screenshots!}
                       alt={project.title}
@@ -156,10 +152,27 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                       controlsAlwaysVisible
                       className="w-full h-auto"
                     />
-                  )
+                  </div>
                 ) : (
-                  <div className="w-full h-[42vh] flex items-center justify-center p-6 sm:p-10">
-                    <ProjectMockup type={project.type} title={project.title} stack={project.stack} />
+                  /* Browser window frame */
+                  <div className="w-full max-w-4xl rounded-xl overflow-hidden border border-black/10 shadow-2xl shadow-black/50 bg-white">
+                    <div className="flex items-center gap-1.5 px-4 py-2.5 bg-ink/[0.06] border-b border-ink/[0.06]">
+                      <span className="w-2.5 h-2.5 rounded-full bg-ink/15" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-ink/15" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-ink/15" />
+                      <span className="ml-3 font-body text-[10px] text-ink-faint truncate">
+                        {project.link
+                          ? project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")
+                          : project.title.toLowerCase().replace(/[^a-z0-9]+/g, "") + ".app"}
+                      </span>
+                    </div>
+                    <ImageCarousel
+                      images={project.screenshots!}
+                      alt={project.title}
+                      autoPlay={false}
+                      controlsAlwaysVisible
+                      className="w-full h-auto"
+                    />
                   </div>
                 )}
               </motion.div>
