@@ -108,7 +108,12 @@
       "preview": "Preview",
       "visit": "Visit live",
       "viewFull": "View full",
-      "closeFull": "Close full-screen preview"
+      "closeFull": "Close full-screen preview",
+      "dragHint": "Drag to rotate",
+      "demoBadge": "Video demo",
+      "playDemo": "Play the demo",
+      "pauseDemo": "Pause the demo",
+      "mediaDot": "Media {{num}}"
     },
     "items": [
       {
