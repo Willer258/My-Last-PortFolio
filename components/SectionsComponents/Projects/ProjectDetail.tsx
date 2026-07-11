@@ -1,10 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, useState, useMemo } from "react";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import ImageCarousel from "@/components/Shared/ImageCarousel";
 import ProjectMockup from "./ProjectMockup";
 import { IProject } from "@/utils/projects";
+import type { DeviceMedia } from "./DeviceScene";
+
+const DeviceScene = dynamic(() => import("./DeviceScene"), { ssr: false });
 
 const typeLabels: Record<string, string> = {
   web: "Web",
@@ -77,6 +81,33 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
   const ease = [0.22, 1, 0.36, 1] as const;
   const hasShots = !!project?.screenshots && project.screenshots.length > 0;
 
+  /* ── Médias du hero 3D : la démo vidéo d'abord, puis les captures ── */
+  const media = useMemo<DeviceMedia[]>(() => {
+    if (!project) return [];
+    const m: DeviceMedia[] = [];
+    if (project.video) m.push({ src: project.video, kind: "video" });
+    (project.screenshots ?? []).forEach((src) => m.push({ src, kind: "image" }));
+    return m;
+  }, [project]);
+
+  const [mediaIndex, setMediaIndex] = useState(0);
+  const [videoActive, setVideoActive] = useState(true);
+  const [webglOk, setWebglOk] = useState(true);
+
+  useEffect(() => {
+    const c = document.createElement("canvas");
+    setWebglOk(!!(c.getContext("webgl2") || c.getContext("webgl")));
+  }, []);
+
+  // Nouveau projet → repartir du premier média ; la démo joue sauf motion réduite.
+  useEffect(() => {
+    setMediaIndex(0);
+    setVideoActive(!reduce);
+  }, [project, reduce]);
+
+  const currentIsVideo = media[mediaIndex]?.kind === "video";
+  const use3D = webglOk && media.length > 0;
+
   // Staggered entrance for the presentation blocks
   const container = { hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } } };
   const item = reduce
@@ -133,7 +164,109 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
             </div>
 
             <motion.div variants={container} initial="hidden" animate="show">
-              {/* Gallery hero — full screenshot inside a browser / phone container */}
+              {/* Gallery hero — 3D device showcase (falls back to framed carousel without WebGL) */}
+              {use3D ? (
+                <motion.div
+                  variants={item}
+                  className="relative bg-surface-dark overflow-hidden h-[420px] sm:h-[480px] lg:h-[56vh]"
+                >
+                  {/* Vignette douce derrière la machine */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse 70% 60% at 50% 45%, rgba(255,255,255,0.07), transparent 70%)",
+                    }}
+                  />
+                  <span className="absolute top-4 left-4 z-20 font-heading text-[10px] tracking-[0.2em] uppercase text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 pointer-events-none">
+                    {t("projects.detail.preview")}
+                  </span>
+                  {currentIsVideo && (
+                    <span className="absolute top-4 right-4 z-20 inline-flex items-center gap-1.5 font-heading text-[10px] tracking-[0.15em] uppercase text-ink bg-white/90 rounded-full px-3 py-1.5 pointer-events-none">
+                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      {t("projects.detail.demoBadge")}
+                    </span>
+                  )}
+
+                  <DeviceScene
+                    key={project.title}
+                    device={project.type === "mobile" ? "phone" : "laptop"}
+                    media={media}
+                    index={mediaIndex}
+                    videoActive={videoActive}
+                    label={`${project.title} — ${t("projects.detail.preview")}`}
+                  />
+
+                  {/* Contrôles DOM au-dessus du canvas */}
+                  {media.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setMediaIndex((i) => (i - 1 + media.length) % media.length)}
+                        aria-label={t("a11y.prevImage")}
+                        className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm text-white/80 hover:text-white hover:bg-black/60 flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setMediaIndex((i) => (i + 1) % media.length)}
+                        aria-label={t("a11y.nextImage")}
+                        className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm text-white/80 hover:text-white hover:bg-black/60 flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
+                        {media.map((m, i) => (
+                          <button
+                            key={m.src}
+                            type="button"
+                            onClick={() => setMediaIndex(i)}
+                            aria-label={t("projects.detail.mediaDot", { num: i + 1 })}
+                            aria-current={i === mediaIndex ? "true" : undefined}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                              i === mediaIndex ? "bg-white w-5" : "bg-white/40 hover:bg-white/70 w-1.5"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+
+                  {currentIsVideo && (
+                    <button
+                      type="button"
+                      onClick={() => setVideoActive((v) => !v)}
+                      aria-label={videoActive ? t("projects.detail.pauseDemo") : t("projects.detail.playDemo")}
+                      className="absolute bottom-4 right-4 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-ink flex items-center justify-center shadow-lg shadow-black/30 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    >
+                      {videoActive ? (
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4 translate-x-[1px]" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      )}
+                    </button>
+                  )}
+
+                  <span className="absolute bottom-4 left-4 z-20 hidden sm:inline-flex items-center gap-1.5 font-body text-[11px] text-white/60 pointer-events-none select-none">
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4M16 17H4m0 0l4 4m-4-4l4-4" />
+                    </svg>
+                    {t("projects.detail.dragHint")}
+                  </span>
+                </motion.div>
+              ) : (
               <motion.div variants={item} className="relative bg-surface-dark px-4 sm:px-8 py-8 sm:py-12 flex justify-center">
                 <span className="absolute top-4 left-4 z-20 font-heading text-[10px] tracking-[0.2em] uppercase text-white/90 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 pointer-events-none">
                   {t("projects.detail.preview")}
@@ -176,6 +309,7 @@ export default function ProjectDetail({ project, onClose }: ProjectDetailProps) 
                   </div>
                 )}
               </motion.div>
+              )}
 
               {/* Content — main column + meta sidebar */}
               <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 py-10 sm:py-12">

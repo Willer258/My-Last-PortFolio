@@ -6,6 +6,8 @@ export interface IProject {
   company?: string;
   link?: string;
   screenshots?: string[];
+  /** Démo vidéo (~15 s, muette) de la manipulation réelle du projet — public/projects/demos/ */
+  video?: string;
   featured?: boolean;
   // Case-study content (filled from i18n projects.items[i])
   problem?: string;
@@ -31,6 +33,7 @@ export const projects: Omit<IProject, "title" | "description">[] = [
     stack: ["Flutter", "Dart", "Drift", "Riverpod"],
     type: "mobile",
     featured: true,
+    video: "/projects/demos/pockii.mp4",
     screenshots: [
       "/projects/pockii-1.png",
       "/projects/pockii-2.png",
@@ -40,6 +43,7 @@ export const projects: Omit<IProject, "title" | "description">[] = [
     stack: ["Next.js", "PHP", "Symfony", "MySQL"],
     type: "fullstack",
     featured: true,
+    video: "/projects/demos/crm.mp4",
     screenshots: [
       "/projects/crm-1.png",
       "/projects/crm-2.png",
@@ -60,6 +64,7 @@ export const projects: Omit<IProject, "title" | "description">[] = [
     stack: ["Flutter", "Node.js", "PostgreSQL"],
     type: "fullstack",
     featured: true,
+    video: "/projects/demos/pixeasy.mp4",
     screenshots: [
       "/projects/pixeasy-1.png",
       "/projects/pixeasy-2.png",
@@ -73,6 +78,7 @@ export const projects: Omit<IProject, "title" | "description">[] = [
     type: "web",
     company: "WiASSUR",
     link: "https://wiassur.com/ci",
+    video: "/projects/demos/wiassur.mp4",
     screenshots: [
       "/projects/wiassur-1.png",
       "/projects/wiassur-2.png",
@@ -89,6 +95,7 @@ export const projects: Omit<IProject, "title" | "description">[] = [
     type: "web",
     company: "Magma-tech",
     link: "https://magmasend.com",
+    video: "/projects/demos/magma.mp4",
     screenshots: [
       "/projects/magmasend-1.png",
       "/projects/magmasend-2.png",
@@ -105,6 +112,7 @@ export const projects: Omit<IProject, "title" | "description">[] = [
     type: "web",
     company: "WiASSUR",
     link: "https://comparer.wia.ci",
+    video: "/projects/demos/comparateur.mp4",
     screenshots: [
       "/projects/comparateur-1.png",
       "/projects/comparateur-2.png",
@@ -120,6 +128,7 @@ export const projects: Omit<IProject, "title" | "description">[] = [
     stack: ["Next.js", "Symfony", "MySQL", "PWA"],
     type: "fullstack",
     featured: true,
+    video: "/projects/demos/kizuna.mp4",
     screenshots: [
       "/projects/kizuna-1.png",
       "/projects/kizuna-2.png",

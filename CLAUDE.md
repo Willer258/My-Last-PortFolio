@@ -140,5 +140,6 @@ export const getStaticProps = async ({ locale }) => ({
 - Mobile responsiveness is implemented (note: there's commented-out code for a mobile warning that was previously used)
 - The app uses a loading animation system controlled by the `showProverbs` Recoil state
 - The Contact section (`components/SectionsComponents/Contacts`) exposes direct `mailto:`/`tel:` links, social links, and a submittable contact form (`ContactForm.tsx`) wired to **Web3Forms** via `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example` / `CONTACT_FORM_SETUP.md`); it falls back to a `mailto:` CTA when the key is absent
-- Project showcase data lives in `utils/projects.ts` (stack/type/featured/screenshots/link) merged **by index** with `projects.items[]` in the locale files — keep both arrays the same length and order. Screenshots live in `public/projects/`
+- Project showcase data lives in `utils/projects.ts` (stack/type/featured/screenshots/video/link) merged **by index** with `projects.items[]` in the locale files — keep both arrays the same length and order. Screenshots live in `public/projects/`, ~15 s muted demo videos in `public/projects/demos/`
+- The case-study hero renders the media on a 3D laptop/phone (`Projects/DeviceScene.tsx`, plain Three.js: drag-to-rotate, video texture for demos, WebGL fallback to the framed carousel)
 - Keep strict key parity between `public/locales/fr/common.json` and `public/locales/en/common.json` (same keys, translated values); no hard-coded strings, and translate aria-labels

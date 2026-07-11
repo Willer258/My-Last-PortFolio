@@ -108,7 +108,12 @@
       "preview": "Aperçu",
       "visit": "Voir en ligne",
       "viewFull": "Voir pleinement",
-      "closeFull": "Fermer l'aperçu plein écran"
+      "closeFull": "Fermer l'aperçu plein écran",
+      "dragHint": "Glissez pour pivoter",
+      "demoBadge": "Démo vidéo",
+      "playDemo": "Lire la démo",
+      "pauseDemo": "Mettre la démo en pause",
+      "mediaDot": "Média {{num}}"
     },
     "items": [
       {
