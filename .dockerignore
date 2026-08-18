@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.env*
+test-results
+tests
+playwright.config.ts
+test-*.mjs
+*.md
+.impeccable.md
+netlify.toml
+tsconfig.tsbuildinfo
+.dockerignore
+Dockerfile

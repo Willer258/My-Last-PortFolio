@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React from "react";
 
-// TODO: confirmer le domaine de production
-const SITE_URL = "https://wilfriedhouinlindjonon.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
+  "https://wilfriedhouinlindjonon.com";
 
 const DEFAULT_LOCALE = "fr";
 
