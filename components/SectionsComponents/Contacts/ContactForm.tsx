@@ -1,4 +1,11 @@
 import AnimateCursorTarget from "@/components/Shared/AnimateCursorTarget";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 
@@ -15,6 +22,10 @@ const ContactForm = () => {
   const isConfigured = accessKey.length > 0;
 
   const [status, setStatus] = useState<Status>("idle");
+  // Radix select is not a native control: keep its value in state and
+  // validate it manually on submit (native `required` can't reach it).
+  const [projectType, setProjectType] = useState("");
+  const [projectTypeMissing, setProjectTypeMissing] = useState(false);
 
   // Project type options are kept in-component (no matching i18n keys exist yet)
   // so they follow the active locale without altering the translation files.
@@ -49,6 +60,11 @@ const ContactForm = () => {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    if (!projectType) {
+      setProjectTypeMissing(true);
+      return;
+    }
+
     setStatus("sending");
 
     try {
@@ -64,7 +80,7 @@ const ContactForm = () => {
           from_name: formData.get("name"),
           name: formData.get("name"),
           email: formData.get("email"),
-          project_type: formData.get("project_type"),
+          project_type: projectType,
           message: formData.get("message"),
           botcheck: formData.get("botcheck"),
         }),
@@ -75,6 +91,7 @@ const ContactForm = () => {
       if (response.ok && result.success) {
         setStatus("success");
         form.reset();
+        setProjectType("");
       } else {
         setStatus("error");
       }
@@ -87,14 +104,6 @@ const ContactForm = () => {
     "block font-heading text-[10px] tracking-[0.2em] uppercase text-white/50 mb-2";
   const fieldClass =
     "w-full bg-white/[0.06] border border-white/10 rounded-lg px-4 py-3 font-body text-sm text-white placeholder-white/30 transition-colors duration-200 hover:border-white/25 focus:border-white/50 focus:bg-white/[0.09] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2";
-
-  // Inline chevron so the appearance-none select still reads as a dropdown
-  const selectChevron = {
-    backgroundImage:
-      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "right 1rem center",
-  } as const;
 
   return (
     <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.03] backdrop-blur-2xl shadow-2xl shadow-black/40 p-6 sm:p-8 lg:p-10 space-y-6">
@@ -158,24 +167,39 @@ const ContactForm = () => {
             <label htmlFor="contact-project-type" className={labelClass}>
               {t("form.projectType")} <span aria-hidden="true">*</span>
             </label>
-            <select
-              id="contact-project-type"
-              name="project_type"
-              required
-              aria-required="true"
-              defaultValue=""
-              className={`${fieldClass} appearance-none cursor-pointer pr-10`}
-              style={selectChevron}
+            <Select
+              value={projectType || undefined}
+              onValueChange={(value) => {
+                setProjectType(value);
+                setProjectTypeMissing(false);
+              }}
             >
-              <option value="" disabled className="text-ink">
-                {selectPlaceholder}
-              </option>
-              {projectTypeOptions.map((option) => (
-                <option key={option.value} value={option.value} className="text-ink">
-                  {option.label}
-                </option>
-              ))}
-            </select>
+              <SelectTrigger
+                id="contact-project-type"
+                aria-required="true"
+                aria-invalid={projectTypeMissing}
+                aria-describedby={projectTypeMissing ? "contact-project-type-error" : undefined}
+                className={projectTypeMissing ? "border-red-300/60" : undefined}
+              >
+                <SelectValue placeholder={selectPlaceholder} />
+              </SelectTrigger>
+              <SelectContent>
+                {projectTypeOptions.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {projectTypeMissing && (
+              <p
+                id="contact-project-type-error"
+                role="alert"
+                className="font-body text-xs text-red-300 mt-2"
+              >
+                {t("form.required")}
+              </p>
+            )}
           </div>
 
           <div>

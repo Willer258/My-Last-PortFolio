@@ -210,18 +210,17 @@ export const BandeTexteAnimation = ({
       />
 
       <>
-        {noLine ?? (
+        {/* Persistent marker underline — light sections only: on dark it clips the glyphs */}
+        {noLine ?? (whiteBar ? null : (
           <motion.div
-            className={`absolute h-2 bottom-0.5 ${
-              whiteBar ? "bg-ink" : "bg-ink/30"
-            } w-full`}
+            className="absolute h-2 bottom-0.5 bg-ink/30 w-full"
             initial={{ width: 0 }}
             variants={variants}
             animate={controlsMark}
             transition={{ duration: 2, delay: delay ?? 0 }}
             exit={{ width: 0 }}
           />
-        )}
+        ))}
 
         <Tag className={className}>
           <motion.span
