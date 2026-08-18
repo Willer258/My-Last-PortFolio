@@ -6,7 +6,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import React, { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -26,6 +27,14 @@ const ContactForm = () => {
   // validate it manually on submit (native `required` can't reach it).
   const [projectType, setProjectType] = useState("");
   const [projectTypeMissing, setProjectTypeMissing] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+
+  // Success card auto-dismisses; the close button short-circuits it
+  useEffect(() => {
+    if (status !== "success") return;
+    const timer = setTimeout(() => setStatus("idle"), 7000);
+    return () => clearTimeout(timer);
+  }, [status]);
 
   // Project type options are kept in-component (no matching i18n keys exist yet)
   // so they follow the active locale without altering the translation files.
@@ -116,6 +125,69 @@ const ContactForm = () => {
       <div className="mb-2">
         <h3 className="font-heading text-xl md:text-2xl font-bold">{t("form.heading")}</h3>
       </div>
+
+      {/* Success card — glass overlay with an animated check */}
+      <AnimatePresence>
+        {status === "success" && (
+          <motion.div
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.98 }}
+            transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+            className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 rounded-2xl bg-surface-dark/85 backdrop-blur-xl p-8 text-center"
+          >
+            <motion.svg
+              viewBox="0 0 52 52"
+              className="h-16 w-16"
+              aria-hidden="true"
+              initial={false}
+            >
+              <motion.circle
+                cx="26"
+                cy="26"
+                r="24"
+                fill="none"
+                stroke="rgba(110, 231, 183, 0.4)"
+                strokeWidth="2"
+                initial={{ pathLength: prefersReducedMotion ? 1 : 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
+              <motion.path
+                d="M15 27l8 8 15-16"
+                fill="none"
+                stroke="#6ee7b7"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ pathLength: prefersReducedMotion ? 1 : 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.45, delay: prefersReducedMotion ? 0 : 0.35, ease: "easeOut" }}
+              />
+            </motion.svg>
+
+            <div className="space-y-1.5">
+              <p className="font-heading text-xl md:text-2xl font-bold text-white">
+                {t("form.successTitle")}
+              </p>
+              <p className="font-body text-sm text-white/70">{t("form.successBody")}</p>
+            </div>
+
+            <AnimateCursorTarget type="button">
+              <button
+                type="button"
+                onClick={() => setStatus("idle")}
+                className="mt-2 rounded-lg border border-white/15 bg-white/5 px-5 py-2.5 font-heading text-sm font-semibold tracking-wide text-white/80 transition-colors duration-200 hover:bg-white hover:text-surface-dark focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              >
+                {t("form.close")}
+              </button>
+            </AnimateCursorTarget>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {isConfigured ? (
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -231,20 +303,15 @@ const ContactForm = () => {
             </button>
           </AnimateCursorTarget>
 
-          {/* Status region — announced to assistive tech */}
+          {/* Error region — announced to assistive tech (success has its own card) */}
           <p
-            role={status === "error" ? "alert" : "status"}
+            role="alert"
             aria-live="polite"
             aria-atomic="true"
             className={`font-body text-sm min-h-[1.25rem] ${
-              status === "success"
-                ? "text-emerald-300"
-                : status === "error"
-                  ? "text-red-300"
-                  : "sr-only"
+              status === "error" ? "text-red-300" : "sr-only"
             }`}
           >
-            {status === "success" && t("form.success")}
             {status === "error" && t("form.error")}
           </p>
         </form>
