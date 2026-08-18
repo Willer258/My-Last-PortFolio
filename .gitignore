@@ -33,3 +33,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# generated at prebuild (scripts/generate-seo.mjs)
+/public/robots.txt
+/public/sitemap.xml
