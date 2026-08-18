@@ -423,6 +423,9 @@
     "sending": "Sending...",
     "success": "Message sent successfully! I'll get back to you very soon.",
     "error": "Something went wrong. Please try again.",
-    "required": "This field is required"
+    "required": "This field is required",
+    "successTitle": "Message sent!",
+    "successBody": "Thanks! I'll get back to you very soon.",
+    "close": "Close"
   }
 }
