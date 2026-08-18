@@ -213,7 +213,7 @@ export const BandeTexteAnimation = ({
         {noLine ?? (
           <motion.div
             className={`absolute h-2 bottom-0.5 ${
-              whiteBar ? "bg-white/30" : "bg-ink/30"
+              whiteBar ? "bg-ink" : "bg-ink/30"
             } w-full`}
             initial={{ width: 0 }}
             variants={variants}

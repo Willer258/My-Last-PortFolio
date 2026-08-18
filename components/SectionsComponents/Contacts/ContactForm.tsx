@@ -86,12 +86,26 @@ const ContactForm = () => {
   const labelClass =
     "block font-heading text-[10px] tracking-[0.2em] uppercase text-white/50 mb-2";
   const fieldClass =
-    "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 font-body text-sm text-white placeholder-white/30 transition-colors duration-200 hover:border-white/20 focus:border-white/40 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2";
+    "w-full bg-white/[0.06] border border-white/10 rounded-lg px-4 py-3 font-body text-sm text-white placeholder-white/30 transition-colors duration-200 hover:border-white/25 focus:border-white/50 focus:bg-white/[0.09] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2";
+
+  // Inline chevron so the appearance-none select still reads as a dropdown
+  const selectChevron = {
+    backgroundImage:
+      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "right 1rem center",
+  } as const;
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 space-y-5 border border-white/5 w-full">
-      <div className="mb-4">
-        <h3 className="font-heading text-lg font-bold">{t("form.heading")}</h3>
+    <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.03] backdrop-blur-2xl shadow-2xl shadow-black/40 p-6 sm:p-8 lg:p-10 space-y-6">
+      {/* Top light accent of the glass card */}
+      <div
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
+        aria-hidden="true"
+      />
+
+      <div className="mb-2">
+        <h3 className="font-heading text-xl md:text-2xl font-bold">{t("form.heading")}</h3>
       </div>
 
       {isConfigured ? (
@@ -107,34 +121,37 @@ const ContactForm = () => {
             aria-hidden="true"
           />
 
-          <div>
-            <label htmlFor="contact-name" className={labelClass}>
-              {t("form.name")} <span aria-hidden="true">*</span>
-            </label>
-            <input
-              id="contact-name"
-              name="name"
-              type="text"
-              required
-              aria-required="true"
-              autoComplete="name"
-              className={fieldClass}
-            />
-          </div>
+          {/* Name + email side by side on the widened card */}
+          <div className="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label htmlFor="contact-name" className={labelClass}>
+                {t("form.name")} <span aria-hidden="true">*</span>
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                aria-required="true"
+                autoComplete="name"
+                className={fieldClass}
+              />
+            </div>
 
-          <div>
-            <label htmlFor="contact-email" className={labelClass}>
-              {t("form.email")} <span aria-hidden="true">*</span>
-            </label>
-            <input
-              id="contact-email"
-              name="email"
-              type="email"
-              required
-              aria-required="true"
-              autoComplete="email"
-              className={fieldClass}
-            />
+            <div>
+              <label htmlFor="contact-email" className={labelClass}>
+                {t("form.email")} <span aria-hidden="true">*</span>
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                aria-required="true"
+                autoComplete="email"
+                className={fieldClass}
+              />
+            </div>
           </div>
 
           <div>
@@ -147,7 +164,8 @@ const ContactForm = () => {
               required
               aria-required="true"
               defaultValue=""
-              className={`${fieldClass} appearance-none cursor-pointer`}
+              className={`${fieldClass} appearance-none cursor-pointer pr-10`}
+              style={selectChevron}
             >
               <option value="" disabled className="text-ink">
                 {selectPlaceholder}
@@ -169,7 +187,7 @@ const ContactForm = () => {
               name="message"
               required
               aria-required="true"
-              rows={4}
+              rows={5}
               className={`${fieldClass} resize-y`}
             />
           </div>
