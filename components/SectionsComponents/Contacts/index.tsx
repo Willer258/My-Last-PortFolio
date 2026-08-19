@@ -64,11 +64,7 @@ const Contacts = () => {
 
                   <div className="flex flex-col md:flex-row md:items-center gap-2">
                     <span className="font-heading text-[10px] tracking-[0.2em] uppercase text-white/70 w-20 shrink-0">{t('contact.phone')}</span>
-                    <div className="flex flex-col md:flex-row gap-1 md:gap-3">
-                      <a className="font-body text-sm text-white/80 hover:text-white transition-colors" href="tel:+2250767668478">+225 07-67-66-84-78</a>
-                      <span className="hidden md:inline text-white/20">/</span>
-                      <a className="font-body text-sm text-white/80 hover:text-white transition-colors" href="tel:+2250172598212">+225 01-72-59-82-12</a>
-                    </div>
+                    <a className="font-body text-sm text-white/80 hover:text-white transition-colors" href="tel:+2250172598212">+225 01-72-59-82-12</a>
                   </div>
 
                   <div className="h-px bg-white/5" />
