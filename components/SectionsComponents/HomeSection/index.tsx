@@ -8,6 +8,7 @@ import {
   TypingAnimation,
 } from "@/components/Shared/TyperText";
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 import { useRecoilState } from "recoil";
 import { showProverbs } from "@/utils/atomes";
 import { texts as greetingsData } from "@/utils/saluttexte";
@@ -31,6 +32,7 @@ const easeExpo = [0.16, 1, 0.3, 1] as const;
 
 function HomeSection() {
   const { t } = useTranslation('common');
+  const { locale } = useRouter();
   const [showText] = useRecoilState(showProverbs);
   const [ready, setReady] = useState(false);
   const isMobile = useIsMobile();
@@ -196,9 +198,7 @@ function HomeSection() {
                   <Button type="outlined">{t('home.contact')}</Button>
                 </motion.a>
                 <motion.a
-                  href="/cv.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={locale === 'en' ? '/en/cv' : '/cv'}
                   aria-label={t('home.cvAriaLabel')}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.97 }}

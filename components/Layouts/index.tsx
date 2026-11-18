@@ -6,12 +6,13 @@ import { useRecoilState } from "recoil";
 import { showProverbs } from "@/utils/atomes";
 import { useTranslation } from "next-i18next";
 
-const Layout = ({ children }: any) => {
+// `bare` : page autonome (ex. /cv) sans navigation latérale ni pied de page.
+const Layout = ({ children, bare = false }: { children: React.ReactNode; bare?: boolean }) => {
   const [showText] = useRecoilState(showProverbs);
   const { t } = useTranslation("common");
 
   return (
-    <div className="min-h-dvh bg-surface">
+    <div className="min-h-dvh bg-surface print:bg-white">
       <MainHead />
       <a
         href="#main"
@@ -19,11 +20,11 @@ const Layout = ({ children }: any) => {
       >
         {t("a11y.skipToContent")}
       </a>
-      {!showText && <SideNav />}
-      <main id="main" tabIndex={-1} className="md:pl-36 outline-none">
+      {!bare && !showText && <SideNav />}
+      <main id="main" tabIndex={-1} className={`${bare ? "" : "md:pl-36 "}outline-none`}>
         {children}
       </main>
-      {!showText && <Footer />}
+      {!bare && !showText && <Footer />}
     </div>
   );
 };
