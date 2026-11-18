@@ -427,5 +427,88 @@
     "successTitle": "Message envoyé !",
     "successBody": "Merci ! Je vous répondrai très vite.",
     "close": "Fermer"
+  },
+  "cv": {
+    "seoTitle": "CV — Alain Wilfried Houinlindjonon, développeur full-stack à Abidjan",
+    "seoDescription": "CV d'Alain Wilfried Houinlindjonon : développeur full-stack et chef de projet technique à Abidjan. Applications web et mobiles, intégration d'IA, cadrage et maintenance.",
+    "name": "Alain Wilfried Houinlindjonon",
+    "role": "Développeur full-stack et chef de projet technique",
+    "focus": "Applications web, mobiles et intégration d'IA",
+    "location": "Abidjan, Côte d'Ivoire",
+    "portfolioLabel": "Portfolio",
+    "backHome": "Retour au portfolio",
+    "print": "Imprimer ou enregistrer en PDF",
+    "contactLabel": "Coordonnées",
+    "profileTitle": "Profil",
+    "profile": [
+      "Développeur full-stack basé à Abidjan, en activité depuis 2021, en entreprise et en indépendant. Je conçois et livre des applications web et mobiles de bout en bout : cadrage du besoin, architecture, développement et mise en production.",
+      "Ma stack principale est Next.js / React, Symfony et Flutter. J'ai dirigé un département frontend et formé des développeurs, ce qui me permet aussi de piloter un projet ou un prestataire pour le compte d'un client."
+    ],
+    "servicesTitle": "Ce que je peux prendre en charge",
+    "services": [
+      {
+        "name": "Applications web et mobiles sur mesure",
+        "deliverable": "Site métier, back-office, boutique en ligne ou application mobile, de la conception à la mise en ligne."
+      },
+      {
+        "name": "Intégration d'IA et d'assistants",
+        "deliverable": "Chatbot ou assistant WhatsApp qui répond aux demandes courantes, branché sur les données de l'entreprise."
+      },
+      {
+        "name": "Cadrage et pilotage de projet",
+        "deliverable": "Cahier des charges, architecture, estimation, puis suivi de l'équipe ou du prestataire."
+      },
+      {
+        "name": "Reprise et maintenance",
+        "deliverable": "Audit, correction et évolution d'une application existante."
+      }
+    ],
+    "experienceTitle": "Expériences professionnelles",
+    "projectsTitle": "Réalisations en indépendant",
+    "projectsRoleLabel": "Mon rôle",
+    "skillsTitle": "Compétences",
+    "skills": [
+      {
+        "domain": "Frontend",
+        "items": "TypeScript, React, Next.js, Vue.js, Tailwind CSS"
+      },
+      {
+        "domain": "Backend",
+        "items": "PHP, Symfony, Node.js, API REST, Doctrine ORM, authentification JWT, Firebase"
+      },
+      {
+        "domain": "Bases de données",
+        "items": "PostgreSQL, MySQL"
+      },
+      {
+        "domain": "Mobile",
+        "items": "Flutter (Dart), React Native"
+      },
+      {
+        "domain": "Outils et DevOps",
+        "items": "Git, GitHub, GitLab, Docker, CI/CD, Netlify, Postman, Figma"
+      },
+      {
+        "domain": "Méthodes",
+        "items": "Scrum et agilité, tests (Jest, Cypress), SEO et performance, documentation technique"
+      }
+    ],
+    "educationTitle": "Formation",
+    "education": [
+      {
+        "title": "Bachelor en architecture logicielle",
+        "school": "Université Française d'Abidjan (UFRA)",
+        "date": "2017 – 2020"
+      },
+      {
+        "title": "Baccalauréat série D",
+        "school": "Les Roitelets, Abidjan",
+        "date": "2017"
+      }
+    ],
+    "languagesTitle": "Langues",
+    "languages": "Français, anglais",
+    "referencesNote": "Références professionnelles communiquées sur demande.",
+    "contactCta": "Discuter d'un projet"
   }
 }

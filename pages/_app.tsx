@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
       <div className={`${spaceGrotesk.variable} ${outfit.variable} grain`}>
-        <Layout>
+        <Layout bare={Boolean((Component as { bare?: boolean }).bare)}>
           <Component {...pageProps} />
         </Layout>
       </div>

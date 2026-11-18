@@ -14,19 +14,22 @@ Allow: /
 Sitemap: ${SITE_URL}/sitemap.xml
 `;
 
-const urlEntry = (loc) => `  <url>
-    <loc>${loc}</loc>
+// `path` : chemin de la page sans préfixe de langue ("" = accueil, "/cv" = CV).
+const urlEntry = (localePrefix, path = "") => `  <url>
+    <loc>${SITE_URL}${localePrefix}${path || (localePrefix ? "" : "/")}</loc>
     <lastmod>${lastmod}</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="${SITE_URL}/" />
-    <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}/en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="${SITE_URL}${path || "/"}" />
+    <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}/en${path}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${path || "/"}" />
   </url>`;
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${urlEntry(`${SITE_URL}/`)}
-${urlEntry(`${SITE_URL}/en`)}
+${urlEntry("")}
+${urlEntry("/en")}
+${urlEntry("", "/cv")}
+${urlEntry("/en", "/cv")}
 </urlset>
 `;
 
