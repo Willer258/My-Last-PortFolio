@@ -198,7 +198,8 @@ function HomeSection() {
                   <Button type="outlined">{t('home.contact')}</Button>
                 </motion.a>
                 <motion.a
-                  href={locale === 'en' ? '/en/cv' : '/cv'}
+                  href={locale === 'en' ? '/cv-en.pdf' : '/cv.pdf'}
+                  download="CV-Alain-Wilfried-Houinlindjonon.pdf"
                   aria-label={t('home.cvAriaLabel')}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.97 }}
